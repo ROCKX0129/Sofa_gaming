@@ -1,16 +1,46 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-public class MainMenu : MonoBehaviour
+public class MenuManager : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+   
+    public GameObject mainMenuPanel;
+    public GameObject settingsPanel;
+
+    public string mainScene = "MainScene";
+
+    private void Start()
     {
-        
+        ShowMainMenu();
     }
 
-    // Update is called once per frame
-    void Update()
+
+    public void PlayGame()
     {
-        
+        SceneManager.LoadScene(mainScene);
+    }
+
+    public void ExitGame()
+    {
+            Application.Quit();
+       
+    }
+
+    public void OpenSettings()
+    {
+        mainMenuPanel.SetActive(false);
+        settingsPanel.SetActive(true);
+    }
+
+    public void BackToMenu()
+    {
+        ShowMainMenu();
+    }
+
+
+    private void ShowMainMenu()
+    {
+        mainMenuPanel.SetActive(true);
+        settingsPanel.SetActive(false);
     }
 }
