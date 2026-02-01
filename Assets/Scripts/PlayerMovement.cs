@@ -18,8 +18,7 @@ public class PlayerController : MonoBehaviour
     public float groundradius;
     public LayerMask groundLayer;
 
-    private bool isGrounded;    
-
+    private bool isGrounded;
     void Awake()
     {
         input = GetComponent<PlayerInput>();
@@ -29,7 +28,7 @@ public class PlayerController : MonoBehaviour
     public void OnMove(InputAction.CallbackContext ctx)
     {
         moveInput = ctx.ReadValue<Vector2>();
-        Debug.Log(gameObject.name + " MOVE: " + moveInput);
+        
     }
 
     public void OnJump(InputAction.CallbackContext ctx)
@@ -37,7 +36,6 @@ public class PlayerController : MonoBehaviour
         if (ctx.performed)
             jumpPressed = true;
     }
-
     void FixedUpdate()
     {
         rb.linearVelocity = new Vector2(moveInput.x * moveSpeed, rb.linearVelocity.y);
@@ -53,4 +51,6 @@ public class PlayerController : MonoBehaviour
             jumpPressed = false;
         }
     }
+
+    
 }
