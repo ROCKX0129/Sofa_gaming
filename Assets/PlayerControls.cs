@@ -282,17 +282,6 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             ]
         },
         {
-            ""name"": ""Keyboard 2"",
-            ""bindingGroup"": ""Keyboard 2"",
-            ""devices"": [
-                {
-                    ""devicePath"": ""<Keyboard>"",
-                    ""isOptional"": false,
-                    ""isOR"": false
-                }
-            ]
-        },
-        {
             ""name"": ""Gamepad"",
             ""bindingGroup"": ""Gamepad"",
             ""devices"": [
@@ -639,19 +628,6 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         {
             if (m_Keyboard1SchemeIndex == -1) m_Keyboard1SchemeIndex = asset.FindControlSchemeIndex("Keyboard1");
             return asset.controlSchemes[m_Keyboard1SchemeIndex];
-        }
-    }
-    private int m_Keyboard2SchemeIndex = -1;
-    /// <summary>
-    /// Provides access to the input control scheme.
-    /// </summary>
-    /// <seealso cref="UnityEngine.InputSystem.InputControlScheme" />
-    public InputControlScheme Keyboard2Scheme
-    {
-        get
-        {
-            if (m_Keyboard2SchemeIndex == -1) m_Keyboard2SchemeIndex = asset.FindControlSchemeIndex("Keyboard 2");
-            return asset.controlSchemes[m_Keyboard2SchemeIndex];
         }
     }
     private int m_GamepadSchemeIndex = -1;

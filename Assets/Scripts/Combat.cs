@@ -1,8 +1,10 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class COmbat : MonoBehaviour
+public class Combat : MonoBehaviour
 {
+    [SerializeField] private float attackOffsetX = 0.6f;
+
     public Transform attackPoint;
     public LayerMask attackLayers;
     public float attackRadius;
@@ -18,7 +20,7 @@ public class COmbat : MonoBehaviour
             attackPressed = true;
         }
     }
-    void Update()
+    void FixedUpdate()
     {
        if (attackPressed)
         {
@@ -32,7 +34,9 @@ public class COmbat : MonoBehaviour
     {
         canAttack = false;
 
-        Collider2D hit = Physics2D.OverlapCircle(attackPoint.position, attackRadius, attackLayers);
+        float effectiveRadius = attackRadius + 0.5f;
+
+        Collider2D hit = Physics2D.OverlapCircle(attackPoint.position, effectiveRadius, attackLayers);
 
         if (hit != null && hit.transform.root != transform.root)
         {
@@ -46,6 +50,16 @@ public class COmbat : MonoBehaviour
     void ResetAttack()
     {
         canAttack = true;
+    }
+
+    void LateUpdate()
+    {
+        int facing = transform.localScale.x > 0 ? 1 : -1;
+
+        if (attackPoint != null)
+        {
+            attackPoint.localPosition = new Vector3(attackOffsetX * facing, attackPoint.localPosition.y, 0);
+        }
     }
 
     void OnDrawGizmosSelected()

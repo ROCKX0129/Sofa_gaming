@@ -196,17 +196,6 @@
             ]
         },
         {
-            "name": "Keyboard 2",
-            "bindingGroup": "Keyboard 2",
-            "devices": [
-                {
-                    "devicePath": "<Keyboard>",
-                    "isOptional": false,
-                    "isOR": false
-                }
-            ]
-        },
-        {
             "name": "Gamepad",
             "bindingGroup": "Gamepad",
             "devices": [
