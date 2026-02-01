@@ -7,7 +7,7 @@ public class Combat : MonoBehaviour
 
     public Transform attackPoint;
     public LayerMask attackLayers;
-    public float attackRadius;
+    public Vector2 attackSize = new Vector2(1.5f, 1f);
     public float attackCooldown;
 
     private bool attackPressed;
@@ -34,15 +34,17 @@ public class Combat : MonoBehaviour
     {
         canAttack = false;
 
-        float effectiveRadius = attackRadius + 0.5f;
+        Collider2D[] hit = Physics2D.OverlapBoxAll(attackPoint.position, attackSize, 0f, attackLayers);
 
-        Collider2D hit = Physics2D.OverlapCircle(attackPoint.position, effectiveRadius, attackLayers);
-
-        if (hit != null && hit.transform.root != transform.root)
+        foreach (Collider2D playerCol in hit)
         {
-            hit.transform.root.gameObject.SetActive(false);
-            Debug.Log(hit.transform.root.name + " was killed ");
+            if (playerCol != null && playerCol.transform.root != transform.root)
+            {
+                playerCol.transform.root.gameObject.SetActive(false);
+                Debug.Log(playerCol.transform.root.name + " was killed ");
+            }
         }
+        
     
 
         Invoke(nameof(ResetAttack), attackCooldown);
@@ -67,7 +69,7 @@ public class Combat : MonoBehaviour
         if (attackPoint == null) return;
 
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(attackPoint.position, attackRadius);
+        Gizmos.DrawWireCube(attackPoint.position, attackSize);
     }
 
 }

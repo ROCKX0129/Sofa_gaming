@@ -766,6 +766,14 @@ PrefabInstance:
       value: 2.3
       objectReference: {fileID: 0}
     - target: {fileID: 7169596443730062514, guid: 85645a83445f5844b86de8b9b333440f, type: 3}
+      propertyPath: attackSize.x
+      value: 2.08
+      objectReference: {fileID: 0}
+    - target: {fileID: 7169596443730062514, guid: 85645a83445f5844b86de8b9b333440f, type: 3}
+      propertyPath: attackSize.y
+      value: 2.08
+      objectReference: {fileID: 0}
+    - target: {fileID: 7169596443730062514, guid: 85645a83445f5844b86de8b9b333440f, type: 3}
       propertyPath: attackOffsetX
       value: 1.3
       objectReference: {fileID: 0}
