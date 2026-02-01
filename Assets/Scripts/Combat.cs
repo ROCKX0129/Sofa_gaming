@@ -67,7 +67,6 @@ public class Combat : MonoBehaviour
     void OnDrawGizmosSelected()
     {
         if (attackPoint == null) return;
-
         Gizmos.color = Color.red;
         Gizmos.DrawWireCube(attackPoint.position, attackSize);
     }
