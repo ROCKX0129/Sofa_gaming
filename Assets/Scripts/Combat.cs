@@ -3,21 +3,42 @@ using UnityEngine.InputSystem;
 
 public class Combat : MonoBehaviour
 {
-    [SerializeField] private float attackOffsetX = 0.6f;
+    [Header("Weapon")]
 
+    [SerializeField] private float attackOffsetX = 0.6f;
+    [SerializeField] public SpriteRenderer weaponSprite;
     public Transform attackPoint;
-    public LayerMask attackLayers;
     public Vector2 attackSize = new Vector2(1.5f, 1f);
+
+    [Header("Attack")]
+
+    public LayerMask attackLayers;
     public float attackCooldown;
 
     private bool attackPressed;
     private bool canAttack = true;
+
+    [Header("Ranged Attack")]
+
+    public GameObject projectilePrefab;
+    public Transform firePoint;
+    public float projectileCooldown;
+    private bool canShoot = true;
 
     public void OnAttack(InputAction.CallbackContext ctx)
     {
         if (ctx.performed && canAttack)
         {
             attackPressed = true;
+        }
+    }
+
+    public void OnShoot(InputAction.CallbackContext ctx)
+    {
+        if (ctx.performed && canShoot)
+        {
+           
+            Shoot();
         }
     }
     void FixedUpdate()
@@ -49,9 +70,30 @@ public class Combat : MonoBehaviour
 
         Invoke(nameof(ResetAttack), attackCooldown);
     }
+
+    void Shoot()
+    {
+        Debug.Log("Shoot pressed");
+        Debug.Log("Projectile prefab; " + projectilePrefab);
+        if (projectilePrefab != null || firePoint == null) return;
+
+        canShoot = false;
+
+        GameObject proj = Instantiate(projectilePrefab, firePoint.position, Quaternion.identity);
+        Debug.Log("Projectile Instiantied at: " + proj.transform.position);
+        bool facingRight = transform.localScale.x > 0;
+        proj.GetComponent<Projectile>().Setup(facingRight);
+
+        Invoke(nameof(ResetShoot), projectileCooldown);
+    }
     void ResetAttack()
     {
         canAttack = true;
+    }
+
+    void ResetShoot()
+    {
+        canShoot = true;
     }
 
     void LateUpdate()

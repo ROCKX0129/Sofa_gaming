@@ -25,7 +25,7 @@ Transform:
   m_GameObject: {fileID: 6227646759391894858}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.14, y: 0.0000019073486, z: 0}
+  m_LocalPosition: {x: 0, y: 0.0000019073486, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -76,7 +76,7 @@ GameObject:
   - component: {fileID: 2528937247981969835}
   - component: {fileID: 3186319561313570199}
   - component: {fileID: 7913505651060314629}
-  - component: {fileID: 7169596443730062514}
+  - component: {fileID: 7582728317423918406}
   m_Layer: 6
   m_Name: Player 1
   m_TagString: Player
@@ -99,6 +99,7 @@ Transform:
   m_Children:
   - {fileID: 6625775254280825394}
   - {fileID: 1470631333071387447}
+  - {fileID: 8812317093653053634}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &3765135924264229963
@@ -309,7 +310,7 @@ MonoBehaviour:
     m_ActionName: 'Player 2/Jump2[/Keyboard/enter]'
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7169596443730062514}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: COmbat, Assembly-CSharp
         m_MethodName: OnAttack
         m_Mode: 0
@@ -327,12 +328,32 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 9ab8dd53-120b-4bff-9640-4df6098d838a
     m_ActionName: 'Player 2/Attack[/DualShock4GamepadHID/buttonWest]'
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: Combat, Assembly-CSharp
+        m_MethodName: OnShoot
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 75aa98d9-2c49-4ad8-a7ae-ad81bbd78c3c
+    m_ActionName: 'Player 1/Shoot[/Keyboard/l]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: f0585676-ba73-4b57-8cb6-85fce2f33a5a
+    m_ActionName: Player 2/Shoot
   m_NeverAutoSwitchControlSchemes: 1
   m_DefaultControlScheme: Keyboard1
   m_DefaultActionMap: Player 1
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
---- !u!114 &7169596443730062514
+--- !u!114 &7582728317423918406
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -343,10 +364,46 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bebecf999b4d2c44ab1bf0b09ec8e1b1, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::COmbat
+  m_EditorClassIdentifier: Assembly-CSharp::Combat
+  attackOffsetX: 0.6
+  weaponSprite: {fileID: 0}
   attackPoint: {fileID: 1470631333071387447}
+  attackSize: {x: 1.5, y: 1}
   attackLayers:
     serializedVersion: 2
-    m_Bits: 64
-  attackRadius: 1.8
-  attackCooldown: 0.5
+    m_Bits: 0
+  attackCooldown: 0
+  projectilePrefab: {fileID: 5785550395451163585, guid: bdd31993cca440b4c908909c959f6658, type: 3}
+  firePoint: {fileID: 8812317093653053634}
+  projectileCooldown: 1
+--- !u!1 &8637876401390808004
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8812317093653053634}
+  m_Layer: 6
+  m_Name: firePoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8812317093653053634
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8637876401390808004}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.96, y: 1.06, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3956852820518023688}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
