@@ -55,6 +55,7 @@ public class Combat : MonoBehaviour
             Attack();
             attackPressed = false;
         } 
+
     }
 
     void Attack()
@@ -100,17 +101,6 @@ public class Combat : MonoBehaviour
     void ResetShoot()
     {
         canShoot = true;
-    }
-
-    void LateUpdate()
-    {
-        int facing = playerController.facing;
-
-        
-        attackPoint.localPosition = new Vector3(attackOffsetX * facing, attackPoint.localPosition.y, 0);
-
-        weaponSprite.flipX = facing < 0;
-        
     }
 
     void OnDrawGizmosSelected()

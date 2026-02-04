@@ -60,7 +60,12 @@ public class PlayerController : MonoBehaviour
         {
             jumpPressed = false;
         }
+
+        if (moveInput.x > 0)
+            transform.localScale = new Vector3(1, 1, 1);
+        else if (moveInput.x < 0)
+            transform.localScale = new Vector3(-1, 1, 1);
     }
 
-    
+
 }
