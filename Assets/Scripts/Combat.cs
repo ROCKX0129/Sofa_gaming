@@ -1,3 +1,4 @@
+using System.Net.Http.Headers;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -80,7 +81,8 @@ public class Combat : MonoBehaviour
         canShoot = false;
 
         GameObject proj = Instantiate(projectilePrefab, firePoint.position, Quaternion.identity);
-        Debug.Log("Projectile Instiantied at: " + proj.transform.position);
+        Debug.Log("Projectile isntantie " + proj.name + " at " + proj.transform.position);
+
         bool facingRight = transform.localScale.x > 0;
         proj.GetComponent<Projectile>().Setup(facingRight);
 

@@ -3,7 +3,7 @@ using UnityEngine;
 public class Projectile : MonoBehaviour
 {
     public float speed = 10f;
-    public float angle = 45f;
+    public float arcHeight = 45f;
 
     private Rigidbody2D rb;
 
@@ -14,12 +14,8 @@ public class Projectile : MonoBehaviour
     public void Setup(bool facingRight)
     {
         float direction = facingRight ? 1f : -1f; ;
-        float rad = angle * Mathf.Deg2Rad;
-
-        float vx = Mathf.Cos(rad) * speed * direction;
-        float vy = Mathf.Sin(rad) * speed;
-
-        rb.linearVelocity = new Vector2 (vx, vy);
+        
+        rb.linearVelocity = new Vector2(direction * speed, arcHeight);
     }
 
     private void OnTriggerEnter2D(Collider2D col)

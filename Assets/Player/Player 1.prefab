@@ -366,7 +366,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Combat
   attackOffsetX: 0.6
-  weaponSprite: {fileID: 0}
+  weaponSprite: {fileID: 6625744830752419336, guid: e4a959adac3027b40b12a93eb1ac2632, type: 3}
   attackPoint: {fileID: 1470631333071387447}
   attackSize: {x: 1.5, y: 1}
   attackLayers:

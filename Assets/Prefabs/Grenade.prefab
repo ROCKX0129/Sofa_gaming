@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8202836986615325687}
   - component: {fileID: -8771723115033916680}
   - component: {fileID: 2019696336355279694}
-  - component: {fileID: 5033663608102822049}
+  - component: {fileID: 5992189807037494955}
   m_Layer: 0
   m_Name: Grenade
   m_TagString: Untagged
@@ -144,7 +144,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDamping: 0
   m_AngularDamping: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0.55
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -156,7 +156,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
---- !u!114 &5033663608102822049
+--- !u!114 &5992189807037494955
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -168,5 +168,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb122455b8010054683ddf952254b6be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Projectile
-  speed: 1
-  angle: 45
+  speed: 4.66
+  arcHeight: 32.8
