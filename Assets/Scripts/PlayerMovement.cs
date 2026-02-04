@@ -19,10 +19,20 @@ public class PlayerController : MonoBehaviour
     public LayerMask groundLayer;
 
     private bool isGrounded;
+
+    public int facing = 1;
     void Awake()
     {
         input = GetComponent<PlayerInput>();
         rb = GetComponent<Rigidbody2D>();
+    }
+
+    private void Update()
+    {
+        if (moveInput.x != 0)
+        {
+            facing = (int)Mathf.Sign(moveInput.x);
+        }
     }
 
     public void OnMove(InputAction.CallbackContext ctx)

@@ -11,11 +11,16 @@ public class Projectile : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
     }
-    public void Setup(bool facingRight)
+    public void Setup(Vector2 targetPosition)
     {
-        float direction = facingRight ? 1f : -1f; ;
-        
-        rb.linearVelocity = new Vector2(direction * speed, arcHeight);
+        Vector2 start = transform.position;
+        Vector2 dir = targetPosition - start;
+
+        float distance = dir.magnitude;
+
+        float arc = 5f;
+        Vector2 velocity = new Vector2(dir.x, dir.y + arc).normalized * speed;
+        rb.linearVelocity = velocity;
     }
 
     private void OnTriggerEnter2D(Collider2D col)

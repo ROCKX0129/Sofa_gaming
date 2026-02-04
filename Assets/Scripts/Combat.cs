@@ -4,10 +4,15 @@ using UnityEngine.InputSystem;
 
 public class Combat : MonoBehaviour
 {
+    [Header("Targeting")]
+
+    public Transform otherPLayer;
+
     [Header("Weapon")]
 
     [SerializeField] private float attackOffsetX = 0.6f;
     [SerializeField] public SpriteRenderer weaponSprite;
+    [SerializeField] private PlayerController playerController;
     public Transform attackPoint;
     public Vector2 attackSize = new Vector2(1.5f, 1f);
 
@@ -74,17 +79,16 @@ public class Combat : MonoBehaviour
 
     void Shoot()
     {
-        Debug.Log("Shoot pressed");
-        Debug.Log("Projectile prefab; " + projectilePrefab);
-        if (projectilePrefab != null || firePoint == null) return;
+        
+
+        if (projectilePrefab == null || firePoint == null || otherPLayer == null) return;
 
         canShoot = false;
 
         GameObject proj = Instantiate(projectilePrefab, firePoint.position, Quaternion.identity);
-        Debug.Log("Projectile isntantie " + proj.name + " at " + proj.transform.position);
 
-        bool facingRight = transform.localScale.x > 0;
-        proj.GetComponent<Projectile>().Setup(facingRight);
+        proj.GetComponent<Projectile>().Setup(otherPLayer.position);
+       
 
         Invoke(nameof(ResetShoot), projectileCooldown);
     }
@@ -100,12 +104,13 @@ public class Combat : MonoBehaviour
 
     void LateUpdate()
     {
-        int facing = transform.localScale.x > 0 ? 1 : -1;
+        int facing = playerController.facing;
 
-        if (attackPoint != null)
-        {
-            attackPoint.localPosition = new Vector3(attackOffsetX * facing, attackPoint.localPosition.y, 0);
-        }
+        
+        attackPoint.localPosition = new Vector3(attackOffsetX * facing, attackPoint.localPosition.y, 0);
+
+        weaponSprite.flipX = facing < 0;
+        
     }
 
     void OnDrawGizmosSelected()
