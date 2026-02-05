@@ -26,9 +26,9 @@ Transform:
   m_GameObject: {fileID: 1308575920283058624}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 0.702, y: 0.05699992, z: 0}
-  m_LocalScale: {x: 0.2625, y: 0.3125, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalPosition: {x: 1.02, y: 0.06, z: 0}
+  m_LocalScale: {x: 0.41, y: 0.48809525, z: 1.5619048}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 3956852820518023688}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
@@ -115,7 +115,7 @@ Transform:
   m_GameObject: {fileID: 6227646759391894858}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.0000019073486, z: 0}
+  m_LocalPosition: {x: 1.03, y: 0.0000019073486, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -334,6 +334,7 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 8
+  facing: 1
 --- !u!114 &7913505651060314629
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -401,8 +402,8 @@ MonoBehaviour:
     m_ActionName: 'Player 2/Jump2[/Keyboard/enter]'
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: COmbat, Assembly-CSharp
+      - m_Target: {fileID: 7582728317423918406}
+        m_TargetAssemblyTypeName: Combat, Assembly-CSharp
         m_MethodName: OnAttack
         m_Mode: 0
         m_Arguments:
@@ -421,7 +422,7 @@ MonoBehaviour:
     m_ActionName: 'Player 2/Attack[/DualShock4GamepadHID/buttonWest]'
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 7582728317423918406}
         m_TargetAssemblyTypeName: Combat, Assembly-CSharp
         m_MethodName: OnShoot
         m_Mode: 0
@@ -457,14 +458,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Combat
   otherPLayer: {fileID: 0}
-  attackOffsetX: 0.6
-  weaponSprite: {fileID: 6625744830752419336, guid: e4a959adac3027b40b12a93eb1ac2632, type: 3}
+  weaponSprite: {fileID: 7775617543437718089}
+  playerController: {fileID: 3186319561313570199}
   attackPoint: {fileID: 1470631333071387447}
-  attackSize: {x: 1.5, y: 1}
+  attackSize: {x: 3.5, y: 2.26}
   attackLayers:
     serializedVersion: 2
-    m_Bits: 0
-  attackCooldown: 0
+    m_Bits: 64
+  attackCooldown: 1
   projectilePrefab: {fileID: 5785550395451163585, guid: bdd31993cca440b4c908909c959f6658, type: 3}
   firePoint: {fileID: 8812317093653053634}
   projectileCooldown: 1
@@ -493,7 +494,7 @@ Transform:
   m_GameObject: {fileID: 8637876401390808004}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.96, y: 1.06, z: 0}
+  m_LocalPosition: {x: -0.31, y: 1.38, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

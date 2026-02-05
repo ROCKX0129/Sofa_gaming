@@ -10,7 +10,6 @@ public class Combat : MonoBehaviour
 
     [Header("Weapon")]
 
-    [SerializeField] private float attackOffsetX = 0.6f;
     [SerializeField] public SpriteRenderer weaponSprite;
     [SerializeField] private PlayerController playerController;
     public Transform attackPoint;
@@ -31,6 +30,18 @@ public class Combat : MonoBehaviour
     public float projectileCooldown;
     private bool canShoot = true;
 
+    [Header("Block")]
+
+    public float blockDuration;
+    public float blockCooldown;
+
+    [SerializeField] private Collider2D blockCollider;
+    private bool canBlock;
+
+    private void Awake()
+    {
+        canBlock = true; 
+    }
     public void OnAttack(InputAction.CallbackContext ctx)
     {
         if (ctx.performed && canAttack)
@@ -46,6 +57,21 @@ public class Combat : MonoBehaviour
            
             Shoot();
         }
+    }
+
+    public void OnBlock(InputAction.CallbackContext ctx)
+    {
+        Debug.Log("Block input received");
+
+        if (!ctx.performed || !canBlock) return;
+
+        canBlock = false;
+
+        Debug.Log("BLOCK");
+
+        blockCollider.enabled = true;
+
+        Invoke(nameof(EndBlock), blockDuration);
     }
     void FixedUpdate()
     {
@@ -93,6 +119,13 @@ public class Combat : MonoBehaviour
 
         Invoke(nameof(ResetShoot), projectileCooldown);
     }
+
+    void EndBlock()
+    {
+        blockCollider.enabled = false;
+        Debug.Log("Block ended");
+        Invoke(nameof(ResetBlock), blockCooldown);
+    }
     void ResetAttack()
     {
         canAttack = true;
@@ -101,6 +134,11 @@ public class Combat : MonoBehaviour
     void ResetShoot()
     {
         canShoot = true;
+    }
+
+    void ResetBlock()
+    {
+        canBlock = true;
     }
 
     void OnDrawGizmosSelected()
