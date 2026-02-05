@@ -18,18 +18,27 @@ public class PlayerController : MonoBehaviour
     public float groundradius;
     public LayerMask groundLayer;
 
-    private bool isGrounded;    
+    private bool isGrounded;
 
+    public int facing = 1;
     void Awake()
     {
         input = GetComponent<PlayerInput>();
         rb = GetComponent<Rigidbody2D>();
     }
 
+    private void Update()
+    {
+        if (moveInput.x != 0)
+        {
+            facing = (int)Mathf.Sign(moveInput.x);
+        }
+    }
+
     public void OnMove(InputAction.CallbackContext ctx)
     {
         moveInput = ctx.ReadValue<Vector2>();
-        Debug.Log(gameObject.name + " MOVE: " + moveInput);
+        
     }
 
     public void OnJump(InputAction.CallbackContext ctx)
@@ -37,7 +46,6 @@ public class PlayerController : MonoBehaviour
         if (ctx.performed)
             jumpPressed = true;
     }
-
     void FixedUpdate()
     {
         rb.linearVelocity = new Vector2(moveInput.x * moveSpeed, rb.linearVelocity.y);
@@ -52,5 +60,12 @@ public class PlayerController : MonoBehaviour
         {
             jumpPressed = false;
         }
+
+        if (moveInput.x > 0)
+            transform.localScale = new Vector3(1, 1, 1);
+        else if (moveInput.x < 0)
+            transform.localScale = new Vector3(-1, 1, 1);
     }
+
+
 }
