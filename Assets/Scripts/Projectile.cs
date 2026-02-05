@@ -16,17 +16,24 @@ public class Projectile : MonoBehaviour
         Vector2 start = transform.position;
         Vector2 dir = targetPosition - start;
 
-        float distance = dir.magnitude;
+        float directionX = Mathf.Sign(dir.x);
 
-        float arc = 5f;
-        Vector2 velocity = new Vector2(dir.x, dir.y + arc).normalized * speed;
-        rb.linearVelocity = velocity;
+        float fixedArcY = arcHeight;
+        rb.linearVelocity = new Vector2(directionX * speed, fixedArcY);
     }
 
     private void OnTriggerEnter2D(Collider2D col)
     {
-        if(col.CompareTag("Player"))
+        if (col.CompareTag("Player"))
         {
+            Combat targetCombat = col.transform.root.GetComponent<Combat>();
+            if (targetCombat != null && targetCombat.blockCollider != null && targetCombat.blockCollider.enabled)
+            {
+                Debug.Log("Projectile blocked!");
+                Destroy(gameObject); // projectile still disappears
+                return;
+            }
+
             col.transform.root.gameObject.SetActive(false);
             Destroy(gameObject);
         }
@@ -35,4 +42,6 @@ public class Projectile : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
+
 }

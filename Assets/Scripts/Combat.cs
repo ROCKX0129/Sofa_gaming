@@ -31,11 +31,10 @@ public class Combat : MonoBehaviour
     private bool canShoot = true;
 
     [Header("Block")]
-
+    public Collider2D blockCollider;
     public float blockDuration;
     public float blockCooldown;
 
-    [SerializeField] private Collider2D blockCollider;
     private bool canBlock;
 
     private void Awake()
@@ -61,17 +60,17 @@ public class Combat : MonoBehaviour
 
     public void OnBlock(InputAction.CallbackContext ctx)
     {
-        Debug.Log("Block input received");
+        if (ctx.performed && canBlock)
+        {
+            canBlock = false;
 
-        if (!ctx.performed || !canBlock) return;
+            if (blockCollider != null)
+                blockCollider.enabled = true;
 
-        canBlock = false;
+            Debug.Log("Block started");
+            Invoke(nameof(EndBlock), blockDuration);
 
-        Debug.Log("BLOCK");
-
-        blockCollider.enabled = true;
-
-        Invoke(nameof(EndBlock), blockDuration);
+        }
     }
     void FixedUpdate()
     {
@@ -94,12 +93,20 @@ public class Combat : MonoBehaviour
         {
             if (playerCol != null && playerCol.transform.root != transform.root)
             {
+                Combat targetCombat = playerCol.transform.root.GetComponent<Combat>();
+                if (targetCombat != null && targetCombat.blockCollider != null && targetCombat.blockCollider.enabled)
+                {
+                    Debug.Log("Melee blocked!");
+                    continue; // skip killing
+                }
+
                 playerCol.transform.root.gameObject.SetActive(false);
                 Debug.Log(playerCol.transform.root.name + " was killed ");
             }
         }
-        
-    
+
+
+
 
         Invoke(nameof(ResetAttack), attackCooldown);
     }
@@ -122,8 +129,11 @@ public class Combat : MonoBehaviour
 
     void EndBlock()
     {
-        blockCollider.enabled = false;
+        if (blockCollider != null)
+            blockCollider.enabled = false;
+
         Debug.Log("Block ended");
+
         Invoke(nameof(ResetBlock), blockCooldown);
     }
     void ResetAttack()
