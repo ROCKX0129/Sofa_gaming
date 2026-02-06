@@ -5,6 +5,7 @@ public class MenuManager : MonoBehaviour
 {
     public GameObject mainMenuPanel;
     // settings panel is for now deactivated i'll work on it next week
+    //it was implemented for 6.2
     public GameObject settingsPanel;
 
     public string levelSceneName = "level";
