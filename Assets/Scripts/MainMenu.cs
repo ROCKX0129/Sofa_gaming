@@ -15,7 +15,7 @@ public class MenuManager : MonoBehaviour
         ShowMainMenu();
     }
 
-    // Removing any other loaded scenes so the floor and other stuff doesnt appear
+    // removing any other loaded scenes so the floor and other stuff doesnt appear
     private void CleanupOtherScenes()
     {
         Scene activeScene = SceneManager.GetActiveScene();
@@ -31,22 +31,25 @@ public class MenuManager : MonoBehaviour
         }
     }
 
-    public void PlayGame()
-    {
-       
-        SceneManager.LoadScene(levelSceneName, LoadSceneMode.Single);
-    }
 
     public void ExitGame()
     {
         Application.Quit();
     }
 
+    public void PlayGame()
+    {
+        Debug.Log("PlayGame called");
+        SceneManager.LoadScene(levelSceneName, LoadSceneMode.Single);
+    }
+
     public void OpenSettings()
     {
+        Debug.Log("OpenSettings called");
         mainMenuPanel.SetActive(false);
         settingsPanel.SetActive(true);
     }
+
 
     public void BackToMenu()
     {
