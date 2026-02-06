@@ -215,6 +215,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 5386971475913105318, guid: 85645a83445f5844b86de8b9b333440f, type: 3}
+      propertyPath: m_GravityScale
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 7582728317423918406, guid: 85645a83445f5844b86de8b9b333440f, type: 3}
       propertyPath: hurtbox
       value: 
@@ -237,11 +241,11 @@ PrefabInstance:
       objectReference: {fileID: 758403253}
     - target: {fileID: 7582728317423918406, guid: 85645a83445f5844b86de8b9b333440f, type: 3}
       propertyPath: blockCooldown
-      value: 5
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7582728317423918406, guid: 85645a83445f5844b86de8b9b333440f, type: 3}
       propertyPath: blockDuration
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7582728317423918406, guid: 85645a83445f5844b86de8b9b333440f, type: 3}
       propertyPath: attackCooldown
@@ -249,7 +253,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7582728317423918406, guid: 85645a83445f5844b86de8b9b333440f, type: 3}
       propertyPath: projectileCooldown
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7860491709679437498, guid: 85645a83445f5844b86de8b9b333440f, type: 3}
       propertyPath: m_Size.x
@@ -318,6 +322,10 @@ PrefabInstance:
     - target: {fileID: 8262334614293055830, guid: 85645a83445f5844b86de8b9b333440f, type: 3}
       propertyPath: m_Name
       value: Player 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8262334614293055830, guid: 85645a83445f5844b86de8b9b333440f, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
