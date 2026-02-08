@@ -318,7 +318,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: -9095717837082945937, guid: 207ee8102dd4143d288186ef0be518ee, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -342,10 +342,10 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 0.0001
   m_LinearDamping: 0
   m_AngularDamping: 0.05
-  m_GravityScale: 1.5
+  m_GravityScale: 3
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -406,8 +406,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 426898f3c3fafab42884bad9707249e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
-  moveSpeed: 5
-  jumpForce: 5
+  moveInput: {x: 0, y: 0}
+  moveSpeed: 8
+  jumpForce: 20
   groundCheck: {fileID: 6625775254280825394}
   groundradius: 0.5
   groundLayer:
@@ -519,6 +520,26 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: f0585676-ba73-4b57-8cb6-85fce2f33a5a
     m_ActionName: Player 2/Shoot
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7582728317423918406}
+        m_TargetAssemblyTypeName: Combat, Assembly-CSharp
+        m_MethodName: OnBlock
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: db2170fa-d04f-4c6d-9663-9c02841878d9
+    m_ActionName: 'Player 1/Block[/Keyboard/shift]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 2beb19a1-1865-4891-8523-0dd3c50728ae
+    m_ActionName: Player 2/Block
   m_NeverAutoSwitchControlSchemes: 1
   m_DefaultControlScheme: Keyboard1
   m_DefaultActionMap: Player 1
@@ -548,9 +569,9 @@ MonoBehaviour:
   projectilePrefab: {fileID: 5785550395451163585, guid: bdd31993cca440b4c908909c959f6658, type: 3}
   firePoint: {fileID: 8812317093653053634}
   projectileCooldown: 1
+  blockCollider: {fileID: 7860491709679437498}
   blockDuration: 0
   blockCooldown: 0
-  blockCollider: {fileID: 0}
 --- !u!1 &8637876401390808004
 GameObject:
   m_ObjectHideFlags: 0
