@@ -6,7 +6,7 @@ public class PlayerController : MonoBehaviour
     private PlayerInput input;
     private Rigidbody2D rb;
 
-    private Vector2 moveInput;
+    public Vector2 moveInput;
     private bool jumpPressed;
 
     // Movement
