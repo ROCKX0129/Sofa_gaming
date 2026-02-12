@@ -247,7 +247,7 @@ GameObject:
   - component: {fileID: 7582728317423918406}
   m_Layer: 6
   m_Name: Player 1
-  m_TagString: Player
+  m_TagString: Player1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -565,13 +565,13 @@ MonoBehaviour:
   attackLayers:
     serializedVersion: 2
     m_Bits: 64
-  attackCooldown: 1
+  attackCooldown: 1.5
   projectilePrefab: {fileID: 5785550395451163585, guid: bdd31993cca440b4c908909c959f6658, type: 3}
   firePoint: {fileID: 8812317093653053634}
   projectileCooldown: 1
   blockCollider: {fileID: 7860491709679437498}
-  blockDuration: 0
-  blockCooldown: 0
+  blockDuration: 2
+  blockCooldown: 1.5
 --- !u!1 &8637876401390808004
 GameObject:
   m_ObjectHideFlags: 0
