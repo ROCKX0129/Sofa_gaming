@@ -50,6 +50,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Using",
+                    "type": "Button",
+                    "id": "7fb217e1-b04f-4187-8197-c93e5da8a5d7",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -149,6 +158,17 @@
                     "processors": "",
                     "groups": ";Keyboard1",
                     "action": "Block",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e869e0c6-2d24-4c7d-b707-c2ff1ac8e8bd",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard1",
+                    "action": "Using",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
