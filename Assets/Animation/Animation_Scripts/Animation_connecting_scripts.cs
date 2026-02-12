@@ -12,7 +12,8 @@ public class Animation_connecting_scripts : MonoBehaviour
     {
         playerController = GetComponent<PlayerController>();
 
-        mAnimator = Character_prefab.GetComponent<Animator>();
+        mAnimator = GetComponentInChildren<Animator>();
+
         Debug.Log(mAnimator);
     }
 
