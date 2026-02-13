@@ -24,23 +24,27 @@ public class Projectile : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D col)
     {
-        if (col.CompareTag("Player"))
+        int playerLayer = LayerMask.NameToLayer("Player");
+        int groundLayer = LayerMask.NameToLayer("Ground");
+
+        if (col.gameObject.layer == playerLayer)
         {
             Combat targetCombat = col.transform.root.GetComponent<Combat>();
             if (targetCombat != null && targetCombat.blockCollider != null && targetCombat.blockCollider.enabled)
             {
                 Debug.Log("Projectile blocked!");
-                Destroy(gameObject); // projectile still disappears
+                Destroy(gameObject); 
                 return;
             }
 
-            col.transform.root.gameObject.SetActive(false);
+            targetCombat.Die();
             Destroy(gameObject);
+            return;
         }
-        else if (col.CompareTag("Ground"))
-        {
-            Destroy(gameObject);
-        }
+        
+        
+        Destroy(gameObject);
+        
     }
 
 
