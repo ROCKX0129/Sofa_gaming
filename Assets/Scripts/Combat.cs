@@ -97,15 +97,12 @@ public class Combat : MonoBehaviour
                 if (targetCombat != null && targetCombat.blockCollider != null && targetCombat.blockCollider.enabled)
                 {
                     Debug.Log("Melee blocked!");
-                    continue; // skip killing
+                    continue; 
                 }
 
-                playerCol.transform.root.gameObject.SetActive(false);
-                Debug.Log(playerCol.transform.root.name + " was killed ");
+                targetCombat.Die();
             }
         }
-
-
 
 
         Invoke(nameof(ResetAttack), attackCooldown);
@@ -122,7 +119,6 @@ public class Combat : MonoBehaviour
         GameObject proj = Instantiate(projectilePrefab, firePoint.position, Quaternion.identity);
 
         proj.GetComponent<Projectile>().Setup(otherPLayer.position);
-       
 
         Invoke(nameof(ResetShoot), projectileCooldown);
     }
@@ -158,4 +154,10 @@ public class Combat : MonoBehaviour
         Gizmos.DrawWireCube(attackPoint.position, attackSize);
     }
 
+    public void Die()
+    {
+        gameObject.SetActive(false);
+        Debug.Log(transform.root.name + " was killed");
+        GameManager.Instance.PlayerDied(gameObject.tag);
+    }
 }

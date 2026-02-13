@@ -3666,7 +3666,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::MenuManager
   mainMenuPanel: {fileID: 1095848121}
   settingsPanel: {fileID: 1192756359}
-  levelSceneName: Level
+  levelSceneName: Desert
 --- !u!4 &1360561001
 Transform:
   m_ObjectHideFlags: 0

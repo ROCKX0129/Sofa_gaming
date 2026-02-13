@@ -6,6 +6,8 @@ TagManager:
   tags:
   - New tag
   - Ground
+  - Player1
+  - Player2
   layers:
   - Default
   - TransparentFX
@@ -52,7 +54,7 @@ TagManager:
   - name: Foreground
     uniqueID: 3484127403
     locked: 0
-  - name: Player
+  - name: 'Player '
     uniqueID: 1918542277
     locked: 0
   m_RenderingLayers:
