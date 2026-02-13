@@ -542,6 +542,10 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 2beb19a1-1865-4891-8523-0dd3c50728ae
     m_ActionName: 'Player 2/Block[/DualShock4GamepadHID/leftTrigger]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 7fb217e1-b04f-4187-8197-c93e5da8a5d7
+    m_ActionName: 'Player 1/Using[/Keyboard/e]'
   m_NeverAutoSwitchControlSchemes: 1
   m_DefaultControlScheme: Keyboard1
   m_DefaultActionMap: Player 1
@@ -587,6 +591,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Animation_connecting_scripts
   Character_prefab: {fileID: 1928479969877340689, guid: d59ae2647b2e20f4b9b4e22dccb5afb8, type: 3}
+  Attack:
+    m_Name: 
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: a79562e4-06a8-45a6-8999-4d2e7a6dd412
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
 --- !u!1 &8637876401390808004
 GameObject:
   m_ObjectHideFlags: 0
@@ -612,7 +625,7 @@ Transform:
   m_GameObject: {fileID: 8637876401390808004}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.21, y: 1.86, z: 0}
+  m_LocalPosition: {x: -0, y: 2.85, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

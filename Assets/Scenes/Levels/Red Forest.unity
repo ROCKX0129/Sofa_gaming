@@ -3380,6 +3380,10 @@ PrefabInstance:
       propertyPath: otherPLayer
       value: 
       objectReference: {fileID: 1849716161}
+    - target: {fileID: 5320225805477005749, guid: 04eadc3d3a5bf16448124c79c969411b, type: 3}
+      propertyPath: projectileCooldown
+      value: 1.5
+      objectReference: {fileID: 0}
     - target: {fileID: 6185984871937994606, guid: 04eadc3d3a5bf16448124c79c969411b, type: 3}
       propertyPath: m_Name
       value: 'Player 2 '
