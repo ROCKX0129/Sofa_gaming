@@ -1,18 +1,23 @@
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class Telepoter : MonoBehaviour
+public class Telepoter : MonoBehaviour ,  IItem
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     private Vector2 Stored_position;
     private bool Storing_position = true;
     private GameObject TargetObject;
+    public  Item_SO itemSO;
+    public Item_SO ItemData => itemSO;
     private void OnEnable()
     {
-        //EventManager.OnPlayerEvent += Stored_telepote;
-        //EventManager.OnPlayerEvent += telepote;
-        PlayerUsing.OnUseEvent += Stored_telepote;
-        PlayerUsing.OnPlayerUsing += getObject;
+        ItemCharacterManager.OnItemUsingPosition += Stored_telepote;
+        ItemCharacterManager.OnCurrentPlayerCalling += getObject;
+    }
+    private void OnDisable()
+    {
+        ItemCharacterManager.OnItemUsingPosition -= Stored_telepote;
+        ItemCharacterManager.OnCurrentPlayerCalling -= getObject;
     }
 
 
@@ -44,9 +49,4 @@ public class Telepoter : MonoBehaviour
         }
     }
 
-    private void OnDisable()
-    {
-        PlayerUsing.OnUseEvent -= Stored_telepote;
-        PlayerUsing.OnPlayerUsing -= getObject;
-    }
 }
