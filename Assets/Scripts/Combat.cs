@@ -112,7 +112,7 @@ public class Combat : MonoBehaviour
     {
         
 
-        if (projectilePrefab != null || firePoint != null || otherPLayer != null) return;
+        if (projectilePrefab == null || firePoint == null || otherPLayer == null) return;
 
         canShoot = false;
 
