@@ -277,6 +277,7 @@ GameObject:
   - component: {fileID: 6700175296875898251}
   - component: {fileID: 5320225805477005749}
   - component: {fileID: -6824614158965492339}
+  - component: {fileID: 2845269716948950061}
   m_Layer: 6
   m_Name: Player 2
   m_TagString: Player2
@@ -577,6 +578,22 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 7fb217e1-b04f-4187-8197-c93e5da8a5d7
     m_ActionName: 'Player 1/Using[/Keyboard/e]'
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2845269716948950061}
+        m_TargetAssemblyTypeName: PlayerUsing, Assembly-CSharp
+        m_MethodName: OnUsing
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: ceccc745-ae7d-4816-884f-9a07cf120ad4
+    m_ActionName: 'Player 2/Using[/XInputControllerWindows/buttonEast]'
   m_NeverAutoSwitchControlSchemes: 1
   m_DefaultControlScheme: Gamepad
   m_DefaultActionMap: Player 2
@@ -623,7 +640,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Animation_connecting_scripts
   Character_prefab: {fileID: 1751381391181859641, guid: 7e799a977c77a5e4cb1f24e58ba40f22, type: 3}
   Attack:
-    m_Name: 
+    m_Name: Attack
     m_Type: 0
     m_ExpectedControlType: 
     m_Id: 8f4300da-a21a-467e-9355-81e9c9b94e80
@@ -631,6 +648,19 @@ MonoBehaviour:
     m_Interactions: 
     m_SingletonActionBindings: []
     m_Flags: 0
+--- !u!114 &2845269716948950061
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6185984871937994606}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f9512926ca78fe428fac09ea1a2e0ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerUsing
+  playerController: {fileID: 1420251875153506110}
 --- !u!1001 &3198828451871982520
 PrefabInstance:
   m_ObjectHideFlags: 0

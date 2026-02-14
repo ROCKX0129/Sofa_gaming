@@ -22,6 +22,7 @@ public class ItemCharacterManager : MonoBehaviour
     private bool isplaceing = false;
     public void Start()
     {
+        Debug.Log("ItemCharacterManager Start");
         TestingP();
     }
 
