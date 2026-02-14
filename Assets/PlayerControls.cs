@@ -274,6 +274,15 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": true
                 },
                 {
+                    ""name"": ""Using"",
+                    ""type"": ""Button"",
+                    ""id"": ""ceccc745-ae7d-4816-884f-9a07cf120ad4"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
                     ""name"": ""Jump2"",
                     ""type"": ""Button"",
                     ""id"": ""6c5e29f7-764d-4792-9bce-a3d954653c6f"",
@@ -319,6 +328,17 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": "";Gamepad"",
                     ""action"": ""Move2"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""fef11e67-496c-4ed5-b380-37dcbf403997"",
+                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Gamepad"",
+                    ""action"": ""Using"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -405,6 +425,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         // Player 2
         m_Player2 = asset.FindActionMap("Player 2", throwIfNotFound: true);
         m_Player2_Move2 = m_Player2.FindAction("Move2", throwIfNotFound: true);
+        m_Player2_Using = m_Player2.FindAction("Using", throwIfNotFound: true);
         m_Player2_Jump2 = m_Player2.FindAction("Jump2", throwIfNotFound: true);
         m_Player2_Attack = m_Player2.FindAction("Attack", throwIfNotFound: true);
         m_Player2_Shoot = m_Player2.FindAction("Shoot", throwIfNotFound: true);
@@ -642,6 +663,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     private readonly InputActionMap m_Player2;
     private List<IPlayer2Actions> m_Player2ActionsCallbackInterfaces = new List<IPlayer2Actions>();
     private readonly InputAction m_Player2_Move2;
+    private readonly InputAction m_Player2_Using;
     private readonly InputAction m_Player2_Jump2;
     private readonly InputAction m_Player2_Attack;
     private readonly InputAction m_Player2_Shoot;
@@ -661,6 +683,10 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "Player2/Move2".
         /// </summary>
         public InputAction @Move2 => m_Wrapper.m_Player2_Move2;
+        /// <summary>
+        /// Provides access to the underlying input action "Player2/Using".
+        /// </summary>
+        public InputAction @Using => m_Wrapper.m_Player2_Using;
         /// <summary>
         /// Provides access to the underlying input action "Player2/Jump2".
         /// </summary>
@@ -706,6 +732,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @Move2.started += instance.OnMove2;
             @Move2.performed += instance.OnMove2;
             @Move2.canceled += instance.OnMove2;
+            @Using.started += instance.OnUsing;
+            @Using.performed += instance.OnUsing;
+            @Using.canceled += instance.OnUsing;
             @Jump2.started += instance.OnJump2;
             @Jump2.performed += instance.OnJump2;
             @Jump2.canceled += instance.OnJump2;
@@ -732,6 +761,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @Move2.started -= instance.OnMove2;
             @Move2.performed -= instance.OnMove2;
             @Move2.canceled -= instance.OnMove2;
+            @Using.started -= instance.OnUsing;
+            @Using.performed -= instance.OnUsing;
+            @Using.canceled -= instance.OnUsing;
             @Jump2.started -= instance.OnJump2;
             @Jump2.performed -= instance.OnJump2;
             @Jump2.canceled -= instance.OnJump2;
@@ -867,6 +899,13 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnMove2(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Using" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnUsing(InputAction.CallbackContext context);
         /// <summary>
         /// Method invoked when associated input action "Jump2" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
         /// </summary>

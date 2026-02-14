@@ -246,6 +246,7 @@ GameObject:
   - component: {fileID: 7913505651060314629}
   - component: {fileID: 7582728317423918406}
   - component: {fileID: 1440395483784586501}
+  - component: {fileID: 5297781779572269769}
   m_Layer: 6
   m_Name: Player 1
   m_TagString: Player1
@@ -543,9 +544,25 @@ MonoBehaviour:
     m_ActionId: 2beb19a1-1865-4891-8523-0dd3c50728ae
     m_ActionName: 'Player 2/Block[/DualShock4GamepadHID/leftTrigger]'
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 5297781779572269769}
+        m_TargetAssemblyTypeName: PlayerUsing, Assembly-CSharp
+        m_MethodName: OnUsing
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 7fb217e1-b04f-4187-8197-c93e5da8a5d7
     m_ActionName: 'Player 1/Using[/Keyboard/e]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: ceccc745-ae7d-4816-884f-9a07cf120ad4
+    m_ActionName: 'Player 2/Using[/XInputControllerWindows/buttonEast]'
   m_NeverAutoSwitchControlSchemes: 1
   m_DefaultControlScheme: Keyboard1
   m_DefaultActionMap: Player 1
@@ -592,7 +609,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Animation_connecting_scripts
   Character_prefab: {fileID: 1928479969877340689, guid: d59ae2647b2e20f4b9b4e22dccb5afb8, type: 3}
   Attack:
-    m_Name: 
+    m_Name: Attack
     m_Type: 0
     m_ExpectedControlType: 
     m_Id: a79562e4-06a8-45a6-8999-4d2e7a6dd412
@@ -600,6 +617,19 @@ MonoBehaviour:
     m_Interactions: 
     m_SingletonActionBindings: []
     m_Flags: 0
+--- !u!114 &5297781779572269769
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8262334614293055830}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f9512926ca78fe428fac09ea1a2e0ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerUsing
+  playerController: {fileID: 3186319561313570199}
 --- !u!1 &8637876401390808004
 GameObject:
   m_ObjectHideFlags: 0
@@ -641,11 +671,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 145230942921165142, guid: d59ae2647b2e20f4b9b4e22dccb5afb8, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.2173074
+      value: 0.217307
       objectReference: {fileID: 0}
     - target: {fileID: 145230942921165142, guid: d59ae2647b2e20f4b9b4e22dccb5afb8, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.97610325
+      value: 0.9761033
       objectReference: {fileID: 0}
     - target: {fileID: 723759595565476466, guid: d59ae2647b2e20f4b9b4e22dccb5afb8, type: 3}
       propertyPath: m_LocalScale.x
@@ -709,19 +739,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3966681697894849903, guid: d59ae2647b2e20f4b9b4e22dccb5afb8, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.2904129
+      value: 0.29041213
       objectReference: {fileID: 0}
     - target: {fileID: 3966681697894849903, guid: d59ae2647b2e20f4b9b4e22dccb5afb8, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.9569015
+      value: -0.95690167
       objectReference: {fileID: 0}
     - target: {fileID: 5185691340639519273, guid: d59ae2647b2e20f4b9b4e22dccb5afb8, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.99419016
+      value: 0.9941901
       objectReference: {fileID: 0}
     - target: {fileID: 5185691340639519273, guid: d59ae2647b2e20f4b9b4e22dccb5afb8, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.107638314
+      value: -0.10763872
       objectReference: {fileID: 0}
     - target: {fileID: 5679194335906077579, guid: d59ae2647b2e20f4b9b4e22dccb5afb8, type: 3}
       propertyPath: m_LocalRotation.w
@@ -733,11 +763,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8232150202329849510, guid: d59ae2647b2e20f4b9b4e22dccb5afb8, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.99926037
+      value: 0.9992604
       objectReference: {fileID: 0}
     - target: {fileID: 8232150202329849510, guid: d59ae2647b2e20f4b9b4e22dccb5afb8, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.03845509
+      value: -0.038454276
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

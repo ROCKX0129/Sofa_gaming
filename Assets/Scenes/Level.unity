@@ -2021,9 +2021,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerUsing
   playerController: {fileID: 1780298045}
-  telepoterTesting: {fileID: 2779641947560619426, guid: 8bc78da58495335438cf4fdc48b68306, type: 3}
-  PlayerTarget: {fileID: 0}
-  ResetCooldown: 3
 --- !u!1001 &338744797776222749
 PrefabInstance:
   m_ObjectHideFlags: 0

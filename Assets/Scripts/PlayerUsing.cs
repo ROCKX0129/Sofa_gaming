@@ -8,10 +8,9 @@ public class PlayerUsing : MonoBehaviour
     [SerializeField] private PlayerController playerController;
     public static event Action<Vector2> OnUseEvent;
     public static event Action<GameObject> OnPlayerUsing;
-    public GameObject telepoterTesting;
-    public GameObject PlayerTarget;
+    private GameObject PlayerTarget;
     private bool canUsing = true;
-    public float ResetCooldown = 3.0f;
+ 
 
     private void Start()
     {
