@@ -8,4 +8,8 @@ public class Item_SO : ScriptableObject
     public bool isPlaceable;
     public int Durability;
     public Sprite itemSprite;
+
+    [Header("Item Type")]
+    public ItemType itemType;   // <-- add this line
 }
+

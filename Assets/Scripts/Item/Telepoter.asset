@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99e1e9caac7203642892a750b1994cc5, type: 3}
   m_Name: Telepoter
   m_EditorClassIdentifier: Assembly-CSharp::Item_SO
-  itemID: 2
+  itemID: 0
   itemName: Telepoter
   isPlaceable: 1
   Durability: 2
   itemSprite: {fileID: 3352837935195112383, guid: 14ab72483dd065a49ab19a1fc7e07a18, type: 3}
+  itemType: 0

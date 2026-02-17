@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 99e1e9caac7203642892a750b1994cc5, type: 3}
-  m_Name: Mine
+  m_Name: Freeze
   m_EditorClassIdentifier: Assembly-CSharp::Item_SO
-  itemID: 1
-  itemName: Mine
-  isPlaceable: 1
+  itemID: 2
+  itemName: Freeze
+  isPlaceable: 0
   Durability: 2
   itemSprite: {fileID: 0}
-  itemType: 0
+  itemType: 1
