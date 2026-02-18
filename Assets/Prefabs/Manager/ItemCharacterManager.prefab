@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5010900047048738773}
-  - component: {fileID: 4874850797649352328}
+  - component: {fileID: 7428782063608741255}
   m_Layer: 0
   m_Name: ItemCharacterManager
   m_TagString: Untagged
@@ -32,7 +32,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4874850797649352328
+--- !u!114 &7428782063608741255
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -44,9 +44,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be58acae673c29a4b99d2c54b1e438df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ItemCharacterManager
-  Item_SO: {fileID: 0}
-  items: []
-  PlayerHasItem: []
-  CurrentChooseing: 0
-  icePrefab: {fileID: 5785550395451163585, guid: cc45af934013ed640b79c5eadb1a3303, type: 3}
   firePoint: {fileID: 0}

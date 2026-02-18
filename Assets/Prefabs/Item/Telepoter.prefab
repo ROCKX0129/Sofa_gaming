@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8669806216591903407}
   - component: {fileID: 1637996163567693183}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: TeleportStone_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -102,9 +102,9 @@ GameObject:
   - component: {fileID: 5014762424323423383}
   - component: {fileID: 1277137300851429453}
   - component: {fileID: -3239058132895531735}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Telepoter
-  m_TagString: Untagged
+  m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -3,49 +3,49 @@ using System.Collections;
 
 public class Freeze : MonoBehaviour, IItem
 {
-    [Header("Item Data")]
     public Item_SO itemSO;
     public Item_SO ItemData => itemSO;
 
     [Header("Projectile Settings")]
-    public float speed = 10f;             // Speed when shot
-    public float freezeDuration = 2f;     // How long the freeze lasts
-    public LayerMask playerLayer;         // Layer of players to freeze
+    public float speed = 10f;
+    public float freezeDuration = 2f;
+    public LayerMask playerLayer;
 
     private Rigidbody2D rb;
     private Collider2D col;
+    private bool isShot = false; // <-- add this flag
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         col = GetComponent<Collider2D>();
 
-        if (rb == null)
-            rb = gameObject.AddComponent<Rigidbody2D>();
-        if (col == null)
-            col = gameObject.AddComponent<BoxCollider2D>();
+        if (rb == null) rb = gameObject.AddComponent<Rigidbody2D>();
+        if (col == null) col = gameObject.AddComponent<BoxCollider2D>();
 
-        // Start as pickup: falls from sky naturally
+        // Start as pickup: falls naturally
         rb.bodyType = RigidbodyType2D.Dynamic;
         rb.gravityScale = 1f;
-        col.isTrigger = true; // so player can pick it up
+        col.isTrigger = false; // collides with ground
     }
 
     // Called by manager when shooting
     public void Shoot(Vector2 direction)
     {
-        // Make it move like a projectile
-        rb.bodyType = RigidbodyType2D.Dynamic; // allow physics
-        rb.gravityScale = 0f;                  // fly straight
-        col.isTrigger = false;                 // collide with players
+        isShot = true; // now this is a projectile
+        rb.gravityScale = 0f;
         rb.linearVelocity = direction.normalized * speed;
+        col.isTrigger = false;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        if (!isShot) return; // Ignore collisions before being shot
+
+        // Freeze player if hit
         if (((1 << collision.gameObject.layer) & playerLayer) != 0)
         {
-            var controls = collision.gameObject.GetComponent<PlayerControls>();
+            PlayerControls controls = collision.gameObject.GetComponent<PlayerControls>();
             if (controls != null)
                 StartCoroutine(FreezePlayer(controls));
         }
@@ -60,5 +60,4 @@ public class Freeze : MonoBehaviour, IItem
         controls.Enable();
     }
 }
-
 

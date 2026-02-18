@@ -5,28 +5,34 @@ public enum ItemType { Placeable, Projectile, Other }
 
 public class ItemCharacterManager : MonoBehaviour
 {
+    [Header("Pickup Settings")]
+    [SerializeField] private float pickupRadius = 1.5f;       // range to pick up items
+    [SerializeField] private LayerMask itemLayer;             // only pickable items
+
+    [Header("Projectile Settings")]
+    public GameObject icePrefab;   // example projectile prefab
+    public Transform firePoint;    // spawn point for projectiles
+
     private Vector2 playerCurrentPosition;
     private GameObject currentPlayer;
 
     private GameObject nearbyItem;     // item on ground
-    private GameObject equippedItem;   // item player is holding
+    private GameObject equippedItem;   // item currently held
     private bool hasItem = false;
 
-    [Header("Projectile Settings")]
-    public GameObject icePrefab;
-    public Transform firePoint;
+    private bool isPlacing = false;
 
     public static event Action<Vector2> OnItemUsingPosition;
     public static event Action<GameObject> OnCurrentPlayerCalling;
-
-    private bool isPlacing = false;
 
     private void Awake()
     {
         currentPlayer = gameObject;
     }
 
-    // This should be called when pressing E
+    /// <summary>
+    /// Called by InputAction "Using" when E is pressed
+    /// </summary>
     public void CurrentPlayerUsing()
     {
         if (!hasItem)
@@ -38,22 +44,24 @@ public class ItemCharacterManager : MonoBehaviour
         UseItem();
     }
 
-    
-
     private void TryPickup()
     {
-        if (nearbyItem == null) return;
+        // Detect item in range
+        Collider2D hit = Physics2D.OverlapCircle(transform.position, pickupRadius, itemLayer);
+        if (hit != null)
+        {
+            nearbyItem = hit.gameObject;
 
-        equippedItem = nearbyItem;
-        hasItem = true;
+            equippedItem = nearbyItem;
+            hasItem = true;
 
-        equippedItem.SetActive(false); // hide item in world
-        nearbyItem = null;
+            // Hide item in world
+            equippedItem.SetActive(false);
+            nearbyItem = null;
 
-        Debug.Log("Picked up item!");
+            Debug.Log("Picked up: " + equippedItem.name);
+        }
     }
-
-    
 
     private void UseItem()
     {
@@ -66,9 +74,9 @@ public class ItemCharacterManager : MonoBehaviour
             return;
         }
 
-        Debug.Log("Using: " + item.ItemData.itemName);
+        Debug.Log("Using item: " + item.ItemData.itemName);
 
-        
+        // --- PLACEABLE ITEMS ---
         if (item.ItemData.isPlaceable)
         {
             if (!isPlacing)
@@ -77,75 +85,55 @@ public class ItemCharacterManager : MonoBehaviour
                 OnCurrentPlayerCalling?.Invoke(currentPlayer);
 
                 Instantiate(equippedItem, playerCurrentPosition, Quaternion.identity);
+
                 isPlacing = true;
             }
 
+            // Remove from hand
             Destroy(equippedItem);
             equippedItem = null;
             hasItem = false;
             isPlacing = false;
-
             return;
         }
 
-        
+        // --- PROJECTILE ITEMS ---
         if (item.ItemData.itemType == ItemType.Projectile)
         {
             if (icePrefab != null && firePoint != null)
             {
                 Vector2 direction = transform.localScale.x > 0 ? Vector2.right : Vector2.left;
-                ShootIce(direction);
+                ShootProjectile(direction);
             }
-        }
 
-        // After use → remove item
-        Destroy(equippedItem);
-        equippedItem = null;
-        hasItem = false;
-    }
-
-    private void ShootIce(Vector2 direction)
-    {
-        if (equippedItem == null) return;
-
-        // Move the prefab to the firePoint and activate it
-        equippedItem.transform.position = firePoint.position;
-        equippedItem.SetActive(true);
-
-        // Get the IceItem script and shoot
-        Freeze ice = equippedItem.GetComponent<Freeze>();
-        if (ice != null)
-            ice.Shoot(direction);
-
-        // Clear the equipped item (used)
-        equippedItem = null;
-        hasItem = false;
-    }
-
-
-
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.CompareTag("Item"))
-        {
-            nearbyItem = collision.gameObject;
+            // Remove from hand
+            Destroy(equippedItem);
+            equippedItem = null;
+            hasItem = false;
         }
     }
 
-    private void OnTriggerExit2D(Collider2D collision)
+    private void ShootProjectile(Vector2 direction)
     {
-        if (collision.CompareTag("Item"))
-        {
-            if (nearbyItem == collision.gameObject)
-                nearbyItem = null;
-        }
+        GameObject proj = Instantiate(icePrefab, firePoint.position, Quaternion.identity);
+        var projectileScript = proj.GetComponent<Freeze>(); // your Ice/Freeze script
+        if (projectileScript != null)
+            projectileScript.Shoot(direction);
     }
 
-    // This should be called from your player input system
+    /// <summary>
+    /// Update the player's current position (called from PlayerUsing)
+    /// </summary>
     public void UpdateUsePosition(Vector2 position)
     {
         playerCurrentPosition = position;
+    }
+
+    // Optional: visualize pickup range in editor
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.cyan;
+        Gizmos.DrawWireSphere(transform.position, pickupRadius);
     }
 }
 

@@ -11,10 +11,9 @@ GameObject:
   - component: {fileID: 6231914337714584826}
   - component: {fileID: 8202836986615325687}
   - component: {fileID: 2019696336355279694}
-  - component: {fileID: 5647152163416958340}
-  - component: {fileID: -3517148431029912382}
   - component: {fileID: 3623215262469269812}
-  m_Layer: 0
+  - component: {fileID: 9089507063372454002}
+  m_Layer: 8
   m_Name: Ice
   m_TagString: Item
   m_Icon: {fileID: 0}
@@ -106,7 +105,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 1000
   m_LinearDamping: 0
   m_AngularDamping: 0.05
   m_GravityScale: 0
@@ -121,8 +120,26 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
---- !u!61 &5647152163416958340
-BoxCollider2D:
+--- !u!114 &3623215262469269812
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5785550395451163585}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aeb1eb23c43f53f4dbb3f436127a799f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::IceProjectile
+  itemSO: {fileID: 11400000, guid: cd01227b9cc21d243be252137a4fd1db, type: 2}
+  speed: 10
+  freezeDuration: 2
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 64
+--- !u!58 &9089507063372454002
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -155,69 +172,5 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.1, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 3.9, y: 3.68}
-    newSize: {x: 3.9, y: 3.68}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Size: {x: 3.74, y: 3.72}
-  m_EdgeRadius: 0
---- !u!58 &-3517148431029912382
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5785550395451163585}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_CompositeOperation: 0
-  m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_Radius: 1.9500003
---- !u!114 &3623215262469269812
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5785550395451163585}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aeb1eb23c43f53f4dbb3f436127a799f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::IceProjectile
-  itemSO: {fileID: 11400000, guid: cd01227b9cc21d243be252137a4fd1db, type: 2}
-  speed: 10
-  freezeDuration: 2
-  playerLayer:
-    serializedVersion: 2
-    m_Bits: 64
