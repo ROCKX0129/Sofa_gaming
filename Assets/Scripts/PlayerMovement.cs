@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using System.Collections;
 
 public class PlayerController : MonoBehaviour
 {
@@ -21,6 +22,8 @@ public class PlayerController : MonoBehaviour
     private bool isGrounded;
 
     public int facing = 1;
+
+    public bool isFrozen = false;
     void Awake()
     {
         input = GetComponent<PlayerInput>();
@@ -48,11 +51,19 @@ public class PlayerController : MonoBehaviour
     }
     void FixedUpdate()
     {
-        rb.linearVelocity = new Vector2(moveInput.x * moveSpeed, rb.linearVelocity.y);
+        if (!isFrozen)
+        {
+            rb.linearVelocity = new Vector2(moveInput.x * moveSpeed, rb.linearVelocity.y);
+        }
+        else
+        {
+            rb.linearVelocity = Vector2.zero;
+        }
+        
 
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundradius, groundLayer);
 
-        if (jumpPressed && isGrounded)
+        if (!isFrozen && jumpPressed && isGrounded)
         {
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
         }
@@ -65,6 +76,21 @@ public class PlayerController : MonoBehaviour
             transform.localScale = new Vector3(1, 1, 1);
         else if (moveInput.x < 0)
             transform.localScale = new Vector3(-1, 1, 1);
+    }
+
+    public IEnumerator Freeze(float duration)
+    {
+        if (isFrozen) yield break;
+
+        isFrozen = true;
+
+        rb.linearVelocity = Vector2.zero;
+        rb.constraints = RigidbodyConstraints2D.FreezeAll;
+
+        yield return new WaitForSeconds(duration);
+
+        rb.constraints = RigidbodyConstraints2D.FreezeRotation;
+        isFrozen = false;
     }
 
 

@@ -213,7 +213,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::IceProjectile
   itemSO: {fileID: 11400000, guid: cd01227b9cc21d243be252137a4fd1db, type: 2}
   speed: 10
-  freezeDuration: 2
+  freezeDuration: 1
   playerLayer:
     serializedVersion: 2
     m_Bits: 64
