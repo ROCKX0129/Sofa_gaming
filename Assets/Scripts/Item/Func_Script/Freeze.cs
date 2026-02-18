@@ -36,6 +36,7 @@ public class Freeze : MonoBehaviour, IItem
     // Called by ItemCharacterManager when shooting
     public void Shoot(Vector2 direction)
     {
+        isShot = true;
         rb.bodyType = RigidbodyType2D.Dynamic; // physics active
         rb.gravityScale = 0f;                  // fly straight
         col.isTrigger = false;                 // collide with players
@@ -44,15 +45,18 @@ public class Freeze : MonoBehaviour, IItem
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        if (!isShot) return; // ignore all collisions until it’s shot
+
         if (((1 << collision.gameObject.layer) & playerLayer) != 0)
         {
-            var controller = collision.gameObject.GetComponent<PlayerController>();
-            if (controller != null)
-                StartCoroutine(FreezePlayer(controller));
+            var controls = collision.gameObject.GetComponent<PlayerControls>();
+            if (controls != null)
+                StartCoroutine(FreezePlayer(controls));
         }
 
-        Destroy(gameObject); // destroy projectile after hitting anything
+        Destroy(gameObject); // destroy only after hitting something post-shot
     }
+
 
     private IEnumerator FreezePlayer(PlayerController controller)
     {
