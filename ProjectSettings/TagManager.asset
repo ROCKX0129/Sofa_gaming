@@ -9,6 +9,7 @@ TagManager:
   - Player1
   - Player2
   - Item
+  - PickupCollider
   layers:
   - Default
   - TransparentFX

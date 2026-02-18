@@ -10,7 +10,9 @@ public class Freeze : MonoBehaviour, IItem
     [Header("Projectile Settings")]
     public float speed = 10f;             // Speed when shot
     public float freezeDuration = 2f;     // How long the freeze lasts
-    public LayerMask playerLayer;         // Layer of players to freeze
+    public LayerMask playerLayer;
+    private bool isShot = false;
+    // Layer of players to freeze
 
     private Rigidbody2D rb;
     private Collider2D col;
@@ -28,7 +30,7 @@ public class Freeze : MonoBehaviour, IItem
         // Item pickup mode (falls from sky)
         rb.bodyType = RigidbodyType2D.Dynamic;
         rb.gravityScale = 1f;
-        col.isTrigger = true; // so player can pick it up
+         // so player can pick it up
     }
 
     // Called by ItemCharacterManager when shooting

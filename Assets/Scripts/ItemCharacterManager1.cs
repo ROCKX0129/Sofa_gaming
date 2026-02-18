@@ -62,6 +62,22 @@ public class ItemCharacterManager : MonoBehaviour
             Debug.Log("Picked up: " + equippedItem.name);
         }
     }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("PickupCollider")) // tag only on child
+        {
+            nearbyItem = collision.transform.parent.gameObject; // get main prefab
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.CompareTag("PickupCollider"))
+        {
+            if (nearbyItem == collision.transform.parent.gameObject)
+                nearbyItem = null;
+        }
+    }
 
     private void UseItem()
     {
