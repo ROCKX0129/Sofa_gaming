@@ -1041,6 +1041,10 @@ PrefabInstance:
       value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 5965693786957467884, guid: 3541d153af9f507439e40f6f9fa334a4, type: 3}
+      propertyPath: groundLayer.m_Bits
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 5965693786957467884, guid: 3541d153af9f507439e40f6f9fa334a4, type: 3}
       propertyPath: spawnableItems.Array.size
       value: 4
       objectReference: {fileID: 0}

@@ -21,8 +21,8 @@ public class AreaRainSpawner2D : MonoBehaviour
     [Header("Spawn Area (Box)")]
     public Vector2 boxSize = new Vector2(10f, 5f);
 
-    [Header("Freeze Spaend items")]
-    public bool freezeOnSpawn = true;
+    [Header("Freeze After Landing")]
+    public LayerMask groundLayer; // Layer to detect landing
 
     private int currentItemCount = 0;
 
@@ -51,7 +51,6 @@ public class AreaRainSpawner2D : MonoBehaviour
 
         GameObject prefabToSpawn = GetWeightedRandomItem();
 
-        
         float randomX = Random.Range(
             transform.position.x - boxSize.x / 2,
             transform.position.x + boxSize.x / 2
@@ -63,16 +62,18 @@ public class AreaRainSpawner2D : MonoBehaviour
 
         GameObject spawnedItem = Instantiate(prefabToSpawn, spawnPosition, Quaternion.identity);
 
-        if ( freezeOnSpawn)
+        Rigidbody2D rb = spawnedItem.GetComponent<Rigidbody2D>();
+        Collider2D col = spawnedItem.GetComponent<Collider2D>();
+
+        if (rb != null && col != null)
         {
-            Rigidbody2D rb = spawnedItem.GetComponent<Rigidbody2D>();
-            if (rb != null)
-            {
-                rb.bodyType = RigidbodyType2D.Kinematic;
-                rb.constraints = RigidbodyConstraints2D.FreezeAll;
-            }
+            rb.bodyType = RigidbodyType2D.Dynamic;
+            rb.gravityScale = 1f;
+            col.isTrigger = false;
+
+            // Add a helper to freeze after touching ground
+            spawnedItem.AddComponent<FreezeOnLanding>().groundLayer = groundLayer;
         }
-        
 
         currentItemCount++;
     }
@@ -102,9 +103,35 @@ public class AreaRainSpawner2D : MonoBehaviour
 
         return spawnableItems[0].prefab;
     }
+
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.cyan;
         Gizmos.DrawWireCube(transform.position, boxSize);
+    }
+}
+
+
+// Helper script to freeze item after landing
+public class FreezeOnLanding : MonoBehaviour
+{
+    [HideInInspector] public LayerMask groundLayer;
+    private Rigidbody2D rb;
+
+    private void Awake()
+    {
+        rb = GetComponent<Rigidbody2D>();
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (((1 << collision.gameObject.layer) & groundLayer) != 0)
+        {
+            // Stop physics
+            rb.linearVelocity = Vector2.zero;
+            rb.angularVelocity = 0f;
+            rb.bodyType = RigidbodyType2D.Kinematic;
+            rb.constraints = RigidbodyConstraints2D.FreezeAll;
+        }
     }
 }
