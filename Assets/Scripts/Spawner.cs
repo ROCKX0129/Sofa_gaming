@@ -21,6 +21,9 @@ public class AreaRainSpawner2D : MonoBehaviour
     [Header("Spawn Area (Box)")]
     public Vector2 boxSize = new Vector2(10f, 5f);
 
+    [Header("Freeze Spaend items")]
+    public bool freezeOnSpawn = true;
+
     private int currentItemCount = 0;
 
     private void Start()
@@ -48,6 +51,7 @@ public class AreaRainSpawner2D : MonoBehaviour
 
         GameObject prefabToSpawn = GetWeightedRandomItem();
 
+        
         float randomX = Random.Range(
             transform.position.x - boxSize.x / 2,
             transform.position.x + boxSize.x / 2
@@ -57,7 +61,18 @@ public class AreaRainSpawner2D : MonoBehaviour
 
         Vector2 spawnPosition = new Vector2(randomX, topY);
 
-        Instantiate(prefabToSpawn, spawnPosition, Quaternion.identity);
+        GameObject spawnedItem = Instantiate(prefabToSpawn, spawnPosition, Quaternion.identity);
+
+        if ( freezeOnSpawn)
+        {
+            Rigidbody2D rb = spawnedItem.GetComponent<Rigidbody2D>();
+            if (rb != null)
+            {
+                rb.bodyType = RigidbodyType2D.Kinematic;
+                rb.constraints = RigidbodyConstraints2D.FreezeAll;
+            }
+        }
+        
 
         currentItemCount++;
     }

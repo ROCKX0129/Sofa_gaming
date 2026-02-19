@@ -1,26 +1,29 @@
 ﻿using System;
 using UnityEngine;
 
-public enum ItemType { Placeable, Projectile, Other }
-
 public class ItemCharacterManager : MonoBehaviour
 {
     [Header("Pickup Settings")]
-    [SerializeField] private float pickupRadius = 1.5f;       // range to pick up items
-    [SerializeField] private LayerMask itemLayer;             // only pickable items
+    [SerializeField] private float pickupRadius = 1.5f;
+    [SerializeField] private LayerMask itemLayer;
 
     [Header("Projectile Settings")]
-    public GameObject icePrefab;   // example projectile prefab
-    public Transform firePoint;    // spawn point for projectiles
+    public GameObject icePrefab;
+    public Transform firePoint;
+
+    [Header("Thrown / Placeable Settings")]
+    public float throwForce = 5f;
 
     private Vector2 playerCurrentPosition;
     private GameObject currentPlayer;
 
-    private GameObject nearbyItem;     
-    private GameObject equippedItem;   
-    private bool hasItem = false;
+    // Teleporter tracking
+    private Vector2 teleporterPosition;
+    private bool hasTeleporter = false;
 
-    private bool isPlacing = false;
+    private GameObject nearbyItem;
+    private GameObject equippedItem;
+    private bool hasItem = false;
 
     public static event Action<Vector2> OnItemUsingPosition;
     public static event Action<GameObject> OnCurrentPlayerCalling;
@@ -30,7 +33,6 @@ public class ItemCharacterManager : MonoBehaviour
         currentPlayer = gameObject;
     }
 
-    
     public void CurrentPlayerUsing()
     {
         if (!hasItem)
@@ -44,36 +46,17 @@ public class ItemCharacterManager : MonoBehaviour
 
     private void TryPickup()
     {
-        
         Collider2D hit = Physics2D.OverlapCircle(transform.position, pickupRadius, itemLayer);
         if (hit != null)
         {
             nearbyItem = hit.gameObject;
-
             equippedItem = nearbyItem;
             hasItem = true;
 
-            
-            equippedItem.SetActive(false);
+            equippedItem.SetActive(false); // hide until used
             nearbyItem = null;
 
             Debug.Log("Picked up: " + equippedItem.name);
-        }
-    }
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.CompareTag("PickupCollider")) 
-        {
-            nearbyItem = collision.transform.parent.gameObject; 
-        }
-    }
-
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (collision.CompareTag("PickupCollider"))
-        {
-            if (nearbyItem == collision.transform.parent.gameObject)
-                nearbyItem = null;
         }
     }
 
@@ -88,30 +71,74 @@ public class ItemCharacterManager : MonoBehaviour
             return;
         }
 
-        Debug.Log("Using item: " + item.ItemData.itemName);
-
-        // PLACEABLE ITEMS 
-        if (item.ItemData.isPlaceable)
+        // TELEPORTER LOGIC (ENDER-PEARL STYLE)
+        if (item.ItemData.itemName == "Teleporter")
         {
-            if (!isPlacing)
+            Teleporter teleporterScript = equippedItem.GetComponent<Teleporter>();
+
+            if (!hasTeleporter)
             {
-                OnItemUsingPosition?.Invoke(playerCurrentPosition);
-                OnCurrentPlayerCalling?.Invoke(currentPlayer);
+                // Pick it up and hide
+                teleporterPosition = equippedItem.transform.position;
+                hasTeleporter = true;
+                equippedItem.SetActive(false);
 
-                Instantiate(equippedItem, playerCurrentPosition, Quaternion.identity);
+                Debug.Log("Teleporter picked up! Position saved.");
+            }
+            else
+            {
+                // Teleport player back
+                transform.position = teleporterPosition;
+                Debug.Log("Teleported back to pickup point!");
 
-                isPlacing = true;
+                // Destroy the teleporter object
+                if (teleporterScript != null)
+                    Destroy(teleporterScript.gameObject);
+
+                equippedItem = null;
+                hasItem = false;
+                hasTeleporter = false;
             }
 
-            
-            Destroy(equippedItem);
+            return; // exit so no placeable throwing occurs
+        }
+
+
+        // THROWABLE PLACEABLES 
+        if (item.ItemData.isPlaceable)
+        {
+            equippedItem.SetActive(true);
+            equippedItem.transform.position = transform.position;
+
+            Rigidbody2D rb = equippedItem.GetComponent<Rigidbody2D>();
+            if (rb != null)
+            {
+                rb.bodyType = RigidbodyType2D.Dynamic;
+                rb.gravityScale = 1f;
+                rb.linearVelocity = Vector2.zero;
+            }
+
+            Vector2 throwDir = transform.localScale.x > 0 ? Vector2.right : Vector2.left;
+
+            if (item.ItemData.itemName == "Exploding Chicken")
+            {
+                var chicken = equippedItem.GetComponent<ExplodingChicken>();
+                if (chicken != null)
+                    chicken.Throw(throwDir * throwForce);
+            }
+            else
+            {
+                if (rb != null)
+                    rb.linearVelocity = throwDir * throwForce;
+            }
             equippedItem = null;
             hasItem = false;
-            isPlacing = false;
+
+
             return;
         }
 
-        // PROJECTILE ITEMS 
+        // PROJECTILE ITEMS
         if (item.ItemData.itemType == ItemType.Projectile)
         {
             if (icePrefab != null && firePoint != null)
@@ -120,32 +147,30 @@ public class ItemCharacterManager : MonoBehaviour
                 ShootProjectile(direction);
             }
 
-            
-            Destroy(equippedItem);
             equippedItem = null;
             hasItem = false;
         }
     }
 
+
     private void ShootProjectile(Vector2 direction)
     {
         GameObject proj = Instantiate(icePrefab, firePoint.position, Quaternion.identity);
-        var projectileScript = proj.GetComponent<Freeze>(); 
+        var projectileScript = proj.GetComponent<Freeze>();
         if (projectileScript != null)
             projectileScript.Shoot(direction);
     }
 
-    
     public void UpdateUsePosition(Vector2 position)
     {
         playerCurrentPosition = position;
     }
 
-    
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.cyan;
         Gizmos.DrawWireSphere(transform.position, pickupRadius);
     }
 }
+
 

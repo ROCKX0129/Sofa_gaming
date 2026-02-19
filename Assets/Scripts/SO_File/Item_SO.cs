@@ -1,5 +1,10 @@
 using UnityEngine;
-
+public enum ItemType
+{
+    Placeable,
+    Projectile,
+    Other
+}
 [CreateAssetMenu(fileName = "Item_SO", menuName = "Item/Item_SO")]
 
 public class Item_SO : ScriptableObject
