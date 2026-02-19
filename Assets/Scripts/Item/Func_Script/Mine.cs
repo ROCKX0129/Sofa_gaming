@@ -19,11 +19,14 @@ public class Mine : MonoBehaviour, IItem
     private bool triggered = false;
     private bool exploded = false;
 
+
+   
     private void Start()
     {
         // Arm the mine after spawn
         Invoke(nameof(ArmMine), armDelay);
     }
+
 
     private void ArmMine()
     {

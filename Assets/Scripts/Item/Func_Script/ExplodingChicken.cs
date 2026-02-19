@@ -20,7 +20,7 @@ public class ExplodingChicken : MonoBehaviour, IItem
     private float directionTimer;
     private float explosionTimer;
 
-    private bool isThrown = false; // NEW FLAG
+    private bool isThrown = false; 
 
     private void Awake()
     {

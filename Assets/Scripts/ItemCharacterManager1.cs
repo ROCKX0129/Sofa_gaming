@@ -131,8 +131,7 @@ public class ItemCharacterManager : MonoBehaviour
                 if (rb != null)
                     rb.linearVelocity = throwDir * throwForce;
             }
-            equippedItem = null;
-            hasItem = false;
+            
 
 
             return;
