@@ -25,8 +25,7 @@ public class ItemCharacterManager : MonoBehaviour
     private GameObject equippedItem;
     private bool hasItem = false;
 
-    public static event Action<Vector2> OnItemUsingPosition;
-    public static event Action<GameObject> OnCurrentPlayerCalling;
+    
 
     private void Awake()
     {
@@ -133,6 +132,28 @@ public class ItemCharacterManager : MonoBehaviour
             }
             
 
+
+            return;
+        }
+
+        // INSTANT CONSUMABLE ITEMS
+        if (!item.ItemData.isPlaceable && item.ItemData.itemType != ItemType.Projectile)
+        {
+            if (item.ItemData.itemName == "Speed Boost")
+            {
+                var speed = equippedItem.GetComponent<SpeedBoost>();
+                if (speed != null)
+                    speed.Use(gameObject);
+            }
+            else if (item.ItemData.itemName == "Ghost Orb")
+            {
+                var ghost = equippedItem.GetComponent<GhostOrb>();
+                if (ghost != null)
+                    ghost.Use(gameObject);
+            }
+
+            equippedItem = null;
+            hasItem = false;
 
             return;
         }
