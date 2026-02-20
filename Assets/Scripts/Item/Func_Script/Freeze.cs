@@ -8,45 +8,48 @@ public class Freeze : MonoBehaviour, IItem
     public Item_SO ItemData => itemSO;
 
     [Header("Projectile Settings")]
-    public float speed = 10f;             // Speed when shot
-    public float freezeDuration = 2f;     // How long the freeze lasts
+    public float speed = 10f;             
+    public float freezeDuration = 2f;     
     public LayerMask playerLayer;
     private bool isShot = false;
-    // Layer of players to freeze
+    
 
     private Rigidbody2D rb;
     private Collider2D col;
+
+    private Animator animator;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         col = GetComponent<Collider2D>();
+        animator = GetComponentInChildren<Animator>();
 
         if (rb == null)
             rb = gameObject.AddComponent<Rigidbody2D>();
         if (col == null)
             col = gameObject.AddComponent<BoxCollider2D>();
 
-        // Item pickup mode (falls from sky)
+        
         rb.bodyType = RigidbodyType2D.Dynamic;
         rb.gravityScale = 1f;
-         // so player can pick it up
+         
     }
 
-    // Called by ItemCharacterManager when shooting
+    
     public void Shoot(Vector2 direction)
     {
         isShot = true;
-        rb.bodyType = RigidbodyType2D.Dynamic; // physics active
-        rb.gravityScale = 0f;                  // fly straight
-        col.isTrigger = true;                 // collide with players
+        rb.bodyType = RigidbodyType2D.Dynamic; 
+        rb.gravityScale = 0f;                  
+        col.isTrigger = true;                 
         rb.linearVelocity = direction.normalized * speed;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         
-        if (!isShot) return; // ignore all collisions until it’s shot
+        if (!isShot) return; 
 
         if (((1 << collision.gameObject.layer) & playerLayer) != 0)
         {
@@ -56,7 +59,20 @@ public class Freeze : MonoBehaviour, IItem
 
         }
 
-        Destroy(gameObject); // destroy only after hitting something post-shot
+        StartCoroutine(PlayHitAndDestroy()); 
+    }
+
+    private IEnumerator PlayHitAndDestroy()
+    {
+        rb.linearVelocity = Vector2.zero;
+        rb.bodyType = RigidbodyType2D.Kinematic;
+        col.enabled = false;
+
+        animator.SetTrigger("hit");
+
+        yield return new WaitForSeconds(0.5f);
+
+        Destroy(gameObject);
     }
 
 
