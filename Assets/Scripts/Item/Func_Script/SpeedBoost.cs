@@ -39,11 +39,6 @@ public class SpeedBoost : MonoBehaviour, IItem
             sr.color = new Color(1f, 1f, 0f, c.a); // yellow tint, keep alpha
         }
 
-        TrailRenderer trail = controller.GetComponentInChildren<TrailRenderer>();
-        if (trail != null)
-            trail.enabled = true;
-
-
         yield return new WaitForSeconds(duration);
 
         // Reset speed
@@ -52,8 +47,5 @@ public class SpeedBoost : MonoBehaviour, IItem
         // Reset colors
         for (int i = 0; i < renderers.Length; i++)
             renderers[i].color = originalColors[i];
-
-        if (trail != null)
-            trail.enabled = false;
     }    
 }

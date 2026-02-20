@@ -24,6 +24,7 @@ public class ItemCharacterManager : MonoBehaviour
     private GameObject nearbyItem;
     private GameObject equippedItem;
     private bool hasItem = false;
+    
 
     
 
@@ -70,7 +71,9 @@ public class ItemCharacterManager : MonoBehaviour
             return;
         }
 
+        // -----------------------
         // TELEPORTER LOGIC (ENDER-PEARL STYLE)
+        // -----------------------
         if (item.ItemData.itemName == "Teleporter")
         {
             Teleporter teleporterScript = equippedItem.GetComponent<Teleporter>();
@@ -102,12 +105,15 @@ public class ItemCharacterManager : MonoBehaviour
             return; // exit so no placeable throwing occurs
         }
 
-
-        // THROWABLE PLACEABLES 
+        // -----------------------
+        // THROWABLE PLACEABLES (e.g., Exploding Chicken)
+        // -----------------------
         if (item.ItemData.isPlaceable)
         {
+            // Spawn/throw at firePoint or player position
+            Vector2 spawnPos = firePoint != null ? firePoint.position : (Vector2)transform.position;
+            equippedItem.transform.position = spawnPos;
             equippedItem.SetActive(true);
-            equippedItem.transform.position = transform.position;
 
             Rigidbody2D rb = equippedItem.GetComponent<Rigidbody2D>();
             if (rb != null)
@@ -130,13 +136,16 @@ public class ItemCharacterManager : MonoBehaviour
                 if (rb != null)
                     rb.linearVelocity = throwDir * throwForce;
             }
-            
 
-
+            // Immediately clear so no extra presses are needed
+            equippedItem = null;
+            hasItem = false;
             return;
         }
 
-        // INSTANT CONSUMABLE ITEMS
+        // -----------------------
+        // INSTANT CONSUMABLE ITEMS (e.g., Speed Boost, Ghost Orb)
+        // -----------------------
         if (!item.ItemData.isPlaceable && item.ItemData.itemType != ItemType.Projectile)
         {
             if (item.ItemData.itemName == "Speed Boost")
@@ -158,7 +167,9 @@ public class ItemCharacterManager : MonoBehaviour
             return;
         }
 
-        // PROJECTILE ITEMS
+        // -----------------------
+        // PROJECTILE ITEMS (e.g., Ice)
+        // -----------------------
         if (item.ItemData.itemType == ItemType.Projectile)
         {
             if (icePrefab != null && firePoint != null)
