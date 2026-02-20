@@ -19,10 +19,17 @@ public class Mine : MonoBehaviour, IItem
     private bool triggered = false;
     private bool exploded = false;
 
+    private SpriteRenderer spriteRenderer;
+    private Animator animator;
+   
+
 
    
     private void Start()
     {
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        animator = GetComponent<Animator>();
+
         // Arm the mine after spawn
         Invoke(nameof(ArmMine), armDelay);
     }
@@ -59,14 +66,22 @@ public class Mine : MonoBehaviour, IItem
         while (timer < explodeDelay)
         {
             Debug.Log("Beep!");
+
+            if  (spriteRenderer != null )
+            {
+                spriteRenderer.color = Color.red;
+                yield return new WaitForSeconds(0.15f);
+                spriteRenderer.color = Color.white;
+            }
+            
+            yield return new WaitForSeconds(beepInterval - 0.15f);
             timer += beepInterval;
-            yield return new WaitForSeconds(beepInterval);
         }
 
-        Explode(triggeringPlayer);
+        Explode();
     }
 
-    private void Explode(GameObject triggeringPlayer)
+    private void Explode()
     {
         if (exploded)
             return;
@@ -84,8 +99,15 @@ public class Mine : MonoBehaviour, IItem
             Destroy(hit.transform.root.gameObject); // One-hit kill other players in radius
         }
 
+        GetComponent<Collider2D>().enabled = false;
+        GetComponent<Rigidbody2D>().simulated = false;
+
+        transform.localScale = Vector3.one * 0.8f;
+        if (animator != null)
+            animator.SetTrigger("explode");
+
         // Destroy the mine itself
-        Destroy(gameObject);
+        Destroy(gameObject, 1f);
     }
 
     // Draw explosion radius in Scene view
