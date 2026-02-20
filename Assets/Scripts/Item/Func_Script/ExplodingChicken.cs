@@ -22,9 +22,17 @@ public class ExplodingChicken : MonoBehaviour, IItem
 
     private bool grounded = false; // Only start walking when true
 
+    private Animator animator;
+
+    private SpriteRenderer spriteRenderer;
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
+
+        animator.enabled = false;
 
         // Chicken falls naturally
         rb.bodyType = RigidbodyType2D.Dynamic;
@@ -53,6 +61,7 @@ public class ExplodingChicken : MonoBehaviour, IItem
             direction *= -1f;
             directionTimer = 0f;
         }
+        spriteRenderer.flipX = direction < 0f;
 
         // Move horizontally while keeping physics intact
         rb.linearVelocity = new Vector2(direction * walkSpeed, rb.linearVelocity.y);
@@ -74,17 +83,24 @@ public class ExplodingChicken : MonoBehaviour, IItem
 
             // Stop vertical movement and let it walk
             rb.linearVelocity = new Vector2(0f, 0f);
+
+            animator.enabled = true;
         }
     }
 
     private void Explode()
     {
+        rb.linearVelocity = Vector2.zero;
+        rb.bodyType = RigidbodyType2D.Kinematic;
+
+        animator.SetTrigger("Explode");
+
         Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, explosionRadius, playerLayer);
         foreach (Collider2D hit in hits)
         {
             Destroy(hit.gameObject); // Instant kill
         }
-        Destroy(gameObject);
+        Destroy(gameObject, 1f);
     }
 
     // Called externally if you want to throw it

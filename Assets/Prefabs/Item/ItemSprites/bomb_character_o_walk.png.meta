@@ -58,7 +58,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -72,7 +72,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -121,41 +121,27 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: bomb_character_o_walk_0
-      rect:
-        serializedVersion: 2
-        x: 17
-        y: 12
-        width: 11
-        height: 11
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 0adb72ae4243d1870800000000000000
-      internalID: 8655131392027901344
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: bomb_character_o_walk_1
       rect:
         serializedVersion: 2
-        x: 21
-        y: 16
-        width: 30
-        height: 29
+        x: 18
+        y: 13
+        width: 32
+        height: 31
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
-      outline: []
-      physicsShape: []
+      outline:
+      - - {x: 0, y: -32}
+        - {x: 32, y: 0}
+        - {x: 0, y: 32}
+        - {x: -32, y: 0}
+      physicsShape:
+      - - {x: 0, y: -32}
+        - {x: 32, y: 0}
+        - {x: 0, y: 32}
+        - {x: -32, y: 0}
       tessellationDetail: -1
       bones: []
       spriteID: eb2ddad0397222310800000000000000
@@ -168,16 +154,24 @@ TextureImporter:
       name: bomb_character_o_walk_2
       rect:
         serializedVersion: 2
-        x: 85
-        y: 12
-        width: 27
-        height: 32
+        x: 86
+        y: 13
+        width: 25
+        height: 30
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
-      outline: []
-      physicsShape: []
+      outline:
+      - - {x: 0, y: -32}
+        - {x: 32, y: 0}
+        - {x: 0, y: 32}
+        - {x: -32, y: 0}
+      physicsShape:
+      - - {x: 0, y: -32}
+        - {x: 32, y: 0}
+        - {x: 0, y: 32}
+        - {x: -32, y: 0}
       tessellationDetail: -1
       bones: []
       spriteID: 859d871fb59fcb600800000000000000
@@ -190,16 +184,24 @@ TextureImporter:
       name: bomb_character_o_walk_3
       rect:
         serializedVersion: 2
-        x: 146
-        y: 12
-        width: 32
-        height: 33
+        x: 147
+        y: 13
+        width: 30
+        height: 31
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
-      outline: []
-      physicsShape: []
+      outline:
+      - - {x: 0, y: -32}
+        - {x: 32, y: 0}
+        - {x: 0, y: 32}
+        - {x: -32, y: 0}
+      physicsShape:
+      - - {x: 0, y: -32}
+        - {x: 32, y: 0}
+        - {x: 0, y: 32}
+        - {x: -32, y: 0}
       tessellationDetail: -1
       bones: []
       spriteID: 86ee33e06542f5dc0800000000000000
@@ -209,41 +211,27 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: bomb_character_o_walk_4
-      rect:
-        serializedVersion: 2
-        x: 209
-        y: 12
-        width: 11
-        height: 11
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 94df6f5a534e30060800000000000000
-      internalID: 6918624371640040777
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: bomb_character_o_walk_5
       rect:
         serializedVersion: 2
-        x: 213
-        y: 16
-        width: 30
-        height: 29
+        x: 210
+        y: 13
+        width: 32
+        height: 31
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
-      outline: []
-      physicsShape: []
+      outline:
+      - - {x: 0, y: -32}
+        - {x: 32, y: 0}
+        - {x: 0, y: 32}
+        - {x: -32, y: 0}
+      physicsShape:
+      - - {x: 0, y: -32}
+        - {x: 32, y: 0}
+        - {x: 0, y: 32}
+        - {x: -32, y: 0}
       tessellationDetail: -1
       bones: []
       spriteID: bdf080039a81a7e70800000000000000
@@ -256,20 +244,20 @@ TextureImporter:
       name: bomb_character_o_walk_6
       rect:
         serializedVersion: 2
-        x: 277
-        y: 12
-        width: 27
-        height: 32
+        x: 278
+        y: 13
+        width: 25
+        height: 30
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 78c2441f62c4934a0800000000000000
-      internalID: -6613170847676617593
+      spriteID: 09f1473c010fd224cb33e8c659720d5c
+      internalID: -1476895911
       vertices: []
       indices: 
       edges: []
@@ -278,20 +266,20 @@ TextureImporter:
       name: bomb_character_o_walk_7
       rect:
         serializedVersion: 2
-        x: 338
-        y: 12
-        width: 32
-        height: 33
+        x: 339
+        y: 13
+        width: 30
+        height: 31
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 68664ea20ae5523b0800000000000000
-      internalID: -5537916124774766970
+      spriteID: 74776ec5cc3706f42b657354c186d7d3
+      internalID: 275742105
       vertices: []
       indices: 
       edges: []
@@ -300,7 +288,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 1496616e1f8833349a02ad66732f2047
     internalID: 0
     vertices: []
     indices: 
@@ -308,7 +296,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
-      entries: []
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":64.0,"y":64.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":0,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
       bomb_character_o_walk_0: 8655131392027901344
       bomb_character_o_walk_1: 1378707948471964350
@@ -316,8 +306,8 @@ TextureImporter:
       bomb_character_o_walk_3: -3648157221122740632
       bomb_character_o_walk_4: 6918624371640040777
       bomb_character_o_walk_5: 9113623910871994331
-      bomb_character_o_walk_6: -6613170847676617593
-      bomb_character_o_walk_7: -5537916124774766970
+      bomb_character_o_walk_6: -1476895911
+      bomb_character_o_walk_7: 275742105
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
