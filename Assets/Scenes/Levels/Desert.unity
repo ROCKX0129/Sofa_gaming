@@ -3750,6 +3750,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -8993619472043283544, guid: 2d93310b5eb569e45bb644b301b02439, type: 3}
+      propertyPath: leftPortal
+      value: 
+      objectReference: {fileID: 1821917164}
+    - target: {fileID: -8993619472043283544, guid: 2d93310b5eb569e45bb644b301b02439, type: 3}
+      propertyPath: rightPortal
+      value: 
+      objectReference: {fileID: 1402384542}
     - target: {fileID: 4594384281188533540, guid: 2d93310b5eb569e45bb644b301b02439, type: 3}
       propertyPath: portalLeft
       value: 
@@ -3874,6 +3882,8 @@ SceneRoots:
   m_Roots:
   - {fileID: 247589663}
   - {fileID: 21447742}
+  - {fileID: 1578083745}
+  - {fileID: 345928489}
   - {fileID: 448095058}
   - {fileID: 824420543}
   - {fileID: 1225156468257146218}
@@ -3887,5 +3897,3 @@ SceneRoots:
   - {fileID: 1707716181}
   - {fileID: 1068986734}
   - {fileID: 446798114}
-  - {fileID: 345928489}
-  - {fileID: 1578083745}

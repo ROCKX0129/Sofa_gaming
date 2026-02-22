@@ -307,6 +307,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -8993619472043283544, guid: 2d93310b5eb569e45bb644b301b02439, type: 3}
+      propertyPath: leftPortal
+      value: 
+      objectReference: {fileID: 549901272}
+    - target: {fileID: -8993619472043283544, guid: 2d93310b5eb569e45bb644b301b02439, type: 3}
+      propertyPath: rightPortal
+      value: 
+      objectReference: {fileID: 1654029581}
     - target: {fileID: 4594384281188533540, guid: 2d93310b5eb569e45bb644b301b02439, type: 3}
       propertyPath: portalLeft
       value: 

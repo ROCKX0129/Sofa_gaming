@@ -37,15 +37,24 @@ public class Combat : MonoBehaviour
 
     private bool canBlock;
 
+    [Header("Audio")]
+    public AudioSource audioSource;
+    public AudioClip attackClip;
+    public AudioClip shootClip;
+    public AudioClip blockClip;
+
     private void Awake()
     {
-        canBlock = true; 
+        canBlock = true;
     }
     public void OnAttack(InputAction.CallbackContext ctx)
     {
         if (ctx.performed && canAttack)
         {
             attackPressed = true;
+
+            if ( attackClip != null && audioSource != null )
+                audioSource.PlayOneShot(attackClip);
         }
     }
 
@@ -53,8 +62,11 @@ public class Combat : MonoBehaviour
     {
         if (ctx.performed && canShoot)
         {
-           Debug.Log("Shoot pressed");
+            Debug.Log("Shoot pressed");
             Shoot();
+
+            if (shootClip != null && audioSource != null)
+                audioSource.PlayOneShot(shootClip);
         }
     }
 
@@ -67,6 +79,9 @@ public class Combat : MonoBehaviour
             if (blockCollider != null)
                 blockCollider.enabled = true;
 
+            if (blockClip != null && audioSource != null)
+                audioSource.PlayOneShot(blockClip);
+
             Debug.Log("Block started");
             Invoke(nameof(EndBlock), blockDuration);
 
@@ -74,12 +89,12 @@ public class Combat : MonoBehaviour
     }
     void FixedUpdate()
     {
-       if (attackPressed)
+        if (attackPressed)
         {
             Debug.Log("attack pressed");
             Attack();
             attackPressed = false;
-        } 
+        }
 
     }
 
@@ -97,7 +112,7 @@ public class Combat : MonoBehaviour
                 if (targetCombat != null && targetCombat.blockCollider != null && targetCombat.blockCollider.enabled)
                 {
                     Debug.Log("Melee blocked!");
-                    continue; 
+                    continue;
                 }
 
                 targetCombat.Die();
@@ -110,7 +125,7 @@ public class Combat : MonoBehaviour
 
     void Shoot()
     {
-        
+
 
         if (projectilePrefab == null || firePoint == null || otherPLayer == null) return;
 
