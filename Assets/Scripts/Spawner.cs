@@ -127,6 +127,12 @@ public class FreezeOnLanding : MonoBehaviour
     {
         if (((1 << collision.gameObject.layer) & groundLayer) != 0)
         {
+            if (((1 << collision.gameObject.layer) & groundLayer) == 0)
+                return;
+
+            if (GetComponent<ExplodingChicken>() != null)
+                return;
+
             // Stop physics
             rb.linearVelocity = Vector2.zero;
             rb.angularVelocity = 0f;
