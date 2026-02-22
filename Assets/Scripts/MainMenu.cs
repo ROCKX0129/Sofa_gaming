@@ -9,6 +9,7 @@ public class MenuManager : MonoBehaviour
     //it was implemented for 6.2
     public GameObject settingsPanel;
     public GameObject controlsPanel; 
+    public GameObject nameinputPanel; 
     public string levelSceneName = "level";
 
     private void Awake()
@@ -41,9 +42,8 @@ public class MenuManager : MonoBehaviour
 
     public void PlayGame()
     {
-        
-        SceneManager.LoadScene(levelSceneName, LoadSceneMode.Single);
-    }
+        mainMenuPanel.SetActive(false);
+        nameinputPanel.SetActive(true);    }
 
     public void OpenSettings()
     {
