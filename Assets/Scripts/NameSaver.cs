@@ -1,32 +1,39 @@
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class NameSaver : MonoBehaviour
 {
-    public TMP_InputField nameInputField;
+    [Header("Player Name Fields")]
+    public TMP_InputField playerOneInputField;
+    public TMP_InputField playerTwoInputField;
 
-    private string playerNameKey = "PlayerName";
+    [Header("Scene To Load")]
+    public string gameSceneName = "GameScene"; 
+
+    private string playerOneKey = "PlayerOneName";
+    private string playerTwoKey = "PlayerTwoName";
 
     void Start()
     {
-        // check if PlayerPrefs already has a saved name
-        if (PlayerPrefs.HasKey(playerNameKey))
-        {
-            // Load the saved name
-            string savedName = PlayerPrefs.GetString(playerNameKey);
+        if (PlayerPrefs.HasKey(playerOneKey))
+            playerOneInputField.text = PlayerPrefs.GetString(playerOneKey);
 
-            nameInputField.text = savedName;
-        }
+        if (PlayerPrefs.HasKey(playerTwoKey))
+            playerTwoInputField.text = PlayerPrefs.GetString(playerTwoKey);
     }
 
-    public void SaveName()
+    public void SaveNamesAndStartGame()
     {
-        string playerName = nameInputField.text;
+        string playerOneName = playerOneInputField.text;
+        string playerTwoName = playerTwoInputField.text;
 
-        PlayerPrefs.SetString(playerNameKey, playerName);
-
+        PlayerPrefs.SetString(playerOneKey, playerOneName);
+        PlayerPrefs.SetString(playerTwoKey, playerTwoName);
         PlayerPrefs.Save();
 
-        Debug.Log("Name saved: " + playerName);
+        Debug.Log("Names Saved. Starting Game...");
+
+        SceneManager.LoadScene(gameSceneName);
     }
 }

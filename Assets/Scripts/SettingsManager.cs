@@ -19,6 +19,11 @@ public class SettingsManager : MonoBehaviour
         SetupResolutions();
         SetupQuality();
         LoadSettings();
+
+        resolutionDropdown.onValueChanged.AddListener(SetResolution);
+        qualityDropdown.onValueChanged.AddListener(SetQuality);
+        volumeSlider.onValueChanged.AddListener(SetVolume);
+        sfxSlider.onValueChanged.AddListener(SetSFXVolume);
     }
 
     void SetupResolutions()
@@ -28,22 +33,13 @@ public class SettingsManager : MonoBehaviour
 
         List<string> options = new List<string>();
 
-        int currentResolutionIndex = 0;
-
         for (int i = 0; i < resolutions.Length; i++)
         {
             string option = resolutions[i].width + " x " + resolutions[i].height;
             options.Add(option);
-
-            if (resolutions[i].width == Screen.currentResolution.width &&
-                resolutions[i].height == Screen.currentResolution.height)
-            {
-                currentResolutionIndex = i;
-            }
         }
 
         resolutionDropdown.AddOptions(options);
-        resolutionDropdown.value = currentResolutionIndex;
         resolutionDropdown.RefreshShownValue();
     }
 
@@ -51,7 +47,6 @@ public class SettingsManager : MonoBehaviour
     {
         qualityDropdown.ClearOptions();
         qualityDropdown.AddOptions(new List<string>(QualitySettings.names));
-        qualityDropdown.value = QualitySettings.GetQualityLevel();
         qualityDropdown.RefreshShownValue();
     }
 
@@ -59,34 +54,56 @@ public class SettingsManager : MonoBehaviour
     {
         Resolution resolution = resolutions[index];
         Screen.SetResolution(resolution.width, resolution.height, Screen.fullScreen);
+
         PlayerPrefs.SetInt("Resolution", index);
+        PlayerPrefs.Save();
+
+        resolutionDropdown.value = index;
     }
 
     public void SetQuality(int index)
     {
         QualitySettings.SetQualityLevel(index);
+
         PlayerPrefs.SetInt("Quality", index);
+        PlayerPrefs.Save();
+
+        qualityDropdown.value = index;
     }
 
     public void SetVolume(float volume)
     {
+        volume = Mathf.Clamp(volume, 0.0001f, 1f); // Prevent log(0)
         audioMixer.SetFloat("MasterVolume", Mathf.Log10(volume) * 20);
+
         PlayerPrefs.SetFloat("Volume", volume);
+        PlayerPrefs.Save();
     }
 
-  public void SetSFXVolume(float volume)
-{
-    audioMixer.SetFloat("SFXVolume", Mathf.Log10(volume) * 20);
-    PlayerPrefs.SetFloat("SFXVolume", volume);
-}
+    public void SetSFXVolume(float volume)
+    {
+        volume = Mathf.Clamp(volume, 0.0001f, 1f);
+        audioMixer.SetFloat("SFXVolume", Mathf.Log10(volume) * 20);
+
+        PlayerPrefs.SetFloat("SFXVolume", volume);
+        PlayerPrefs.Save();
+    }
 
     void LoadSettings()
     {
         if (PlayerPrefs.HasKey("Resolution"))
-            SetResolution(PlayerPrefs.GetInt("Resolution"));
+        {
+            int resolutionIndex = PlayerPrefs.GetInt("Resolution");
+            resolutionDropdown.value = resolutionIndex;
+            SetResolution(resolutionIndex);
+        }
 
         if (PlayerPrefs.HasKey("Quality"))
-            SetQuality(PlayerPrefs.GetInt("Quality"));
+        {
+            int qualityIndex = PlayerPrefs.GetInt("Quality");
+            qualityDropdown.value = qualityIndex;
+            SetQuality(qualityIndex);
+        }
 
         if (PlayerPrefs.HasKey("Volume"))
         {
@@ -94,11 +111,12 @@ public class SettingsManager : MonoBehaviour
             volumeSlider.value = volume;
             SetVolume(volume);
         }
+
         if (PlayerPrefs.HasKey("SFXVolume"))
         {
-        float sfx = PlayerPrefs.GetFloat("SFXVolume");
-        sfxSlider.value = sfx;
-        SetSFXVolume(sfx);
+            float sfx = PlayerPrefs.GetFloat("SFXVolume");
+            sfxSlider.value = sfx;
+            SetSFXVolume(sfx);
         }
     }
 }
