@@ -73,8 +73,7 @@ public class SettingsManager : MonoBehaviour
 
     public void SetVolume(float volume)
     {
-        volume = Mathf.Clamp(volume, 0.0001f, 1f); // Prevent log(0)
-        audioMixer.SetFloat("MasterVolume", Mathf.Log10(volume) * 20);
+        volume = Mathf.Clamp(volume, 0f, 1f);
 
         PlayerPrefs.SetFloat("Volume", volume);
         PlayerPrefs.Save();
@@ -82,8 +81,7 @@ public class SettingsManager : MonoBehaviour
 
     public void SetSFXVolume(float volume)
     {
-        volume = Mathf.Clamp(volume, 0.0001f, 1f);
-        audioMixer.SetFloat("SFXVolume", Mathf.Log10(volume) * 20);
+        volume = Mathf.Clamp(volume, 0f, 1f);
 
         PlayerPrefs.SetFloat("SFXVolume", volume);
         PlayerPrefs.Save();
