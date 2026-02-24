@@ -704,7 +704,7 @@ MonoBehaviour:
     m_Bits: 256
   icePrefab: {fileID: 5785550395451163585, guid: cc45af934013ed640b79c5eadb1a3303, type: 3}
   firePoint: {fileID: 4227885284673105693}
-  throwForce: 5
+  throwForce: 10
 --- !u!82 &-1870787769195805871
 AudioSource:
   m_ObjectHideFlags: 0
