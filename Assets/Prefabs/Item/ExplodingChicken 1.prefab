@@ -80,8 +80,8 @@ GameObject:
   - component: {fileID: 8543110740084085809}
   - component: {fileID: 2626843181384273012}
   - component: {fileID: 4386158020654477325}
-  - component: {fileID: 1908351450894966303}
   - component: {fileID: 4510333395474478802}
+  - component: {fileID: 7253044627689107111}
   m_Layer: 8
   m_Name: ExplodingChicken 1
   m_TagString: Item
@@ -150,7 +150,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 1918542277
-  m_SortingLayer: -1
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: 1378707948471964350, guid: e6690dbb86cc16c458640ed04d1201d8, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -160,7 +160,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 0.96875}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!50 &2626843181384273012
@@ -236,30 +236,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &1908351450894966303
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5592317364493093116}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3ee0b3f1a5cf1a7408cc270d8d41e661, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ExplodingChicken
-  itemSO: {fileID: 11400000, guid: 8a92ffd8292dd364a993c2cf8c8f39a1, type: 2}
-  walkSpeed: 2
-  changeDirectionTime: 1.77
-  minExplosionTime: 3
-  maxExplosionTime: 7
-  explosionRadius: 3
-  playerLayer:
-    serializedVersion: 2
-    m_Bits: 64
-  groundLayer:
-    serializedVersion: 2
-    m_Bits: 8
 --- !u!95 &4510333395474478802
 Animator:
   serializedVersion: 7
@@ -282,3 +258,27 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &7253044627689107111
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5592317364493093116}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0836f71fe7f80dd41a072f673e40e30b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ExplodingChicken
+  itemSO: {fileID: 11400000, guid: fc372805c0b53034d825a9d4fce10bd6, type: 2}
+  walkSpeed: 2
+  changeDirectionTime: 2
+  minExplosionTime: 3
+  maxExplosionTime: 6
+  explosionRadius: 2
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 8

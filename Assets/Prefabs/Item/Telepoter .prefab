@@ -77,7 +77,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 1918542277
-  m_SortingLayer: -1
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: 3352837935195112383, guid: 14ab72483dd065a49ab19a1fc7e07a18, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -99,11 +99,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7938918670620135724}
-  - component: {fileID: 5014762424323423383}
   - component: {fileID: 1277137300851429453}
   - component: {fileID: -3239058132895531735}
+  - component: {fileID: 2401706957602902494}
   m_Layer: 8
-  m_Name: Telepoter 1
+  m_Name: 'Telepoter '
   m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -125,19 +125,6 @@ Transform:
   - {fileID: 8669806216591903407}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5014762424323423383
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2779641947560619426}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b4772d305834e6643954874446128ed8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Telepoter
-  itemSO: {fileID: 11400000, guid: 867b7cae88a5ee347a861ccd76836932, type: 2}
 --- !u!50 &1277137300851429453
 Rigidbody2D:
   serializedVersion: 5
@@ -201,3 +188,20 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_Radius: 0.5
+--- !u!114 &2401706957602902494
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2779641947560619426}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d58c84c477533c44a4a4abd454a9070, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Teleporter
+  itemSO: {fileID: 11400000, guid: 0db7da4364133bd4283352bea1947777, type: 2}
+  teleportDelay: 0.1
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 8

@@ -88,10 +88,10 @@ GameObject:
   m_Component:
   - component: {fileID: 2309658494981518286}
   - component: {fileID: 1425548776274285555}
-  - component: {fileID: 8026247404751348508}
   - component: {fileID: -2712868389973077156}
   - component: {fileID: -152598721705744981}
   - component: {fileID: 6171714079031589554}
+  - component: {fileID: 443677962806731593}
   m_Layer: 8
   m_Name: Ghost Orb 1
   m_TagString: Item
@@ -160,7 +160,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 1918542277
-  m_SortingLayer: -1
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: -2452595284106773687, guid: 25936a6e4a33d81409f72446b1f02ed8, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -170,26 +170,9 @@ SpriteRenderer:
   m_Size: {x: 1, y: 0.5}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &8026247404751348508
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7079102630655005295}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bf4daddad27602f44b45832ee5cc7715, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::GhostOrb
-  itemSO: {fileID: 11400000, guid: 1a74932a187788746b3ba4421247d251, type: 2}
-  duration: 3
-  playerLayer:
-    serializedVersion: 2
-    m_Bits: 64
 --- !u!61 &-2712868389973077156
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -285,3 +268,20 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &443677962806731593
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7079102630655005295}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8fc2b17c748c50d4393916bcae9afcfa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GhostOrb
+  itemSO: {fileID: 11400000, guid: d496841db2dc535498ec91be1c90c9f7, type: 2}
+  duration: 3
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 64

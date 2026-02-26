@@ -88,8 +88,8 @@ GameObject:
   m_Component:
   - component: {fileID: 6231914337714584826}
   - component: {fileID: 2019696336355279694}
-  - component: {fileID: 3623215262469269812}
   - component: {fileID: 9089507063372454002}
+  - component: {fileID: 1029442085836018946}
   m_Layer: 8
   m_Name: Ice 1
   m_TagString: Item
@@ -141,24 +141,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
---- !u!114 &3623215262469269812
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5785550395451163585}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aeb1eb23c43f53f4dbb3f436127a799f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::IceProjectile
-  itemSO: {fileID: 11400000, guid: cd01227b9cc21d243be252137a4fd1db, type: 2}
-  speed: 10
-  freezeDuration: 1
-  playerLayer:
-    serializedVersion: 2
-    m_Bits: 64
 --- !u!58 &9089507063372454002
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -195,6 +177,24 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_Radius: 4.67
+--- !u!114 &1029442085836018946
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5785550395451163585}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad25c96b85e238a419cf06466b0ca6ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Freeze
+  itemSO: {fileID: 11400000, guid: aa0cb2233ad0ac3469f7549c74018be2, type: 2}
+  speed: 10
+  freezeDuration: 2
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!1 &6321118882232670462
 GameObject:
   m_ObjectHideFlags: 0
@@ -273,7 +273,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 1918542277
-  m_SortingLayer: -1
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: -5730749029336457004, guid: 95bd68a246924e94394c79fe71864f6b, type: 3}
   m_Color: {r: 0.09718761, g: 0.5574334, b: 0.9811321, a: 1}
@@ -283,7 +283,7 @@ SpriteRenderer:
   m_Size: {x: 9.5625, y: 9.5625}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!95 &596052944278894454

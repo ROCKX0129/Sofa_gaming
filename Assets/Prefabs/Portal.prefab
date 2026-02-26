@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7855670210200059093}
   - component: {fileID: 24722342557115205}
   - component: {fileID: 2665255099314442810}
-  - component: {fileID: 8655935273269125327}
+  - component: {fileID: 4361146320957592858}
   m_Layer: 0
   m_Name: Portal
   m_TagString: Untagged
@@ -139,7 +139,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &8655935273269125327
+--- !u!114 &4361146320957592858
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -148,9 +148,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 2539911502280859446}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f1dfb4c7155cfae45b1960555f172c7c, type: 3}
+  m_Script: {fileID: 11500000, guid: 2ac50e891e94b204ba975f3f791ce60b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Portal
+  side: 0
 --- !u!1 &6511861289321132132
 GameObject:
   m_ObjectHideFlags: 0

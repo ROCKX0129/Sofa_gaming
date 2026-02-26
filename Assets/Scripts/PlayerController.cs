@@ -1,5 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using System.Collections;
+using Unity.VisualScripting;
 
 public class PlayerController : MonoBehaviour
 {
@@ -21,10 +23,22 @@ public class PlayerController : MonoBehaviour
     private bool isGrounded;
 
     public int facing = 1;
+
+    public bool isFrozen = false;
+
+    [Header("Audio")]
+    public AudioSource audioSource;
+    public AudioClip walkClip;
+    public AudioClip jumpClip;
+    public float walkSoundInterval = 0.4f;
+    private float walkTimer = 0f;
     void Awake()
     {
         input = GetComponent<PlayerInput>();
         rb = GetComponent<Rigidbody2D>();
+
+        if (audioSource == null)
+            audioSource = gameObject.AddComponent<AudioSource>();
     }
 
     private void Update()
@@ -32,6 +46,16 @@ public class PlayerController : MonoBehaviour
         if (moveInput.x != 0)
         {
             facing = (int)Mathf.Sign(moveInput.x);
+
+            if (isGrounded && walkClip != null)
+            {
+                walkTimer += Time.deltaTime;
+                if (walkTimer >= walkSoundInterval)
+                {
+                    audioSource.PlayOneShot(walkClip);
+                    walkTimer = 0f;
+                }
+            }
         }
     }
 
@@ -48,13 +72,24 @@ public class PlayerController : MonoBehaviour
     }
     void FixedUpdate()
     {
-        rb.linearVelocity = new Vector2(moveInput.x * moveSpeed, rb.linearVelocity.y);
+        if (!isFrozen)
+        {
+            rb.linearVelocity = new Vector2(moveInput.x * moveSpeed, rb.linearVelocity.y);
+        }
+        else
+        {
+            rb.linearVelocity = Vector2.zero;
+        }
+        
 
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundradius, groundLayer);
 
-        if (jumpPressed && isGrounded)
+        if (!isFrozen && jumpPressed && isGrounded)
         {
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
+
+            if (jumpClip != null && audioSource != null)
+                audioSource.PlayOneShot(jumpClip);
         }
         else
         {
@@ -65,6 +100,21 @@ public class PlayerController : MonoBehaviour
             transform.localScale = new Vector3(1, 1, 1);
         else if (moveInput.x < 0)
             transform.localScale = new Vector3(-1, 1, 1);
+    }
+
+    public IEnumerator Freeze(float duration)
+    {
+        if (isFrozen) yield break;
+
+        isFrozen = true;
+
+        rb.linearVelocity = Vector2.zero;
+        rb.constraints = RigidbodyConstraints2D.FreezeAll;
+
+        yield return new WaitForSeconds(duration);
+
+        rb.constraints = RigidbodyConstraints2D.FreezeRotation;
+        isFrozen = false;
     }
 
 

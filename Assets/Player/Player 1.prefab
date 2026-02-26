@@ -242,11 +242,12 @@ GameObject:
   - component: {fileID: 3765135924264229963}
   - component: {fileID: 5386971475913105318}
   - component: {fileID: 2528937247981969835}
-  - component: {fileID: 3186319561313570199}
+  - component: {fileID: 7178953109281801620}
   - component: {fileID: 7913505651060314629}
   - component: {fileID: 7582728317423918406}
   - component: {fileID: 1440395483784586501}
-  - component: {fileID: 5297781779572269769}
+  - component: {fileID: 7195798517323608014}
+  - component: {fileID: 8172184231366688263}
   m_Layer: 6
   m_Name: Player 1
   m_TagString: Player1
@@ -397,7 +398,7 @@ CapsuleCollider2D:
   m_Offset: {x: 0.019174576, y: 0.78104305}
   m_Size: {x: 1.8456326, y: 3.048048}
   m_Direction: 0
---- !u!114 &3186319561313570199
+--- !u!114 &7178953109281801620
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -406,18 +407,23 @@ MonoBehaviour:
   m_GameObject: {fileID: 8262334614293055830}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 426898f3c3fafab42884bad9707249e9, type: 3}
+  m_Script: {fileID: 11500000, guid: 6992710c714e37c40a7f8910db7d5e7f, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerController
   moveInput: {x: 0, y: 0}
   moveSpeed: 8
-  jumpForce: 19
+  jumpForce: 10
   groundCheck: {fileID: 6625775254280825394}
-  groundradius: 0.5
+  groundradius: 0
   groundLayer:
     serializedVersion: 2
     m_Bits: 8
   facing: 1
+  isFrozen: 0
+  audioSource: {fileID: 0}
+  walkClip: {fileID: 0}
+  jumpClip: {fileID: 0}
+  walkSoundInterval: 0.4
 --- !u!114 &7913505651060314629
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -445,7 +451,7 @@ MonoBehaviour:
   m_ActionEvents:
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3186319561313570199}
+      - m_Target: {fileID: 7178953109281801620}
         m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
         m_MethodName: OnMove
         m_Mode: 0
@@ -461,7 +467,7 @@ MonoBehaviour:
     m_ActionName: 'Gameplay/Move[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d,/Keyboard/upArrow,/Keyboard/downArrow,/Keyboard/leftArrow,/Keyboard/rightArrow]'
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3186319561313570199}
+      - m_Target: {fileID: 7178953109281801620}
         m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
         m_MethodName: OnJump
         m_Mode: 0
@@ -545,10 +551,10 @@ MonoBehaviour:
     m_ActionName: 'Player 2/Block[/DualShock4GamepadHID/leftTrigger]'
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5297781779572269769}
-        m_TargetAssemblyTypeName: PlayerUsing, Assembly-CSharp
-        m_MethodName: OnUsing
-        m_Mode: 0
+      - m_Target: {fileID: 8172184231366688263}
+        m_TargetAssemblyTypeName: ItemCharacterManager, Assembly-CSharp
+        m_MethodName: CurrentPlayerUsing
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -582,7 +588,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Combat
   otherPLayer: {fileID: 0}
   weaponSprite: {fileID: 7775617543437718089}
-  playerController: {fileID: 3186319561313570199}
+  playerController: {fileID: 0}
   attackPoint: {fileID: 1470631333071387447}
   attackSize: {x: 3.5, y: 2.26}
   attackLayers:
@@ -617,7 +623,7 @@ MonoBehaviour:
     m_Interactions: 
     m_SingletonActionBindings: []
     m_Flags: 0
---- !u!114 &5297781779572269769
+--- !u!114 &7195798517323608014
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -626,10 +632,29 @@ MonoBehaviour:
   m_GameObject: {fileID: 8262334614293055830}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0f9512926ca78fe428fac09ea1a2e0ec, type: 3}
+  m_Script: {fileID: 11500000, guid: 71ece148ace425a44ba722d150453b3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerUsing
-  playerController: {fileID: 3186319561313570199}
+  playerController: {fileID: 7178953109281801620}
+--- !u!114 &8172184231366688263
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8262334614293055830}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4fb7bba68cb2d654bba1099c580227ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ItemCharacterManager
+  pickupRadius: 1.5
+  itemLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  icePrefab: {fileID: 5785550395451163585, guid: 625fb11bfeb46f646ab3fda6e9c6d06f, type: 3}
+  firePoint: {fileID: 8812317093653053634}
+  throwForce: 5
 --- !u!1 &8637876401390808004
 GameObject:
   m_ObjectHideFlags: 0
@@ -655,7 +680,7 @@ Transform:
   m_GameObject: {fileID: 8637876401390808004}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0, y: 2.85, z: 0}
+  m_LocalPosition: {x: 2.36, y: 1.41, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

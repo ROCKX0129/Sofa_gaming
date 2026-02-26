@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5546017527928766925}
-  - component: {fileID: 5965693786957467884}
+  - component: {fileID: 3095026877794285638}
   m_Layer: 0
   m_Name: ItemSpawner 1
   m_TagString: Untagged
@@ -32,7 +32,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5965693786957467884
+--- !u!114 &3095026877794285638
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -41,12 +41,25 @@ MonoBehaviour:
   m_GameObject: {fileID: 1521986043067454573}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 60bb6976460cf2a48acd225728169317, type: 3}
+  m_Script: {fileID: 11500000, guid: 4a698132b6325844b8cba0c3b0af3f70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AreaRainSpawner2D
   spawnableItems:
-  - prefab: {fileID: 0}
+  - prefab: {fileID: 5592317364493093116, guid: a877a5f112185004d887ea95da06a23d, type: 3}
     weight: 0
-  spawnInterval: 1
-  maxItemsInScene: 30
-  boxSize: {x: 42.1, y: 5.43}
+  - prefab: {fileID: 7079102630655005295, guid: 2f341c5126f393c48b7b538021774056, type: 3}
+    weight: 0
+  - prefab: {fileID: 5785550395451163585, guid: 625fb11bfeb46f646ab3fda6e9c6d06f, type: 3}
+    weight: 0
+  - prefab: {fileID: 2551540552165534126, guid: b62a3396761c76449b61e3c4fe037449, type: 3}
+    weight: 0
+  - prefab: {fileID: 7182215716007454084, guid: a59bb84c478f4bc4780606e2048219ec, type: 3}
+    weight: 0
+  - prefab: {fileID: 2779641947560619426, guid: 702a4c65d0e814e40a3420b952e99f11, type: 3}
+    weight: 0
+  spawnInterval: 3
+  maxItemsInScene: 15
+  boxSize: {x: 10, y: 5}
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 8

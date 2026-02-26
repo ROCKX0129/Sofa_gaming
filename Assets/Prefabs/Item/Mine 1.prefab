@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 6011997355534844843}
   - component: {fileID: -1379639735249862874}
   - component: {fileID: -5433558222064974732}
-  - component: {fileID: 8687484247511851153}
   - component: {fileID: 9119485894663098473}
+  - component: {fileID: 7977599680489644198}
   m_Layer: 8
   m_Name: Mine 1
   m_TagString: Item
@@ -82,7 +82,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 1918542277
-  m_SortingLayer: -1
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: -5594286572366323354, guid: d0fadfc3b3df81647a5685e695863ca9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -92,7 +92,7 @@ SpriteRenderer:
   m_Size: {x: 8, y: 3.52}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!50 &-1379639735249862874
@@ -159,25 +159,6 @@ CapsuleCollider2D:
   m_Offset: {x: 0.01, y: 0.05}
   m_Size: {x: 7.98, y: 3.55}
   m_Direction: 1
---- !u!114 &8687484247511851153
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2551540552165534126}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8e110dfc18fdf534cac46c7710402ce8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Mine
-  itemSO: {fileID: 11400000, guid: 4fc7712284310ec4e9a45287202ef89a, type: 2}
-  armDelay: 0.5
-  explodeDelay: 2
-  explosionRadius: 4
-  playerLayer:
-    serializedVersion: 2
-    m_Bits: 64
 --- !u!95 &9119485894663098473
 Animator:
   serializedVersion: 7
@@ -200,6 +181,25 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &7977599680489644198
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2551540552165534126}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6413f99bfb75eef4e8d0ce3609b0d60a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Mine
+  itemSO: {fileID: 11400000, guid: c773307ea27542543a4adbfa568de53c, type: 2}
+  armDelay: 0.5
+  explodeDelay: 2
+  explosionRadius: 3
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!1 &4618730138102527892
 GameObject:
   m_ObjectHideFlags: 0
