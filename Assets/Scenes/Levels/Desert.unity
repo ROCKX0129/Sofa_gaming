@@ -1691,7 +1691,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2539911502280859446, guid: a4dc4c6311f86b640a3d4a9679807ed4, type: 3}
       propertyPath: m_Name
-      value: PortalLeft
+      value: LeftPortal
       objectReference: {fileID: 0}
     - target: {fileID: 2539911502280859446, guid: a4dc4c6311f86b640a3d4a9679807ed4, type: 3}
       propertyPath: m_IsActive
@@ -4528,7 +4528,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2539911502280859446, guid: a4dc4c6311f86b640a3d4a9679807ed4, type: 3}
       propertyPath: m_Name
-      value: PortalRight
+      value: RightPortal
       objectReference: {fileID: 0}
     - target: {fileID: 2539911502280859446, guid: a4dc4c6311f86b640a3d4a9679807ed4, type: 3}
       propertyPath: m_IsActive

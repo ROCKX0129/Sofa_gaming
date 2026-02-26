@@ -22,7 +22,18 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        // Find portals by name in the new scene
+        leftPortal = GameObject.Find("LeftPortal");
+        rightPortal = GameObject.Find("RightPortal");
+
+        // Start with them disabled
+        if (leftPortal != null) leftPortal.SetActive(false);
+        if (rightPortal != null) rightPortal.SetActive(false);
+    }
+
+
     public void PlayerDied(string playerTag)
     {
         Debug.Log(playerTag + " died!");
@@ -32,7 +43,9 @@ public class GameManager : MonoBehaviour
         if (player != null)
             player.SetActive(false);
 
-        
+        GameObject leftPortal = GameObject.Find("LeftPortal");
+        GameObject rightPortal = GameObject.Find("RightPortal");
+
         if (playerTag == "Player1")
         {
             
