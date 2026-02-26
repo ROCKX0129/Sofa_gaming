@@ -5,58 +5,61 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
 
-    [Header("Level Setup")]
-    public string[] levels; 
-
     [Header("Portals")]
-    public GameObject portalLeft;
-    public GameObject portalRight;
+    public GameObject leftPortal;
+    public GameObject rightPortal;
 
-    private string winnerTag;
-    private int currentLevelIndex = 0;
-
-    void Awake()
+    private void Awake()
     {
-        Instance = this;
-    }
-
-    
-    public void PlayerDied(string deadPlayerTag)
-    {
-        
-        winnerTag = deadPlayerTag == "Player1" ? "Player2" : "Player1";
-
-       
-        if (winnerTag == "Player1")
+        if (Instance == null)
         {
-            if (portalRight != null) portalRight.SetActive(true);
-            if (portalLeft != null) portalLeft.SetActive(false);
-        }
-        else if (winnerTag == "Player2")
-        {
-            if (portalLeft != null) portalLeft.SetActive(true);
-            if (portalRight != null) portalRight.SetActive(false);
-        }
-    }
-
-    
-    public bool IsWinner(string playerTag)
-    {
-        return playerTag == winnerTag;
-    }
-
-    
-    public void LoadNextLevel()
-    {
-        currentLevelIndex++;
-
-        if (currentLevelIndex < levels.Length)
-        {
-            SceneManager.LoadScene(levels[currentLevelIndex]);
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
         }
         else
         {
-            Debug.Log("No more levels!");
+            Destroy(gameObject);
         }
     }
+
+    
+    public void PlayerDied(string playerTag)
+    {
+        Debug.Log(playerTag + " died!");
+
+        
+        GameObject player = GameObject.FindGameObjectWithTag(playerTag);
+        if (player != null)
+            player.SetActive(false);
+
+        
+        if (playerTag == "Player1")
+        {
+            
+            if (rightPortal != null) rightPortal.SetActive(true);
+            if (leftPortal != null) leftPortal.SetActive(false);
+        }
+        else if (playerTag == "Player2")
+        {
+            
+            if (leftPortal != null) leftPortal.SetActive(true);
+            if (rightPortal != null) rightPortal.SetActive(false);
+        }
+    }
+
+    
+    public void GoToNextSceneRight()
+    {
+        int currentIndex = SceneManager.GetActiveScene().buildIndex;
+        if (currentIndex < SceneManager.sceneCountInBuildSettings - 1)
+            SceneManager.LoadScene(currentIndex + 1);
+    }
+
+    public void GoToNextSceneLeft()
+    {
+        int currentIndex = SceneManager.GetActiveScene().buildIndex;
+        if (currentIndex > 0)
+            SceneManager.LoadScene(currentIndex - 1);
+    }
 }
+
