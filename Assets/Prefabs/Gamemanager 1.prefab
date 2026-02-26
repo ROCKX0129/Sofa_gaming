@@ -9,9 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7015283042167281046}
-  - component: {fileID: 4594384281188533540}
+  - component: {fileID: -8993619472043283544}
   m_Layer: 0
-  m_Name: Gamemanager
+  m_Name: Gamemanager 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -32,7 +32,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4594384281188533540
+--- !u!114 &-8993619472043283544
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -44,8 +44,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba2b7c5a5d5cdb54cac4dcb768a8379f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
-  levels:
-  - Desert
-  - Red Forest
+  levels: []
   portalLeft: {fileID: 0}
   portalRight: {fileID: 0}
