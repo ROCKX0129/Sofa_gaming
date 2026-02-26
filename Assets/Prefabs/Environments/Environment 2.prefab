@@ -488,7 +488,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: -810839893
-  m_SortingLayer: 3
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 8379460298446628533, guid: 5912252149b1e3e4888e05c78378e71a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -747,7 +747,7 @@ MonoBehaviour:
   m_LightOrder: 0
   m_AlphaBlendOnOverlap: 0
   m_OverlapOperation: 0
-  m_NormalMapDistance: 26.19
+  m_NormalMapDistance: 46.82
   m_NormalMapQuality: 0
   m_UseNormalMap: 0
   m_ShadowsEnabled: 0
@@ -760,7 +760,7 @@ MonoBehaviour:
     m_Center: {x: 0, y: -0.00000011920929, z: 0}
     m_Extent: {x: 0.9985302, y: 0.99853027, z: 0}
   m_PointLightInnerAngle: 0
-  m_PointLightOuterAngle: 186.86218
+  m_PointLightOuterAngle: 268.9842
   m_PointLightInnerRadius: 0
   m_PointLightOuterRadius: 247.37
   m_ShapeLightParametricSides: 5
