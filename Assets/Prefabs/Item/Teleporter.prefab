@@ -103,7 +103,7 @@ GameObject:
   - component: {fileID: -3239058132895531735}
   - component: {fileID: 2401706957602902494}
   m_Layer: 8
-  m_Name: 'Telepoter '
+  m_Name: Teleporter
   m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

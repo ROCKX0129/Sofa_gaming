@@ -279,6 +279,7 @@ GameObject:
   - component: {fileID: -6824614158965492339}
   - component: {fileID: 4166136373241332863}
   - component: {fileID: 6949020827427717023}
+  - component: {fileID: 9074071316512259546}
   m_Layer: 6
   m_Name: Player 2
   m_TagString: Player2
@@ -380,7 +381,7 @@ Rigidbody2D:
   m_Mass: 0.0001
   m_LinearDamping: 0
   m_AngularDamping: 0.05
-  m_GravityScale: 3
+  m_GravityScale: 3.4
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -464,7 +465,7 @@ MonoBehaviour:
     m_ActionName: 'Gameplay/Jump[/Keyboard/space,/Keyboard/enter]'
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 6060794302396040575}
         m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
         m_MethodName: OnMove
         m_Mode: 0
@@ -480,7 +481,7 @@ MonoBehaviour:
     m_ActionName: 'Player 2/Move2[/Keyboard/upArrow,/Keyboard/downArrow,/Keyboard/leftArrow,/Keyboard/rightArrow]'
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 6060794302396040575}
         m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
         m_MethodName: OnJump
         m_Mode: 0
@@ -560,7 +561,7 @@ MonoBehaviour:
     m_ActionName: 'Player 1/Using[/Keyboard/e]'
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 4166136373241332863}
         m_TargetAssemblyTypeName: PlayerUsing, Assembly-CSharp
         m_MethodName: OnUsing
         m_Mode: 0
@@ -593,7 +594,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerController
   moveInput: {x: 0, y: 0}
   moveSpeed: 8
-  jumpForce: 10
+  jumpForce: 20
   groundCheck: {fileID: 3203303037704671358}
   groundradius: 0
   groundLayer:
@@ -686,6 +687,18 @@ MonoBehaviour:
   icePrefab: {fileID: 5785550395451163585, guid: 625fb11bfeb46f646ab3fda6e9c6d06f, type: 3}
   firePoint: {fileID: 4227885284673105693}
   throwForce: 5
+--- !u!114 &9074071316512259546
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6185984871937994606}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b340c2bc8fe3604d8c42a5e49f9b37a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerItemInput
 --- !u!1001 &3198828451871982520
 PrefabInstance:
   m_ObjectHideFlags: 0

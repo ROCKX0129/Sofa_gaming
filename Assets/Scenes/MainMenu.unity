@@ -2401,7 +2401,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::NameSaver
   playerOneInputField: {fileID: 1152739217}
   playerTwoInputField: {fileID: 143454564}
-  gameSceneName: Desert
+  gameSceneName: Lost Kingdom
 --- !u!4 &573827689
 Transform:
   m_ObjectHideFlags: 0

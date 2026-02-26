@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Teleporter
   m_EditorClassIdentifier: Assembly-CSharp::Item_SO
   itemID: 0
-  itemName: Telepoter
+  itemName: Teleporter
   isPlaceable: 0
   Durability: 0
   itemSprite: {fileID: 0}
