@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7015283042167281046}
   - component: {fileID: 884697978432772153}
   m_Layer: 0
-  m_Name: 'Gamemanager '
+  m_Name: portalManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

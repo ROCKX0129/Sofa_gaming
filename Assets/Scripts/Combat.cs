@@ -37,6 +37,9 @@ public class Combat : MonoBehaviour
 
     private bool canBlock;
 
+    public bool isPlayer2;
+    public PortalManager portalManager;
+
     private void Awake()
     {
         canBlock = true; 
@@ -156,8 +159,15 @@ public class Combat : MonoBehaviour
 
     public void Die()
     {
-        gameObject.SetActive(false);
-        Debug.Log(transform.root.name + " was killed");
-        GameManager.Instance.PlayerDied(gameObject.tag);
+        if (CompareTag("Player2"))
+        {
+            PortalManager.Instance.ActivateRightPortal();
+        }
+        else if (CompareTag("Player1"))
+        {
+            PortalManager.Instance.ActivateLeftPortal();
+        }
+
+        Destroy(gameObject);
     }
 }
