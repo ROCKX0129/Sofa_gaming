@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8202836986615325687}
   - component: {fileID: 2019696336355279694}
   - component: {fileID: 5647152163416958340}
-  - component: {fileID: 8739338608816654692}
+  - component: {fileID: 2440199073241834647}
   m_Layer: 0
   m_Name: Grenade
   m_TagString: Untagged
@@ -166,7 +166,7 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 3.74, y: 3.72}
   m_EdgeRadius: 0
---- !u!114 &8739338608816654692
+--- !u!114 &2440199073241834647
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -175,8 +175,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 5785550395451163585}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bb122455b8010054683ddf952254b6be, type: 3}
+  m_Script: {fileID: 11500000, guid: 3d5c5918876c9fe42a39a1017d9db874, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Projectile
-  speed: 15
-  arcHeight: 12
+  speed: 10
+  arcHeight: 45
