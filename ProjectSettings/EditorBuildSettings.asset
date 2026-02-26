@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: 6cf0239aa10eae4469647de6a507b3ae
   - enabled: 1
+    path: Assets/Scenes/Levels/Lost Kingdom.unity
+    guid: 0ff161cb64a188844a40c6ed886e797b
+  - enabled: 1
     path: Assets/Scenes/Levels/Desert.unity
     guid: 4d7cf527cc09bdf4db494da0871872b0
   - enabled: 1

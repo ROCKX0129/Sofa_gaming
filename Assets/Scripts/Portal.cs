@@ -1,15 +1,18 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-public class Portal : MonoBehaviour
+public class PortalLoader : MonoBehaviour
 {
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        Debug.Log(collision.name + "touched the portal");
+    public bool goForward;
 
-        if (GameManager.Instance.IsWinner(collision.tag))
-        {
-            Debug.Log("Winner touched the portal");
-            GameManager.Instance.LoadNextLevel();
-        }
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (!other.CompareTag("Player1") && !other.CompareTag("Player2")) return;
+
+        int current = SceneManager.GetActiveScene().buildIndex;
+        int target = goForward ? current + 1 : current - 1;
+
+        if (target >= 0 && target < SceneManager.sceneCountInBuildSettings)
+            SceneManager.LoadScene(target);
     }
 }

@@ -8,7 +8,8 @@ public class MenuManager : MonoBehaviour
     // settings panel is for now deactivated i'll work on it next week
     //it was implemented for 6.2
     public GameObject settingsPanel;
-
+    public GameObject controlsPanel; 
+    public GameObject nameinputPanel; 
     public string levelSceneName = "level";
 
     private void Awake()
@@ -17,7 +18,7 @@ public class MenuManager : MonoBehaviour
         ShowMainMenu();
     }
 
-    // removing any other loaded scenes so the floor and other stuff doesnt appear
+    // removing any other loaded scenes so the floor and other stuff dont appear
     private void CleanupOtherScenes()
     {
         Scene activeScene = SceneManager.GetActiveScene();
@@ -41,15 +42,19 @@ public class MenuManager : MonoBehaviour
 
     public void PlayGame()
     {
-        Debug.Log("PlayGame called");
-        SceneManager.LoadScene(levelSceneName, LoadSceneMode.Single);
-    }
+        mainMenuPanel.SetActive(false);
+        nameinputPanel.SetActive(true);    }
 
     public void OpenSettings()
     {
-        Debug.Log("OpenSettings called");
         mainMenuPanel.SetActive(false);
         settingsPanel.SetActive(true);
+    }
+
+public void ControlsPanel()
+    {
+        mainMenuPanel.SetActive(false);
+        controlsPanel.SetActive(true);
     }
 
 

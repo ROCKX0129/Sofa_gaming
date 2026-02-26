@@ -8,6 +8,8 @@ TagManager:
   - Ground
   - Player1
   - Player2
+  - Item
+  - PickupCollider
   layers:
   - Default
   - TransparentFX
@@ -17,7 +19,7 @@ TagManager:
   - UI
   - Player
   - Block
-  - 
+  - ItemLayer
   - 
   - 
   - 
@@ -48,11 +50,11 @@ TagManager:
   - name: Background
     uniqueID: 3422290793
     locked: 0
-  - name: Midground
-    uniqueID: 3721804553
-    locked: 0
   - name: Foreground
     uniqueID: 3484127403
+    locked: 0
+  - name: Midground
+    uniqueID: 3721804553
     locked: 0
   - name: 'Player '
     uniqueID: 1918542277

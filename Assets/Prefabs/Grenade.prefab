@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8202836986615325687}
   - component: {fileID: 2019696336355279694}
   - component: {fileID: 5647152163416958340}
-  - component: {fileID: 8739338608816654692}
+  - component: {fileID: 2440199073241834647}
   m_Layer: 0
   m_Name: Grenade
   m_TagString: Untagged
@@ -79,9 +79,9 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: 1918542277
+  m_SortingLayer: 4
+  m_SortingOrder: 5
   m_Sprite: {fileID: -1483665779731714255, guid: 85ea6b2789dfd8f41b79101a00d88a4d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -166,7 +166,7 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 3.74, y: 3.72}
   m_EdgeRadius: 0
---- !u!114 &8739338608816654692
+--- !u!114 &2440199073241834647
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -175,7 +175,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 5785550395451163585}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bb122455b8010054683ddf952254b6be, type: 3}
+  m_Script: {fileID: 11500000, guid: 3d5c5918876c9fe42a39a1017d9db874, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Projectile
   speed: 15

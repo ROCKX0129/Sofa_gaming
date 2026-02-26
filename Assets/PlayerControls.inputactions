@@ -188,6 +188,15 @@
                     "initialStateCheck": true
                 },
                 {
+                    "name": "Using",
+                    "type": "Button",
+                    "id": "ceccc745-ae7d-4816-884f-9a07cf120ad4",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "Jump2",
                     "type": "Button",
                     "id": "6c5e29f7-764d-4792-9bce-a3d954653c6f",
@@ -233,6 +242,17 @@
                     "processors": "",
                     "groups": ";Gamepad",
                     "action": "Move2",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "fef11e67-496c-4ed5-b380-37dcbf403997",
+                    "path": "<Gamepad>/buttonEast",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Gamepad",
+                    "action": "Using",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
