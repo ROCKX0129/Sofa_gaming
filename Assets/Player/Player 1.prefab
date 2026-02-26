@@ -651,7 +651,7 @@ MonoBehaviour:
   pickupRadius: 1.5
   itemLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 256
   icePrefab: {fileID: 5785550395451163585, guid: 625fb11bfeb46f646ab3fda6e9c6d06f, type: 3}
   firePoint: {fileID: 8812317093653053634}
   throwForce: 5

@@ -146,7 +146,7 @@ Transform:
   m_GameObject: {fileID: 2752525100710465116}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.31, y: 2.75, z: 0}
+  m_LocalPosition: {x: 2.78, y: 1.15, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -278,6 +278,7 @@ GameObject:
   - component: {fileID: 5320225805477005749}
   - component: {fileID: -6824614158965492339}
   - component: {fileID: 4166136373241332863}
+  - component: {fileID: 6949020827427717023}
   m_Layer: 6
   m_Name: Player 2
   m_TagString: Player2
@@ -666,6 +667,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerUsing
   playerController: {fileID: 6060794302396040575}
+--- !u!114 &6949020827427717023
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6185984871937994606}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4fb7bba68cb2d654bba1099c580227ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ItemCharacterManager
+  pickupRadius: 1.5
+  itemLayer:
+    serializedVersion: 2
+    m_Bits: 256
+  icePrefab: {fileID: 5785550395451163585, guid: 625fb11bfeb46f646ab3fda6e9c6d06f, type: 3}
+  firePoint: {fileID: 4227885284673105693}
+  throwForce: 5
 --- !u!1001 &3198828451871982520
 PrefabInstance:
   m_ObjectHideFlags: 0
