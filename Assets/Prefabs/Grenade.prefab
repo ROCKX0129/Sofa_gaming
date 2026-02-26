@@ -178,5 +178,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d5c5918876c9fe42a39a1017d9db874, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Projectile
-  speed: 10
-  arcHeight: 45
+  speed: 15
+  arcHeight: 12
