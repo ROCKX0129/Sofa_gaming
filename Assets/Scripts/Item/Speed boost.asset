@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Speed boost
   m_EditorClassIdentifier: Assembly-CSharp::Item_SO
   itemID: 4
-  itemName: Speed boost
-  isPlaceable: 1
-  Durability: 0
-  itemSprite: {fileID: 0}
+  itemName: Speed Boost
+  isPlaceable: 0
+  Durability: 2
+  itemSprite: {fileID: -4913083934704082975, guid: e2fef5fab1c54de4caa62863f1f856e4, type: 3}
   itemType: 0

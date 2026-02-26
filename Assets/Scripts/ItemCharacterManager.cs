@@ -62,6 +62,8 @@ public class ItemCharacterManager : MonoBehaviour
 
     private void UseItem()
     {
+        Debug.Log($"UseItem called. equippedItem={equippedItem?.name}, hasTeleporter={hasTeleporter}");
+
         if (equippedItem == null) return;
 
         var item = equippedItem.GetComponent<IItem>();
