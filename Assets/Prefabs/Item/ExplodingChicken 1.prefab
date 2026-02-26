@@ -271,11 +271,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ExplodingChicken
   itemSO: {fileID: 11400000, guid: fc372805c0b53034d825a9d4fce10bd6, type: 2}
-  walkSpeed: 2
-  changeDirectionTime: 2
+  walkSpeed: 5
+  changeDirectionTime: 3
   minExplosionTime: 3
-  maxExplosionTime: 6
-  explosionRadius: 2
+  maxExplosionTime: 10
+  explosionRadius: 3
   playerLayer:
     serializedVersion: 2
     m_Bits: 64
