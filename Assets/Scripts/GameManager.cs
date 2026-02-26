@@ -33,7 +33,7 @@ public class GameManager : MonoBehaviour
         if (rightPortal != null) rightPortal.SetActive(false);
     }
 
-
+    
     public void PlayerDied(string playerTag)
     {
         Debug.Log(playerTag + " died!");
@@ -43,9 +43,7 @@ public class GameManager : MonoBehaviour
         if (player != null)
             player.SetActive(false);
 
-        GameObject leftPortal = GameObject.Find("LeftPortal");
-        GameObject rightPortal = GameObject.Find("RightPortal");
-
+        
         if (playerTag == "Player1")
         {
             
