@@ -28,10 +28,14 @@ public class PlayerController : MonoBehaviour
 
     [Header("Audio")]
     public AudioSource audioSource;
-    public AudioClip walkClip;
+   
     public AudioClip jumpClip;
-    public float walkSoundInterval = 0.4f;
-    private float walkTimer = 0f;
+  
+    [Header("Footsteps")]
+    public FootstepManager footstepManager;
+
+
+    
     void Awake()
     {
         input = GetComponent<PlayerInput>();
@@ -46,16 +50,13 @@ public class PlayerController : MonoBehaviour
         if (moveInput.x != 0)
         {
             facing = (int)Mathf.Sign(moveInput.x);
+            // Estimate horizontal travel this frame from input
+            float dx = moveInput.x * moveSpeed * Time.deltaTime;
 
-            if (isGrounded && walkClip != null)
-            {
-                walkTimer += Time.deltaTime;
-                if (walkTimer >= walkSoundInterval)
-                {
-                    audioSource.PlayOneShot(walkClip);
-                    walkTimer = 0f;
-                }
-            }
+            // Consider input active when not frozen and input magnitude > deadzone
+            bool moveActive = !isFrozen && Mathf.Abs(moveInput.x) > 0.01f;
+
+            footstepManager?.AccumulateDistance(dx, moveActive);
         }
     }
 

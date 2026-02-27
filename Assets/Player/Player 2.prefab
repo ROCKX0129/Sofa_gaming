@@ -603,9 +603,8 @@ MonoBehaviour:
   facing: 1
   isFrozen: 0
   audioSource: {fileID: 0}
-  walkClip: {fileID: 0}
   jumpClip: {fileID: 0}
-  walkSoundInterval: 0.4
+  footstepManager: {fileID: 0}
 --- !u!114 &5320225805477005749
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -725,11 +724,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1690246094180831633, guid: 7e799a977c77a5e4cb1f24e58ba40f22, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.5416696
+      value: 0.54166913
       objectReference: {fileID: 0}
     - target: {fileID: 1690246094180831633, guid: 7e799a977c77a5e4cb1f24e58ba40f22, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.84059155
+      value: 0.8405918
       objectReference: {fileID: 0}
     - target: {fileID: 1751381391181859641, guid: 7e799a977c77a5e4cb1f24e58ba40f22, type: 3}
       propertyPath: m_Name
@@ -773,7 +772,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3073143502850987213, guid: 7e799a977c77a5e4cb1f24e58ba40f22, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.0000011324881
+      value: -0.0000016987321
       objectReference: {fileID: 0}
     - target: {fileID: 5072861208518606179, guid: 7e799a977c77a5e4cb1f24e58ba40f22, type: 3}
       propertyPath: m_SortingLayer
