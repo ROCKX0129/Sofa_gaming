@@ -10,7 +10,7 @@ public class MenuManager : MonoBehaviour
     public GameObject settingsPanel;
     public GameObject controlsPanel; 
     public GameObject nameinputPanel; 
-    public string levelSceneName = "level";
+     public string levelSceneName = "level";
 
     private void Awake()
     {
@@ -43,7 +43,8 @@ public class MenuManager : MonoBehaviour
     public void PlayGame()
     {
         mainMenuPanel.SetActive(false);
-        nameinputPanel.SetActive(true);    }
+        nameinputPanel.SetActive(true);  
+    }
 
     public void OpenSettings()
     {
@@ -63,6 +64,7 @@ public void ControlsPanel()
         ShowMainMenu();
     }
 
+ 
     private void ShowMainMenu()
     {
         mainMenuPanel.SetActive(true);
