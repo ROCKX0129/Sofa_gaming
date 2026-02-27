@@ -1,99 +1,209 @@
-using NUnit.Framework;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 public class ItemCharacterManager : MonoBehaviour
 {
-    public Item_SO Item_SO;
+    [Header("Pickup Settings")]
+    [SerializeField] private float pickupRadius = 1.5f;
+    [SerializeField] private LayerMask itemLayer;
 
-    private Vector2 PlayerCurrentPosition;
-    private GameObject CurrentPlayer;
+    [Header("Projectile Settings")]
+    public GameObject icePrefab;
+    public Transform firePoint;
 
-    public List<GameObject> items;
-    public List<GameObject> PlayerHasItem;
+    [Header("Thrown / Placeable Settings")]
+    public float throwForce = 5f;
 
-    public static event Action<Vector2> OnItemUsingPosition;
-    public static event Action<GameObject> OnCurrentPlayerCalling;
+    private Vector2 playerCurrentPosition;
+    private GameObject currentPlayer;
 
-    public int CurrentChooseing = 0;
+    // Teleporter tracking
+    private Vector2 teleporterPosition;
+    private bool hasTeleporter = false;
 
-    private bool isplaceing = false;
-    public void Start()
+    private GameObject nearbyItem;
+    private GameObject equippedItem;
+    private bool hasItem = false;
+    
+
+    
+
+    private void Awake()
     {
-        Debug.Log("ItemCharacterManager Start");
-        TestingP();
-    }
-
-    private void TestingP() 
-    {
-        PlayerHasItem = items;
+        currentPlayer = gameObject;
     }
 
     public void CurrentPlayerUsing()
     {
-
-        if (PlayerHasItem[CurrentChooseing] != null)
+        if (!hasItem)
         {
-            var item = PlayerHasItem[CurrentChooseing].GetComponent<IItem>();
-            if (item.ItemData != null)
-            {
-                Debug.Log($"Player is using item: {item.ItemData.itemName}");
-                if (item.ItemData.isPlaceable)
-                {
-                    if (!isplaceing)
-                    {
-                        UsingPlaceable();
-                        isplaceing = true;
-                    }
+            TryPickup();
+            return;
+        }
 
-                    if (isplaceing)
-                    {
-                        CallingPlaceable();
-                    }
-                }
+        UseItem();
+    }
 
-            }
-            else
-            {
-                Debug.LogWarning("The item does not have valid ItemData.");
-            }
+    private void TryPickup()
+    {
+        Collider2D hit = Physics2D.OverlapCircle(transform.position, pickupRadius, itemLayer);
+        if (hit != null)
+        {
+            nearbyItem = hit.gameObject;
+            equippedItem = nearbyItem;
+            hasItem = true;
+
+            equippedItem.SetActive(false); // hide until used
+            nearbyItem = null;
+
+            Debug.Log("Picked up: " + equippedItem.name);
         }
     }
 
-    private void UsingPlaceable()
+    private void UseItem()
     {
-        OnItemUsingPosition?.Invoke(PlayerCurrentPosition);
-        OnCurrentPlayerCalling?.Invoke(CurrentPlayer);
-        Instantiate(PlayerHasItem[CurrentChooseing], PlayerCurrentPosition, Quaternion.identity);
+        Debug.Log($"UseItem called. equippedItem={equippedItem?.name}, hasTeleporter={hasTeleporter}");
+
+        if (equippedItem == null) return;
+
+        var item = equippedItem.GetComponent<IItem>();
+        if (item == null || item.ItemData == null)
+        {
+            Debug.LogWarning("Item missing IItem or ItemData.");
+            return;
+        }
+
+        // -----------------------
+        // TELEPORTER LOGIC (ENDER-PEARL STYLE)
+        // -----------------------
+        if (item.ItemData.itemName == "Teleporter")
+        {
+            Teleporter teleporterScript = equippedItem.GetComponent<Teleporter>();
+
+            if (!hasTeleporter)
+            {
+                // Pick it up and hide
+                teleporterPosition = equippedItem.transform.position;
+                hasTeleporter = true;
+                equippedItem.SetActive(false);
+
+                Debug.Log("Teleporter picked up! Position saved.");
+            }
+            else
+            {
+                // Teleport player back
+                transform.position = teleporterPosition;
+                Debug.Log("Teleported back to pickup point!");
+
+                // Destroy the teleporter object
+                if (teleporterScript != null)
+                    Destroy(teleporterScript.gameObject);
+
+                equippedItem = null;
+                hasItem = false;
+                hasTeleporter = false;
+            }
+
+            return; // exit so no placeable throwing occurs
+        }
+
+        // -----------------------
+        // THROWABLE PLACEABLES (e.g., Exploding Chicken)
+        // -----------------------
+        if (item.ItemData.isPlaceable)
+        {
+            // Spawn/throw at firePoint or player position
+            Vector2 spawnPos = firePoint != null ? firePoint.position : (Vector2)transform.position;
+            equippedItem.transform.position = spawnPos;
+            equippedItem.SetActive(true);
+
+            Rigidbody2D rb = equippedItem.GetComponent<Rigidbody2D>();
+            if (rb != null)
+            {
+                rb.bodyType = RigidbodyType2D.Dynamic;
+                rb.gravityScale = 1f;
+                rb.linearVelocity = Vector2.zero;
+            }
+
+            Vector2 throwDir = transform.localScale.x > 0 ? Vector2.right : Vector2.left;
+
+            if (item.ItemData.itemName == "Exploding Chicken")
+            {
+                var chicken = equippedItem.GetComponent<ExplodingChicken>();
+                if (chicken != null)
+                    chicken.Throw(throwDir * throwForce);
+            }
+            else
+            {
+                if (rb != null)
+                    rb.linearVelocity = throwDir * throwForce;
+            }
+
+            // Immediately clear so no extra presses are needed
+            equippedItem = null;
+            hasItem = false;
+            return;
+        }
+
+        // -----------------------
+        // INSTANT CONSUMABLE ITEMS (e.g., Speed Boost, Ghost Orb)
+        // -----------------------
+        if (!item.ItemData.isPlaceable && item.ItemData.itemType != ItemType.Projectile)
+        {
+            if (item.ItemData.itemName == "Speed Boost")
+            {
+                var speed = equippedItem.GetComponent<SpeedBoost>();
+                if (speed != null)
+                    speed.Use(gameObject);
+            }
+            else if (item.ItemData.itemName == "Ghost Orb")
+            {
+                var ghost = equippedItem.GetComponent<GhostOrb>();
+                if (ghost != null)
+                    ghost.Use(gameObject);
+            }
+
+            equippedItem = null;
+            hasItem = false;
+
+            return;
+        }
+
+        // -----------------------
+        // PROJECTILE ITEMS (e.g., Ice)
+        // -----------------------
+        if (item.ItemData.itemType == ItemType.Projectile)
+        {
+            if (icePrefab != null && firePoint != null)
+            {
+                Vector2 direction = transform.localScale.x > 0 ? Vector2.right : Vector2.left;
+                ShootProjectile(direction);
+            }
+
+            equippedItem = null;
+            hasItem = false;
+        }
     }
 
-    private void CallingPlaceable()
+
+    private void ShootProjectile(Vector2 direction)
     {
-        OnItemUsingPosition?.Invoke(PlayerCurrentPosition);
-        OnCurrentPlayerCalling?.Invoke(CurrentPlayer);
+        GameObject proj = Instantiate(icePrefab, firePoint.position, Quaternion.identity);
+        var projectileScript = proj.GetComponent<Freeze>();
+        if (projectileScript != null)
+            projectileScript.Shoot(direction);
     }
 
-    private void OnEnable()
+    public void UpdateUsePosition(Vector2 position)
     {
-        PlayerUsing.OnPlayerUsing += HandlePlayerUsing;
-        PlayerUsing.OnUseEvent += HandleUseEvent;
+        playerCurrentPosition = position;
     }
 
-    private void OnDisable()
+    private void OnDrawGizmosSelected()
     {
-        PlayerUsing.OnPlayerUsing -= HandlePlayerUsing;
-        PlayerUsing.OnUseEvent -= HandleUseEvent;
-    }
-    private void HandlePlayerUsing(GameObject player)
-    {
-        CurrentPlayer = player;
-        CurrentPlayerUsing(); 
-    }
-
-    private void HandleUseEvent(Vector2 position)
-    {
-        PlayerCurrentPosition = position;
+        Gizmos.color = Color.cyan;
+        Gizmos.DrawWireSphere(transform.position, pickupRadius);
     }
 }
+
+

@@ -8,6 +8,8 @@ TagManager:
   - Ground
   - Player1
   - Player2
+  - Item
+  - PickupCollider
   layers:
   - Default
   - TransparentFX
@@ -17,7 +19,7 @@ TagManager:
   - UI
   - Player
   - Block
-  - 
+  - ItemLayer
   - 
   - 
   - 

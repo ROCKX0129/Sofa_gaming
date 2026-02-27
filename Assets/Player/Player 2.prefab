@@ -146,7 +146,7 @@ Transform:
   m_GameObject: {fileID: 2752525100710465116}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.31, y: 2.75, z: 0}
+  m_LocalPosition: {x: 2.78, y: 1.15, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -255,7 +255,7 @@ Transform:
   m_GameObject: {fileID: 3334059471799845842}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.01, y: -1.22, z: 0}
+  m_LocalPosition: {x: -0.406, y: -1.536, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -273,11 +273,13 @@ GameObject:
   - component: {fileID: 3096449070369923240}
   - component: {fileID: 1907578346876692887}
   - component: {fileID: 4520355309499009515}
-  - component: {fileID: 1420251875153506110}
   - component: {fileID: 6700175296875898251}
+  - component: {fileID: 6060794302396040575}
   - component: {fileID: 5320225805477005749}
   - component: {fileID: -6824614158965492339}
-  - component: {fileID: 2845269716948950061}
+  - component: {fileID: 4166136373241332863}
+  - component: {fileID: 6949020827427717023}
+  - component: {fileID: 9074071316512259546}
   m_Layer: 6
   m_Name: Player 2
   m_TagString: Player2
@@ -379,7 +381,7 @@ Rigidbody2D:
   m_Mass: 0.0001
   m_LinearDamping: 0
   m_AngularDamping: 0.05
-  m_GravityScale: 3
+  m_GravityScale: 3.4
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -428,27 +430,6 @@ CapsuleCollider2D:
   m_Offset: {x: -0.3474331, y: 0.39975762}
   m_Size: {x: 1.6948662, y: 3.2506871}
   m_Direction: 0
---- !u!114 &1420251875153506110
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6185984871937994606}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 426898f3c3fafab42884bad9707249e9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
-  moveInput: {x: 0, y: 0}
-  moveSpeed: 8
-  jumpForce: 19
-  groundCheck: {fileID: 3203303037704671358}
-  groundradius: 0.5
-  groundLayer:
-    serializedVersion: 2
-    m_Bits: 8
-  facing: 1
 --- !u!114 &6700175296875898251
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -484,7 +465,7 @@ MonoBehaviour:
     m_ActionName: 'Gameplay/Jump[/Keyboard/space,/Keyboard/enter]'
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1420251875153506110}
+      - m_Target: {fileID: 6060794302396040575}
         m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
         m_MethodName: OnMove
         m_Mode: 0
@@ -500,7 +481,7 @@ MonoBehaviour:
     m_ActionName: 'Player 2/Move2[/Keyboard/upArrow,/Keyboard/downArrow,/Keyboard/leftArrow,/Keyboard/rightArrow]'
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1420251875153506110}
+      - m_Target: {fileID: 6060794302396040575}
         m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
         m_MethodName: OnJump
         m_Mode: 0
@@ -580,7 +561,7 @@ MonoBehaviour:
     m_ActionName: 'Player 1/Using[/Keyboard/e]'
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2845269716948950061}
+      - m_Target: {fileID: 4166136373241332863}
         m_TargetAssemblyTypeName: PlayerUsing, Assembly-CSharp
         m_MethodName: OnUsing
         m_Mode: 0
@@ -599,6 +580,32 @@ MonoBehaviour:
   m_DefaultActionMap: Player 2
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!114 &6060794302396040575
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6185984871937994606}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6992710c714e37c40a7f8910db7d5e7f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerController
+  moveInput: {x: 0, y: 0}
+  moveSpeed: 8
+  jumpForce: 20
+  groundCheck: {fileID: 3203303037704671358}
+  groundradius: 0
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 8
+  facing: 1
+  isFrozen: 0
+  audioSource: {fileID: 0}
+  walkClip: {fileID: 0}
+  jumpClip: {fileID: 0}
+  walkSoundInterval: 0.4
 --- !u!114 &5320225805477005749
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -613,7 +620,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Combat
   otherPLayer: {fileID: 0}
   weaponSprite: {fileID: 592721059260404504}
-  playerController: {fileID: 1420251875153506110}
+  playerController: {fileID: 0}
   attackPoint: {fileID: 2030906710081866751}
   attackSize: {x: 3.5, y: 2.26}
   attackLayers:
@@ -626,6 +633,8 @@ MonoBehaviour:
   blockCollider: {fileID: 4529900624077158583}
   blockDuration: 2
   blockCooldown: 1.5
+  isPlayer2: 0
+  portalManager: {fileID: 0}
 --- !u!114 &-6824614158965492339
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -648,7 +657,7 @@ MonoBehaviour:
     m_Interactions: 
     m_SingletonActionBindings: []
     m_Flags: 0
---- !u!114 &2845269716948950061
+--- !u!114 &4166136373241332863
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -657,10 +666,41 @@ MonoBehaviour:
   m_GameObject: {fileID: 6185984871937994606}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0f9512926ca78fe428fac09ea1a2e0ec, type: 3}
+  m_Script: {fileID: 11500000, guid: 71ece148ace425a44ba722d150453b3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerUsing
-  playerController: {fileID: 1420251875153506110}
+  playerController: {fileID: 6060794302396040575}
+--- !u!114 &6949020827427717023
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6185984871937994606}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4fb7bba68cb2d654bba1099c580227ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ItemCharacterManager
+  pickupRadius: 1.5
+  itemLayer:
+    serializedVersion: 2
+    m_Bits: 256
+  icePrefab: {fileID: 5785550395451163585, guid: 625fb11bfeb46f646ab3fda6e9c6d06f, type: 3}
+  firePoint: {fileID: 4227885284673105693}
+  throwForce: 5
+--- !u!114 &9074071316512259546
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6185984871937994606}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b340c2bc8fe3604d8c42a5e49f9b37a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerItemInput
 --- !u!1001 &3198828451871982520
 PrefabInstance:
   m_ObjectHideFlags: 0
