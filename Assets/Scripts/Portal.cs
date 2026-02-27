@@ -1,24 +1,18 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-public class Portal : MonoBehaviour
+public class PortalLoader : MonoBehaviour
 {
-    public enum PortalSide { Left, Right }
-    public PortalSide side; // Set in Inspector
+    public bool goForward;
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        // Only respond to players
-        if (other.CompareTag("Player1") || other.CompareTag("Player2"))
-        {
-            // Call the appropriate GameManager method
-            if (side == PortalSide.Right)
-            {
-                GameManager.Instance.GoToNextSceneRight();
-            }
-            else if (side == PortalSide.Left)
-            {
-                GameManager.Instance.GoToNextSceneLeft();
-            }
-        }
+        if (!other.CompareTag("Player1") && !other.CompareTag("Player2")) return;
+
+        int current = SceneManager.GetActiveScene().buildIndex;
+        int target = goForward ? current + 1 : current - 1;
+
+        if (target >= 0 && target < SceneManager.sceneCountInBuildSettings)
+            SceneManager.LoadScene(target);
     }
 }

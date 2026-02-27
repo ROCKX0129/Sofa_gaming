@@ -255,7 +255,7 @@ Transform:
   m_GameObject: {fileID: 3334059471799845842}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.01, y: -1.22, z: 0}
+  m_LocalPosition: {x: -0.406, y: -1.536, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -632,6 +632,8 @@ MonoBehaviour:
   blockCollider: {fileID: 4529900624077158583}
   blockDuration: 2
   blockCooldown: 1.5
+  isPlayer2: 0
+  portalManager: {fileID: 0}
 --- !u!114 &-6824614158965492339
 MonoBehaviour:
   m_ObjectHideFlags: 0
