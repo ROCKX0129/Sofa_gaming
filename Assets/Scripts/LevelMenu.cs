@@ -8,7 +8,7 @@ public class LevelMenu : MonoBehaviour
    void Awake()
     {
         
-        Debug.Log(SceneManager.GetAllScenes().Count());
+        //Debug.Log(SceneManager.GetAllScenes().Count());
     }
     public string mainMenuScene = "MainMenu";
 
