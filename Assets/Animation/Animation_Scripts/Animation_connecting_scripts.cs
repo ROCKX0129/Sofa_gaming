@@ -26,10 +26,15 @@ public class Animation_connecting_scripts : MonoBehaviour
         Attack.performed += OnAttack;
     }
 
-    public void OnAttack(InputAction.CallbackContext context)
+    public void OnAttack(InputAction.CallbackContext ctx)
     {
-        mAnimator.SetTrigger("OnMelee");
-    }
+        if (ctx.performed)
+        {
+            mAnimator.SetTrigger("OnMelee");
+        }
+
+        }
+    
     // Update is called once per frame
     void Update()
     {

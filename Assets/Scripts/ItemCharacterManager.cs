@@ -22,7 +22,7 @@ public class ItemCharacterManager : MonoBehaviour
     private bool hasTeleporter = false;
 
     private GameObject nearbyItem;
-    private GameObject equippedItem;
+    public GameObject equippedItem;
     private bool hasItem = false;
     
 
