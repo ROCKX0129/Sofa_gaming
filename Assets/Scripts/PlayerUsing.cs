@@ -6,8 +6,8 @@ public class PlayerUsing : MonoBehaviour
 {
 
     [SerializeField] private PlayerController playerController;
-    public static event Action<Vector2> OnUseEvent;
-    public static event Action<GameObject> OnPlayerUsing;
+    public event Action<Vector2> OnUseEvent;
+    public event Action<GameObject> OnPlayerUsing;
     private GameObject PlayerTarget;
     private bool canUsing = true;
  

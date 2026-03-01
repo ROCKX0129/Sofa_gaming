@@ -247,8 +247,8 @@ GameObject:
   - component: {fileID: 7582728317423918406}
   - component: {fileID: 1440395483784586501}
   - component: {fileID: 7195798517323608014}
-  - component: {fileID: 8172184231366688263}
   - component: {fileID: 2066400122031341175}
+  - component: {fileID: 3932287670810508717}
   m_Layer: 6
   m_Name: Player 1
   m_TagString: Player1
@@ -651,7 +651,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerUsing
   playerController: {fileID: 7178953109281801620}
---- !u!114 &8172184231366688263
+--- !u!114 &2066400122031341175
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8262334614293055830}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b340c2bc8fe3604d8c42a5e49f9b37a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerItemInput
+--- !u!114 &3932287670810508717
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -669,20 +681,8 @@ MonoBehaviour:
     m_Bits: 256
   icePrefab: {fileID: 5785550395451163585, guid: 625fb11bfeb46f646ab3fda6e9c6d06f, type: 3}
   firePoint: {fileID: 8812317093653053634}
-  throwForce: 5
+  throwForce: 10
   equippedItem: {fileID: 0}
---- !u!114 &2066400122031341175
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8262334614293055830}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4b340c2bc8fe3604d8c42a5e49f9b37a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlayerItemInput
 --- !u!1 &8637876401390808004
 GameObject:
   m_ObjectHideFlags: 0

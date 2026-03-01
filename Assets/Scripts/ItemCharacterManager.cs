@@ -60,6 +60,28 @@ public class ItemCharacterManager : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        Debug.Log(gameObject.name + " collided with " + collision.name + " on layer " + collision.gameObject.layer);
+
+        if (hasItem) return; // already holding an item
+
+        // Check if collided object is in the itemLayer
+        if (itemLayer == (itemLayer | (1 << collision.gameObject.layer)))
+        {
+            nearbyItem = collision.gameObject;
+            equippedItem = nearbyItem;
+            hasItem = true;
+
+            equippedItem.SetActive(false); // hide until used
+            nearbyItem = null;
+
+            Debug.Log("Picked up via trigger: " + equippedItem.name);
+        }
+    }
+
+  
+
     private void UseItem()
     {
         Debug.Log($"UseItem called. equippedItem={equippedItem?.name}, hasTeleporter={hasTeleporter}");

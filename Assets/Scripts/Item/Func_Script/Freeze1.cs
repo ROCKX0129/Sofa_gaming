@@ -18,6 +18,7 @@ public class Freeze : MonoBehaviour, IItem
     private Collider2D col;
 
     private Animator animator;
+    
 
     private void Awake()
     {
@@ -33,7 +34,8 @@ public class Freeze : MonoBehaviour, IItem
         
         rb.bodyType = RigidbodyType2D.Dynamic;
         rb.gravityScale = 1f;
-         
+
+
     }
 
     

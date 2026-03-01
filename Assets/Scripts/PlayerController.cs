@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using System.Collections;
 using Unity.VisualScripting;
+using UnityEngine.U2D;
 
 public class PlayerController : MonoBehaviour
 {
@@ -32,6 +33,14 @@ public class PlayerController : MonoBehaviour
     public AudioClip jumpClip;
     public float walkSoundInterval = 0.4f;
     private float walkTimer = 0f;
+
+    private SpriteRenderer sprite;
+    private Color originalColor;
+
+    private Coroutine freezeRoutine;
+
+    private SpriteRenderer[] cachedRenderers;
+    private Color[] cachedOriginalColors;
     void Awake()
     {
         input = GetComponent<PlayerInput>();
@@ -39,6 +48,15 @@ public class PlayerController : MonoBehaviour
 
         if (audioSource == null)
             audioSource = gameObject.AddComponent<AudioSource>();
+
+        sprite = GetComponentInChildren<SpriteRenderer>();
+        originalColor = sprite.color;
+
+        cachedRenderers = GetComponentsInChildren<SpriteRenderer>();
+        cachedOriginalColors = new Color[cachedRenderers.Length];
+
+        for (int i = 0; i < cachedRenderers.Length; i++)
+            cachedOriginalColors[i] = cachedRenderers[i].color;
     }
 
     private void Update()
@@ -78,9 +96,9 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            rb.linearVelocity = Vector2.zero;
+            rb.linearVelocity = new Vector2(0, rb.linearVelocity.y);
         }
-        
+
 
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundradius, groundLayer);
 
@@ -104,17 +122,47 @@ public class PlayerController : MonoBehaviour
 
     public IEnumerator Freeze(float duration)
     {
-        if (isFrozen) yield break;
+        
+        if (freezeRoutine != null)
+            StopCoroutine(freezeRoutine);
 
+        freezeRoutine = StartCoroutine(FreezeRoutine(duration));
+        yield break;
+    }
+
+    private IEnumerator FreezeRoutine(float duration)
+    {
+        Debug.Log("Freeze started");
+
+        Rigidbody2D rb = GetComponent<Rigidbody2D>();
         isFrozen = true;
 
         rb.linearVelocity = Vector2.zero;
-        rb.constraints = RigidbodyConstraints2D.FreezeAll;
+        rb.angularVelocity = 0f;
+
+        
+        SpriteRenderer[] renderers = GetComponentsInChildren<SpriteRenderer>();
+        Color[] originalColors = new Color[renderers.Length];
+
+        for (int i = 0; i < renderers.Length; i++)
+            originalColors[i] = renderers[i].color;
+
+        
+        foreach (SpriteRenderer sr in cachedRenderers)
+        {
+            Color c = sr.color;
+            sr.color = new Color(0.4f, 0.7f, 1f, c.a);
+        }
 
         yield return new WaitForSeconds(duration);
 
-        rb.constraints = RigidbodyConstraints2D.FreezeRotation;
         isFrozen = false;
+
+        
+        for (int i = 0; i < cachedRenderers.Length; i++)
+            cachedRenderers[i].color = cachedOriginalColors[i];
+
+        freezeRoutine = null;
     }
 
 
