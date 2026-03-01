@@ -677,7 +677,7 @@ MonoBehaviour:
   blockDuration: 2
   blockCooldown: 1.5
   isPlayer2: 0
-  portalManager: {fileID: 0}
+  portalManager: {fileID: 884697978432772153, guid: 0c1627c23a814fe4f8d884955991a894, type: 3}
 --- !u!114 &-6824614158965492339
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -789,11 +789,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1690246094180831633, guid: 7e799a977c77a5e4cb1f24e58ba40f22, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.54166913
+      value: 0.5416696
       objectReference: {fileID: 0}
     - target: {fileID: 1690246094180831633, guid: 7e799a977c77a5e4cb1f24e58ba40f22, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.8405918
+      value: 0.84059155
       objectReference: {fileID: 0}
     - target: {fileID: 1708694786729523529, guid: 7e799a977c77a5e4cb1f24e58ba40f22, type: 3}
       propertyPath: m_Layer
@@ -853,7 +853,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3073143502850987213, guid: 7e799a977c77a5e4cb1f24e58ba40f22, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.0000016987321
+      value: -0.0000011324881
       objectReference: {fileID: 0}
     - target: {fileID: 3118416125002285423, guid: 7e799a977c77a5e4cb1f24e58ba40f22, type: 3}
       propertyPath: m_Layer

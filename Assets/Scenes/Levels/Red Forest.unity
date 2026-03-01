@@ -177,7 +177,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9055541855961577234, guid: 0c1627c23a814fe4f8d884955991a894, type: 3}
       propertyPath: m_Name
-      value: 'Gamemanager '
+      value: 'portalmanager '
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3494,7 +3494,7 @@ PrefabInstance:
     - target: {fileID: 5320225805477005749, guid: 04eadc3d3a5bf16448124c79c969411b, type: 3}
       propertyPath: otherPLayer
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1758836691}
     - target: {fileID: 5320225805477005749, guid: 04eadc3d3a5bf16448124c79c969411b, type: 3}
       propertyPath: projectileCooldown
       value: 1.5
@@ -3527,6 +3527,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71ece148ace425a44ba722d150453b3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerUsing
+--- !u!4 &1758836691 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3956852820518023688, guid: 85645a83445f5844b86de8b9b333440f, type: 3}
+  m_PrefabInstance: {fileID: 263771171}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1780659496
 GameObject:
   m_ObjectHideFlags: 0

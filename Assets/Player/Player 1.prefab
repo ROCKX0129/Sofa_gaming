@@ -601,7 +601,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bebecf999b4d2c44ab1bf0b09ec8e1b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Combat
-  otherPLayer: {fileID: 0}
+  otherPLayer: {fileID: 1532060263283417134, guid: 04eadc3d3a5bf16448124c79c969411b, type: 3}
   weaponSprite: {fileID: 7775617543437718089}
   playerController: {fileID: 0}
   attackPoint: {fileID: 1470631333071387447}
@@ -617,7 +617,7 @@ MonoBehaviour:
   blockDuration: 2
   blockCooldown: 1.5
   isPlayer2: 0
-  portalManager: {fileID: 0}
+  portalManager: {fileID: 884697978432772153, guid: 0c1627c23a814fe4f8d884955991a894, type: 3}
 --- !u!114 &1440395483784586501
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -653,7 +653,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerUsing
   playerController: {fileID: 7178953109281801620}
-  itemManager: {fileID: 0}
+  itemManager: {fileID: 3932287670810508717}
 --- !u!114 &2066400122031341175
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -990,11 +990,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3966681697894849903, guid: d59ae2647b2e20f4b9b4e22dccb5afb8, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.2904129
+      value: 0.29041213
       objectReference: {fileID: 0}
     - target: {fileID: 3966681697894849903, guid: d59ae2647b2e20f4b9b4e22dccb5afb8, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.9569015
+      value: -0.95690167
       objectReference: {fileID: 0}
     - target: {fileID: 4211494438817101734, guid: d59ae2647b2e20f4b9b4e22dccb5afb8, type: 3}
       propertyPath: m_Layer
@@ -1082,11 +1082,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8232150202329849510, guid: d59ae2647b2e20f4b9b4e22dccb5afb8, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.99926037
+      value: 0.9992604
       objectReference: {fileID: 0}
     - target: {fileID: 8232150202329849510, guid: d59ae2647b2e20f4b9b4e22dccb5afb8, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.03845509
+      value: -0.038454276
       objectReference: {fileID: 0}
     - target: {fileID: 8238805985909229026, guid: d59ae2647b2e20f4b9b4e22dccb5afb8, type: 3}
       propertyPath: m_Layer
