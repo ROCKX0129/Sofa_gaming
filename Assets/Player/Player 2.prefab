@@ -146,7 +146,7 @@ Transform:
   m_GameObject: {fileID: 2752525100710465116}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.78, y: 1.15, z: 0}
+  m_LocalPosition: {x: 2, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -255,7 +255,7 @@ Transform:
   m_GameObject: {fileID: 3334059471799845842}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.406, y: -1.536, z: 0}
+  m_LocalPosition: {x: -0.42, y: -1.7, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -661,9 +661,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bebecf999b4d2c44ab1bf0b09ec8e1b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Combat
-  otherPLayer: {fileID: 0}
+  otherPLayer: {fileID: 3956852820518023688, guid: 85645a83445f5844b86de8b9b333440f, type: 3}
   weaponSprite: {fileID: 592721059260404504}
-  playerController: {fileID: 0}
+  playerController: {fileID: 6060794302396040575}
   attackPoint: {fileID: 2030906710081866751}
   attackSize: {x: 3.5, y: 2.26}
   attackLayers:
@@ -672,7 +672,7 @@ MonoBehaviour:
   attackCooldown: 1.5
   projectilePrefab: {fileID: 5785550395451163585, guid: bdd31993cca440b4c908909c959f6658, type: 3}
   firePoint: {fileID: 4227885284673105693}
-  projectileCooldown: 1
+  projectileCooldown: 1.5
   blockCollider: {fileID: 4529900624077158583}
   blockDuration: 2
   blockCooldown: 1.5

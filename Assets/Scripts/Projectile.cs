@@ -11,15 +11,13 @@ public class Projectile : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
     }
-    public void Setup(Vector2 targetPosition)
+    // Projectile.cs
+    public void SetupDirection(float directionX)
     {
-        Vector2 start = transform.position;
-        Vector2 dir = targetPosition - start;
+        if (rb == null) rb = GetComponent<Rigidbody2D>();
 
-        float directionX = Mathf.Sign(dir.x);
-
-        float fixedArcY = arcHeight;
-        rb.linearVelocity = new Vector2(directionX * speed, fixedArcY);
+        // Throw in facing direction with arc
+        rb.linearVelocity = new Vector2(directionX * speed, arcHeight);
     }
 
     private void OnTriggerEnter2D(Collider2D col)

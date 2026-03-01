@@ -111,17 +111,18 @@ public class Combat : MonoBehaviour
         Invoke(nameof(ResetAttack), attackCooldown);
     }
 
+    // Combat.cs
     void Shoot()
     {
-        
-
-        if (projectilePrefab == null || firePoint == null || otherPLayer == null) return;
+        if (projectilePrefab == null || firePoint == null) return;
 
         canShoot = false;
 
         GameObject proj = Instantiate(projectilePrefab, firePoint.position, Quaternion.identity);
 
-        proj.GetComponent<Projectile>().Setup(otherPLayer.position);
+        // Determine direction based on player facing
+        float dirX = playerController.facing; // +1 if right, -1 if left
+        proj.GetComponent<Projectile>().SetupDirection(dirX);
 
         Invoke(nameof(ResetShoot), projectileCooldown);
     }

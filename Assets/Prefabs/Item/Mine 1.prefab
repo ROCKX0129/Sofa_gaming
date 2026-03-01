@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 6011997355534844843}
   - component: {fileID: -1379639735249862874}
   - component: {fileID: -5433558222064974732}
-  - component: {fileID: 9119485894663098473}
   - component: {fileID: 7977599680489644198}
+  - component: {fileID: 988008416481884991}
   m_Layer: 8
   m_Name: Mine 1
   m_TagString: Item
@@ -30,11 +30,11 @@ Transform:
   m_GameObject: {fileID: 2551540552165534126}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.35605, y: -8.6, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.28, y: 0.28, z: 0.28}
   m_ConstrainProportionsScale: 1
   m_Children:
-  - {fileID: 1103016576456340704}
+  - {fileID: 3664287209176879417}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &6011997355534844843
@@ -159,7 +159,26 @@ CapsuleCollider2D:
   m_Offset: {x: 0.01, y: 0.05}
   m_Size: {x: 7.98, y: 3.55}
   m_Direction: 1
---- !u!95 &9119485894663098473
+--- !u!114 &7977599680489644198
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2551540552165534126}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6413f99bfb75eef4e8d0ce3609b0d60a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Mine
+  itemSO: {fileID: 11400000, guid: c773307ea27542543a4adbfa568de53c, type: 2}
+  armDelay: 0.5
+  explodeDelay: 1.8
+  explosionRadius: 3.45
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 64
+--- !u!95 &988008416481884991
 Animator:
   serializedVersion: 7
   m_ObjectHideFlags: 0
@@ -181,26 +200,7 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &7977599680489644198
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2551540552165534126}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6413f99bfb75eef4e8d0ce3609b0d60a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Mine
-  itemSO: {fileID: 11400000, guid: c773307ea27542543a4adbfa568de53c, type: 2}
-  armDelay: 0.5
-  explodeDelay: 2
-  explosionRadius: 3
-  playerLayer:
-    serializedVersion: 2
-    m_Bits: 64
---- !u!1 &4618730138102527892
+--- !u!1 &4711107382639301266
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -208,7 +208,7 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1103016576456340704}
+  - component: {fileID: 3664287209176879417}
   m_Layer: 8
   m_Name: Sprite
   m_TagString: Untagged
@@ -216,18 +216,18 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &1103016576456340704
+--- !u!4 &3664287209176879417
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4618730138102527892}
+  m_GameObject: {fileID: 4711107382639301266}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 2.71, y: 2.71, z: 2.71}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 6747402513718168185}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

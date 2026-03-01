@@ -198,7 +198,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1521986043067454573, guid: 6a250a57ba03606468135578a2a9988a, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3095026877794285638, guid: 6a250a57ba03606468135578a2a9988a, type: 3}
       propertyPath: boxSize.x
@@ -3994,11 +3994,11 @@ SceneRoots:
   - {fileID: 547793921}
   - {fileID: 1117388826}
   - {fileID: 1419458046}
+  - {fileID: 263771171}
   - {fileID: 1714943899}
   - {fileID: 576573537}
   - {fileID: 1493085310}
   - {fileID: 127403663}
   - {fileID: 132759353}
-  - {fileID: 263771171}
   - {fileID: 552373879}
   - {fileID: 1185219736}
