@@ -2577,7 +2577,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 499.9, y: 285.6}
+  m_AnchoredPosition: {x: 745, y: 408}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1003778738
@@ -4283,6 +4283,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerUIContainer
       objectReference: {fileID: 0}
+    - target: {fileID: 5861193723444115616, guid: fe174e5facd57d647922718886b3b9dc, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 5948827250232315662, guid: fe174e5facd57d647922718886b3b9dc, type: 3}
       propertyPath: targetObject
       value: 
@@ -4353,7 +4357,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6685318051802917664, guid: fe174e5facd57d647922718886b3b9dc, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -21
+      value: 634
       objectReference: {fileID: 0}
     - target: {fileID: 6685318051802917664, guid: fe174e5facd57d647922718886b3b9dc, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
