@@ -1278,6 +1278,14 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.35
       objectReference: {fileID: 0}
+    - target: {fileID: 77139188227133352, guid: 751070ec8a6f3a147b94f817aa40edde, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.187773
+      objectReference: {fileID: 0}
+    - target: {fileID: 77139188227133352, guid: 751070ec8a6f3a147b94f817aa40edde, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.3345
+      objectReference: {fileID: 0}
     - target: {fileID: 121817405357473696, guid: 751070ec8a6f3a147b94f817aa40edde, type: 3}
       propertyPath: m_Name
       value: Environment 2
@@ -1310,6 +1318,14 @@ PrefabInstance:
       propertyPath: m_Intensity
       value: 1.49
       objectReference: {fileID: 0}
+    - target: {fileID: 2872574116816625500, guid: 751070ec8a6f3a147b94f817aa40edde, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2.4139276
+      objectReference: {fileID: 0}
+    - target: {fileID: 2872574116816625500, guid: 751070ec8a6f3a147b94f817aa40edde, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.3345
+      objectReference: {fileID: 0}
     - target: {fileID: 3725490436342684727, guid: 751070ec8a6f3a147b94f817aa40edde, type: 3}
       propertyPath: m_SortingLayer
       value: 2
@@ -1325,6 +1341,14 @@ PrefabInstance:
     - target: {fileID: 3868505532673665528, guid: 751070ec8a6f3a147b94f817aa40edde, type: 3}
       propertyPath: m_Layer
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4618056792557175181, guid: 751070ec8a6f3a147b94f817aa40edde, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2.4139276
+      objectReference: {fileID: 0}
+    - target: {fileID: 4618056792557175181, guid: 751070ec8a6f3a147b94f817aa40edde, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.3345
       objectReference: {fileID: 0}
     - target: {fileID: 4737101831952610784, guid: 751070ec8a6f3a147b94f817aa40edde, type: 3}
       propertyPath: m_Intensity
@@ -2165,7 +2189,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Quicksand2D
   jumpReduction: 0.3
-  lingerTime: 3
+  lingerTime: 1
 --- !u!212 &894100925
 SpriteRenderer:
   m_ObjectHideFlags: 0
