@@ -9,8 +9,10 @@ public class PlayerUsing : MonoBehaviour
     public event Action<Vector2> OnUseEvent;
     public event Action<GameObject> OnPlayerUsing;
     private GameObject PlayerTarget;
-    private bool canUsing = true;
- 
+   
+
+    [SerializeField] private ItemCharacterManager itemManager;
+
 
     private void Start()
     {
@@ -18,10 +20,10 @@ public class PlayerUsing : MonoBehaviour
     }
     public void OnUsing(InputAction.CallbackContext ctx)
     {
-        
-        if (ctx.performed && canUsing)  
+        if (ctx.performed && itemManager != null)
         {
-            UsingItem();
+            // Call the ItemCharacterManager toggle logic
+            itemManager.CurrentPlayerUsing();
         }
     }
 

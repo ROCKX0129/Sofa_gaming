@@ -3,13 +3,17 @@ using UnityEngine.InputSystem;
 
 public class PlayerItemInput : MonoBehaviour
 {
+    [SerializeField] private ItemCharacterManager itemManager;
     private PlayerInput playerInput;
-    private ItemCharacterManager itemManager;
+    
 
     private void Awake()
     {
         playerInput = GetComponent<PlayerInput>();
-        itemManager = GetComponent<ItemCharacterManager>();
+        itemManager = GetComponentInParent<ItemCharacterManager>();
+
+        if (itemManager == null)
+            Debug.LogError(name + " has no ItemCharacterManager assigned!");
     }
 
     private void OnEnable()
@@ -24,6 +28,9 @@ public class PlayerItemInput : MonoBehaviour
 
     private void OnUsingItem(InputAction.CallbackContext ctx)
     {
-        itemManager.CurrentPlayerUsing();
+        if (ctx.performed && itemManager != null)
+        {
+            itemManager.CurrentPlayerUsing();
+        }
     }
 }

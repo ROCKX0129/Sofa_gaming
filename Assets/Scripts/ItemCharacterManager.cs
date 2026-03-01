@@ -35,6 +35,7 @@ public class ItemCharacterManager : MonoBehaviour
 
     public void CurrentPlayerUsing()
     {
+        Debug.Log(name + " pressed Use");
         if (!hasItem)
         {
             TryPickup();
@@ -46,6 +47,8 @@ public class ItemCharacterManager : MonoBehaviour
 
     private void TryPickup()
     {
+        Debug.Log("Player2 position: " + transform.position + " Pickup radius: " + pickupRadius);
+
         Collider2D hit = Physics2D.OverlapCircle(transform.position, pickupRadius, itemLayer);
         if (hit != null)
         {
@@ -57,6 +60,10 @@ public class ItemCharacterManager : MonoBehaviour
             nearbyItem = null;
 
             Debug.Log("Picked up: " + equippedItem.name);
+        }
+        else
+        {
+            Debug.Log(name + " found no items in radius");
         }
     }
 

@@ -249,6 +249,8 @@ GameObject:
   - component: {fileID: 7195798517323608014}
   - component: {fileID: 2066400122031341175}
   - component: {fileID: 3932287670810508717}
+  - component: {fileID: 8344700986216630565}
+  - component: {fileID: 3304067712589571966}
   m_Layer: 6
   m_Name: Player 1
   m_TagString: Player1
@@ -599,7 +601,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bebecf999b4d2c44ab1bf0b09ec8e1b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Combat
-  otherPLayer: {fileID: 1532060263283417134, guid: 04eadc3d3a5bf16448124c79c969411b, type: 3}
+  otherPLayer: {fileID: 0}
   weaponSprite: {fileID: 7775617543437718089}
   playerController: {fileID: 0}
   attackPoint: {fileID: 1470631333071387447}
@@ -651,6 +653,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerUsing
   playerController: {fileID: 7178953109281801620}
+  itemManager: {fileID: 0}
 --- !u!114 &2066400122031341175
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -663,6 +666,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b340c2bc8fe3604d8c42a5e49f9b37a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerItemInput
+  itemManager: {fileID: 3932287670810508717}
 --- !u!114 &3932287670810508717
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -683,6 +687,52 @@ MonoBehaviour:
   firePoint: {fileID: 8812317093653053634}
   throwForce: 10
   equippedItem: {fileID: 0}
+--- !u!114 &8344700986216630565
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8262334614293055830}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76c392e42b5098c458856cdf6ecaaaa1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.EventSystems.EventSystem
+  m_FirstSelected: {fileID: 0}
+  m_sendNavigationEvents: 1
+  m_DragThreshold: 10
+--- !u!114 &3304067712589571966
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8262334614293055830}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01614664b831546d2ae94a42149d80ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.InputSystem::UnityEngine.InputSystem.UI.InputSystemUIInputModule
+  m_SendPointerHoverToParent: 1
+  m_MoveRepeatDelay: 0.5
+  m_MoveRepeatRate: 0.1
+  m_XRTrackingOrigin: {fileID: 0}
+  m_ActionsAsset: {fileID: -944628639613478452, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_PointAction: {fileID: -1654692200621890270, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_MoveAction: {fileID: -8784545083839296357, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_SubmitAction: {fileID: 392368643174621059, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_CancelAction: {fileID: 7727032971491509709, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_LeftClickAction: {fileID: 3001919216989983466, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_MiddleClickAction: {fileID: -2185481485913320682, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_RightClickAction: {fileID: -4090225696740746782, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_ScrollWheelAction: {fileID: 6240969308177333660, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_TrackedDevicePositionAction: {fileID: 6564999863303420839, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_TrackedDeviceOrientationAction: {fileID: 7970375526676320489, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_DeselectOnBackgroundClick: 1
+  m_PointerBehavior: 0
+  m_CursorLockBehavior: 0
+  m_ScrollDeltaPerTick: 6
 --- !u!1 &8637876401390808004
 GameObject:
   m_ObjectHideFlags: 0
@@ -940,11 +990,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3966681697894849903, guid: d59ae2647b2e20f4b9b4e22dccb5afb8, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.29041213
+      value: 0.2904129
       objectReference: {fileID: 0}
     - target: {fileID: 3966681697894849903, guid: d59ae2647b2e20f4b9b4e22dccb5afb8, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.95690167
+      value: -0.9569015
       objectReference: {fileID: 0}
     - target: {fileID: 4211494438817101734, guid: d59ae2647b2e20f4b9b4e22dccb5afb8, type: 3}
       propertyPath: m_Layer
@@ -1032,11 +1082,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8232150202329849510, guid: d59ae2647b2e20f4b9b4e22dccb5afb8, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.9992604
+      value: 0.99926037
       objectReference: {fileID: 0}
     - target: {fileID: 8232150202329849510, guid: d59ae2647b2e20f4b9b4e22dccb5afb8, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.038454276
+      value: -0.03845509
       objectReference: {fileID: 0}
     - target: {fileID: 8238805985909229026, guid: d59ae2647b2e20f4b9b4e22dccb5afb8, type: 3}
       propertyPath: m_Layer
