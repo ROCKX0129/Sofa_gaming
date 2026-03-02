@@ -24,6 +24,12 @@ public class Animation_connecting_scripts : MonoBehaviour
     {
         Attack.Enable();
         Attack.performed += OnAttack;
+        ItemCharacterManager.OnPickupEvent += OnPickup;
+    }
+
+    public void OnPickup()
+    {
+        mAnimator.SetTrigger("OnPickup");
     }
 
     public void OnAttack(InputAction.CallbackContext ctx)
@@ -34,7 +40,7 @@ public class Animation_connecting_scripts : MonoBehaviour
         }
 
         }
-    
+
     // Update is called once per frame
     void Update()
     {

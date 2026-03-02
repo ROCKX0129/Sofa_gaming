@@ -24,9 +24,9 @@ public class ItemCharacterManager : MonoBehaviour
     private GameObject nearbyItem;
     public GameObject equippedItem;
     private bool hasItem = false;
-    
 
-    
+    public static event Action OnPickupEvent;
+
 
     private void Awake()
     {
@@ -59,6 +59,7 @@ public class ItemCharacterManager : MonoBehaviour
             equippedItem.SetActive(false); // hide until used
             nearbyItem = null;
 
+            OnPickupEvent?.Invoke();
             Debug.Log("Picked up: " + equippedItem.name);
         }
         else
