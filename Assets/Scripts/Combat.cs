@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Net.Http.Headers;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -36,8 +37,9 @@ public class Combat : MonoBehaviour
     public float blockCooldown;
 
     private bool canBlock;
-
     public bool isPlayer2;
+    private bool isDead = false;
+
     public PortalManager portalManager;
 
     private void Awake()
@@ -160,6 +162,14 @@ public class Combat : MonoBehaviour
 
     public void Die()
     {
+
+        if (isDead) return;
+
+        GetComponent<PlayerController>().enabled = false;
+        enabled = false;
+
+        GetComponent<Animation_connecting_scripts>().PlayDeath();
+
         if (CompareTag("Player2"))
         {
             PortalManager.Instance.ActivateRightPortal();
@@ -169,6 +179,12 @@ public class Combat : MonoBehaviour
             PortalManager.Instance.ActivateLeftPortal();
         }
 
+        StartCoroutine(DestroyAfterDeath());
+    }
+
+    private IEnumerator DestroyAfterDeath()
+    {
+        yield return new WaitForSeconds(2f); 
         Destroy(gameObject);
     }
 }

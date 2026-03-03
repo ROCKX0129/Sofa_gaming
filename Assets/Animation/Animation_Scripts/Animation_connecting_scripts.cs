@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -39,9 +40,14 @@ public class Animation_connecting_scripts : MonoBehaviour
             mAnimator.SetTrigger("OnMelee");
         }
 
-        }
+    }
 
-    // Update is called once per frame
+    public void PlayDeath()
+    {
+        mAnimator.SetTrigger("OnDead");
+    }
+
+    
     void Update()
     {
         if (playerController.moveInput != null)
