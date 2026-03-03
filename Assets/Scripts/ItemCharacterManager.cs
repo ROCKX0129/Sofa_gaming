@@ -25,6 +25,8 @@ public class ItemCharacterManager : MonoBehaviour
     public GameObject equippedItem;
     private bool hasItem = false;
 
+    private bool itemStored = false;
+
     public static event Action OnPickupEvent;
 
 
@@ -36,13 +38,24 @@ public class ItemCharacterManager : MonoBehaviour
     public void CurrentPlayerUsing()
     {
         Debug.Log(name + " pressed Use");
+
         if (!hasItem)
         {
             TryPickup();
             return;
         }
 
+     
+        if (!itemStored)
+        {
+            itemStored = true;
+            Debug.Log("Item stored. Press again to use.");
+            return;
+        }
+
+        
         UseItem();
+        itemStored = false;
     }
 
     private void TryPickup()
@@ -83,7 +96,7 @@ public class ItemCharacterManager : MonoBehaviour
 
             equippedItem.SetActive(false); // hide until used
             nearbyItem = null;
-
+            itemStored = false;
             Debug.Log("Picked up via trigger: " + equippedItem.name);
         }
     }
@@ -103,9 +116,8 @@ public class ItemCharacterManager : MonoBehaviour
             return;
         }
 
-        // -----------------------
+
         // TELEPORTER LOGIC (ENDER-PEARL STYLE)
-        // -----------------------
         if (item.ItemData.itemName == "Teleporter")
         {
             Teleporter teleporterScript = equippedItem.GetComponent<Teleporter>();
@@ -137,9 +149,7 @@ public class ItemCharacterManager : MonoBehaviour
             return; // exit so no placeable throwing occurs
         }
 
-        // -----------------------
-        // THROWABLE PLACEABLES (e.g., Exploding Chicken)
-        // -----------------------
+        // THROWABLE PLACEABLES 
         if (item.ItemData.isPlaceable)
         {
             // Spawn/throw at firePoint or player position
@@ -172,12 +182,11 @@ public class ItemCharacterManager : MonoBehaviour
             // Immediately clear so no extra presses are needed
             equippedItem = null;
             hasItem = false;
+            itemStored = false;
             return;
         }
 
-        // -----------------------
         // INSTANT CONSUMABLE ITEMS (e.g., Speed Boost, Ghost Orb)
-        // -----------------------
         if (!item.ItemData.isPlaceable && item.ItemData.itemType != ItemType.Projectile)
         {
             if (item.ItemData.itemName == "Speed Boost")
@@ -195,13 +204,11 @@ public class ItemCharacterManager : MonoBehaviour
 
             equippedItem = null;
             hasItem = false;
-
+            itemStored = false;
             return;
         }
 
-        // -----------------------
         // PROJECTILE ITEMS (e.g., Ice)
-        // -----------------------
         if (item.ItemData.itemType == ItemType.Projectile)
         {
             if (icePrefab != null && firePoint != null)
@@ -212,6 +219,7 @@ public class ItemCharacterManager : MonoBehaviour
 
             equippedItem = null;
             hasItem = false;
+            itemStored = false;
         }
     }
 
