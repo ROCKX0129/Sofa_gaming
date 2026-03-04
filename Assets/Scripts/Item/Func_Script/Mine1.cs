@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using System.Collections;
 
 public class Mine : MonoBehaviour, IItem
@@ -102,15 +102,14 @@ public class Mine : MonoBehaviour, IItem
         GetComponent<Collider2D>().enabled = false;
         GetComponent<Rigidbody2D>().simulated = false;
 
-        transform.localScale = Vector3.one * 0.8f;
+        transform.localScale = Vector3.one * 1f;
         if (animator != null)
             animator.SetTrigger("explode");
 
         // Destroy the mine itself
-        Destroy(gameObject, 1f);
+        Destroy(gameObject, 0.5f);
     }
 
-    // Draw explosion radius in Scene view
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
