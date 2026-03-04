@@ -29,10 +29,9 @@ public class PlayerController : MonoBehaviour
 
     [Header("Audio")]
     public AudioSource audioSource;
-    public AudioClip walkClip;
+
     public AudioClip jumpClip;
-    public float walkSoundInterval = 0.4f;
-    private float walkTimer = 0f;
+
 
     private SpriteRenderer sprite;
     private Color originalColor;
@@ -41,8 +40,14 @@ public class PlayerController : MonoBehaviour
 
     private SpriteRenderer[] cachedRenderers;
     private Color[] cachedOriginalColors;
+
+    private FootstepManager footstepManager;
+
+
     void Awake()
     {
+        footstepManager = GetComponent<FootstepManager>(); //footstep related
+
         input = GetComponent<PlayerInput>();
         rb = GetComponent<Rigidbody2D>();
 
@@ -62,20 +67,15 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {
         if (moveInput.x != 0)
-        {
             facing = (int)Mathf.Sign(moveInput.x);
 
-            if (isGrounded && walkClip != null)
-            {
-                walkTimer += Time.deltaTime;
-                if (walkTimer >= walkSoundInterval)
-                {
-                    audioSource.PlayOneShot(walkClip);
-                    walkTimer = 0f;
-                }
-            }
+    // Forward movement & grounded state to FootstepManager
+        if (footstepManager != null)
+        {
+            bool isMovingHorizontally = Mathf.Abs(moveInput.x) > 0.01f && !isFrozen;
+            footstepManager.Tick(isGrounded, isMovingHorizontally);
         }
-    }
+    }   
 
     public void OnMove(InputAction.CallbackContext ctx)
     {
