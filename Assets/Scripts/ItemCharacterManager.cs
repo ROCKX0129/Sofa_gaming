@@ -22,11 +22,11 @@ public class ItemCharacterManager : MonoBehaviour
     private bool hasTeleporter = false;
 
     private GameObject nearbyItem;
-    private GameObject equippedItem;
+    public GameObject equippedItem;
     private bool hasItem = false;
-    
 
-    
+    public static event Action OnPickupEvent;
+
 
     private void Awake()
     {
@@ -35,9 +35,21 @@ public class ItemCharacterManager : MonoBehaviour
 
     public void CurrentPlayerUsing()
     {
+        Debug.Log(name + " pressed Use");
+
         if (!hasItem)
         {
             TryPickup();
+            return;
+        }
+
+        var item = equippedItem?.GetComponent<IItem>();
+        if (item == null) return;
+
+        //  Projectile: 2 presses only
+        if (item.ItemData.itemType == ItemType.Projectile)
+        {
+            UseItem();
             return;
         }
 
@@ -46,6 +58,8 @@ public class ItemCharacterManager : MonoBehaviour
 
     private void TryPickup()
     {
+        Debug.Log("Player2 position: " + transform.position + " Pickup radius: " + pickupRadius);
+
         Collider2D hit = Physics2D.OverlapCircle(transform.position, pickupRadius, itemLayer);
         if (hit != null)
         {
@@ -56,7 +70,12 @@ public class ItemCharacterManager : MonoBehaviour
             equippedItem.SetActive(false); // hide until used
             nearbyItem = null;
 
-            Debug.Log("Picked up: " + equippedItem.name);
+            OnPickupEvent?.Invoke();
+            //Debug.Log("Picked up: " + equippedItem.name);
+        }
+        else
+        {
+            Debug.Log(name + " found no items in radius");
         }
     }
 
@@ -73,43 +92,42 @@ public class ItemCharacterManager : MonoBehaviour
             return;
         }
 
-        // -----------------------
-        // TELEPORTER LOGIC (ENDER-PEARL STYLE)
-        // -----------------------
+        // TELEPORTER LOGIC (3 presses: pick up → throw → teleport)
+        // TELEPORTER LOGIC (3 presses: pick up → throw → teleport)
+        // TELEPORTER LOGIC (working 3 presses: pick up → throw → teleport)
         if (item.ItemData.itemName == "Teleporter")
         {
             Teleporter teleporterScript = equippedItem.GetComponent<Teleporter>();
+            if (teleporterScript == null) return;
 
-            if (!hasTeleporter)
+            // --- Press 1: Pick up ---
+            if (!hasTeleporter && !teleporterScript.isPickedUp && !teleporterScript.isPlaced)
             {
-                // Pick it up and hide
-                teleporterPosition = equippedItem.transform.position;
+                teleporterScript.PickUp(gameObject);      // sets ownerPlayer & isPickedUp = true
+                equippedItem = teleporterScript.gameObject; // immediately assign to prevent double pickup
                 hasTeleporter = true;
-                equippedItem.SetActive(false);
-
-                Debug.Log("Teleporter picked up! Position saved.");
+                Debug.Log("Teleporter picked up!");
             }
-            else
+            // --- Press 2: Throw forward ---
+            else if (hasTeleporter && teleporterScript.isPickedUp && !teleporterScript.isPlaced)
             {
-                // Teleport player back
-                transform.position = teleporterPosition;
-                Debug.Log("Teleported back to pickup point!");
-
-                // Destroy the teleporter object
-                if (teleporterScript != null)
-                    Destroy(teleporterScript.gameObject);
-
+                teleporterScript.Throw();                  // throws naturally from player's current position
+                Debug.Log("Teleporter thrown!");
+            }
+            // --- Press 3: Teleport to thrown teleporter ---
+            else if (teleporterScript.isPlaced)
+            {
+                teleporterScript.TeleportOwner();          // teleport player
                 equippedItem = null;
                 hasItem = false;
                 hasTeleporter = false;
+                Debug.Log("Teleported to teleporter!");
             }
 
-            return; // exit so no placeable throwing occurs
+            return; // exit UseItem for Teleporter
         }
 
-        // -----------------------
-        // THROWABLE PLACEABLES (e.g., Exploding Chicken)
-        // -----------------------
+        // THROWABLE PLACEABLES 
         if (item.ItemData.isPlaceable)
         {
             // Spawn/throw at firePoint or player position
@@ -145,9 +163,7 @@ public class ItemCharacterManager : MonoBehaviour
             return;
         }
 
-        // -----------------------
         // INSTANT CONSUMABLE ITEMS (e.g., Speed Boost, Ghost Orb)
-        // -----------------------
         if (!item.ItemData.isPlaceable && item.ItemData.itemType != ItemType.Projectile)
         {
             if (item.ItemData.itemName == "Speed Boost")
@@ -165,15 +181,13 @@ public class ItemCharacterManager : MonoBehaviour
 
             equippedItem = null;
             hasItem = false;
-
             return;
         }
 
-        // -----------------------
         // PROJECTILE ITEMS (e.g., Ice)
-        // -----------------------
         if (item.ItemData.itemType == ItemType.Projectile)
         {
+            // Second press = shoot
             if (icePrefab != null && firePoint != null)
             {
                 Vector2 direction = transform.localScale.x > 0 ? Vector2.right : Vector2.left;
@@ -182,16 +196,20 @@ public class ItemCharacterManager : MonoBehaviour
 
             equippedItem = null;
             hasItem = false;
+            return;
         }
     }
 
 
-    private void ShootProjectile(Vector2 direction)
-    {
-        GameObject proj = Instantiate(icePrefab, firePoint.position, Quaternion.identity);
-        var projectileScript = proj.GetComponent<Freeze>();
-        if (projectileScript != null)
-            projectileScript.Shoot(direction);
+private void ShootProjectile(Vector2 direction)
+    {    
+        GameObject proj = Instantiate(icePrefab, firePoint.position, Quaternion.identity);    
+        var projectileScript = proj.GetComponent<Freeze>();    
+            if (projectileScript != null)    
+            {        // NEW: set the owner BEFORE Shoot so sound plays from this player        
+                projectileScript.SetOwner(transform);        // Fire it (Freeze.Shoot will play the use SFX)        
+                projectileScript.Shoot(direction);    
+            }
     }
 
     public void UpdateUsePosition(Vector2 position)

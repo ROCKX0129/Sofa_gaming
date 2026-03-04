@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -24,13 +25,29 @@ public class Animation_connecting_scripts : MonoBehaviour
     {
         Attack.Enable();
         Attack.performed += OnAttack;
+        ItemCharacterManager.OnPickupEvent += OnPickup;
     }
 
-    public void OnAttack(InputAction.CallbackContext context)
+    public void OnPickup()
     {
-        mAnimator.SetTrigger("OnMelee");
+        mAnimator.SetTrigger("OnPickup");
     }
-    // Update is called once per frame
+
+    public void OnAttack(InputAction.CallbackContext ctx)
+    {
+        if (ctx.performed)
+        {
+            mAnimator.SetTrigger("OnMelee");
+        }
+
+    }
+
+    public void PlayDeath()
+    {
+        mAnimator.SetTrigger("OnDead");
+    }
+
+    
     void Update()
     {
         if (playerController.moveInput != null)
