@@ -92,37 +92,37 @@ public class ItemCharacterManager : MonoBehaviour
             return;
         }
 
-
-        // TELEPORTER LOGIC (ENDER-PEARL STYLE)
+        // TELEPORTER LOGIC
         if (item.ItemData.itemName == "Teleporter")
         {
             Teleporter teleporterScript = equippedItem.GetComponent<Teleporter>();
+            if (teleporterScript == null) return;
 
             if (!hasTeleporter)
             {
-                // Pick it up and hide
-                teleporterPosition = equippedItem.transform.position;
+                // First press → pick up
+                teleporterScript.PickUp(gameObject);
                 hasTeleporter = true;
-                equippedItem.SetActive(false);
-
-                Debug.Log("Teleporter picked up! Position saved.");
+                equippedItem = teleporterScript.gameObject;
+                Debug.Log("Teleporter picked up!");
+            }
+            else if (!teleporterScript.isPlaced)
+            {
+                // Second press → throw forward (no arguments, uses player position internally)
+                teleporterScript.Throw();
+                Debug.Log("Teleporter thrown!");
             }
             else
             {
-                // Teleport player back
-                transform.position = teleporterPosition;
-                Debug.Log("Teleported back to pickup point!");
-
-                // Destroy the teleporter object
-                if (teleporterScript != null)
-                    Destroy(teleporterScript.gameObject);
-
+                // Third press → teleport
+                teleporterScript.TeleportOwner();
                 equippedItem = null;
                 hasItem = false;
                 hasTeleporter = false;
+                Debug.Log("Teleported to teleporter!");
             }
 
-            return; // exit so no placeable throwing occurs
+            return; // exit UseItem
         }
 
         // THROWABLE PLACEABLES 

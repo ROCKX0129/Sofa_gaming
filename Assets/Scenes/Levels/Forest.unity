@@ -2568,6 +2568,14 @@ PrefabInstance:
       propertyPath: goForward
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4361146320957592858, guid: a4dc4c6311f86b640a3d4a9679807ed4, type: 3}
+      propertyPath: winnerPlayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4361146320957592858, guid: a4dc4c6311f86b640a3d4a9679807ed4, type: 3}
+      propertyPath: isFinalPortal
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7855670210200059093, guid: a4dc4c6311f86b640a3d4a9679807ed4, type: 3}
       propertyPath: m_LocalPosition.x
       value: 19.99

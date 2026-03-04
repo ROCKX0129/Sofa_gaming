@@ -296,6 +296,14 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4361146320957592858, guid: a4dc4c6311f86b640a3d4a9679807ed4, type: 3}
+      propertyPath: winnerPlayer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4361146320957592858, guid: a4dc4c6311f86b640a3d4a9679807ed4, type: 3}
+      propertyPath: isFinalPortal
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7855670210200059093, guid: a4dc4c6311f86b640a3d4a9679807ed4, type: 3}
       propertyPath: m_LocalPosition.x
       value: -20.572563
@@ -617,6 +625,10 @@ PrefabInstance:
       propertyPath: m_LocalRotation.z
       value: -0.038454276
       objectReference: {fileID: 0}
+    - target: {fileID: 3932287670810508717, guid: 85645a83445f5844b86de8b9b333440f, type: 3}
+      propertyPath: equippedItem
+      value: 
+      objectReference: {fileID: 2779641947560619426, guid: 702a4c65d0e814e40a3420b952e99f11, type: 3}
     - target: {fileID: 3956852820518023688, guid: 85645a83445f5844b86de8b9b333440f, type: 3}
       propertyPath: m_LocalPosition.x
       value: -18.11
@@ -1158,6 +1170,10 @@ PrefabInstance:
     - target: {fileID: 1521986043067454573, guid: 6a250a57ba03606468135578a2a9988a, type: 3}
       propertyPath: m_Name
       value: ItemSpawner 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1521986043067454573, guid: 6a250a57ba03606468135578a2a9988a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5546017527928766925, guid: 6a250a57ba03606468135578a2a9988a, type: 3}
       propertyPath: m_LocalPosition.x
