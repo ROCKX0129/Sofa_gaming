@@ -92,39 +92,33 @@ public class ItemCharacterManager : MonoBehaviour
             return;
         }
 
-        // TELEPORTER LOGIC (3 presses: pick up → throw → teleport)
-        // TELEPORTER LOGIC (3 presses: pick up → throw → teleport)
-        // TELEPORTER LOGIC (working 3 presses: pick up → throw → teleport)
+        // TELEPORTER LOGIC (Original Ender-Pearl Style)
         if (item.ItemData.itemName == "Teleporter")
         {
             Teleporter teleporterScript = equippedItem.GetComponent<Teleporter>();
-            if (teleporterScript == null) return;
 
-            // --- Press 1: Pick up ---
-            if (!hasTeleporter && !teleporterScript.isPickedUp && !teleporterScript.isPlaced)
+            if (!hasTeleporter)
             {
-                teleporterScript.PickUp(gameObject);      // sets ownerPlayer & isPickedUp = true
-                equippedItem = teleporterScript.gameObject; // immediately assign to prevent double pickup
+                teleporterPosition = equippedItem.transform.position;
                 hasTeleporter = true;
-                Debug.Log("Teleporter picked up!");
+                equippedItem.SetActive(false);
+
+                Debug.Log("Teleporter picked up! Position saved.");
             }
-            // --- Press 2: Throw forward ---
-            else if (hasTeleporter && teleporterScript.isPickedUp && !teleporterScript.isPlaced)
+            else
             {
-                teleporterScript.Throw();                  // throws naturally from player's current position
-                Debug.Log("Teleporter thrown!");
-            }
-            // --- Press 3: Teleport to thrown teleporter ---
-            else if (teleporterScript.isPlaced)
-            {
-                teleporterScript.TeleportOwner();          // teleport player
+                transform.position = teleporterPosition;
+                Debug.Log("Teleported back to pickup point!");
+
+                if (teleporterScript != null)
+                    Destroy(teleporterScript.gameObject);
+
                 equippedItem = null;
                 hasItem = false;
                 hasTeleporter = false;
-                Debug.Log("Teleported to teleporter!");
             }
 
-            return; // exit UseItem for Teleporter
+            return;
         }
 
         // THROWABLE PLACEABLES 
