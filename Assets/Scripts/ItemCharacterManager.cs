@@ -71,7 +71,7 @@ public class ItemCharacterManager : MonoBehaviour
             nearbyItem = null;
 
             OnPickupEvent?.Invoke();
-            Debug.Log("Picked up: " + equippedItem.name);
+            //Debug.Log("Picked up: " + equippedItem.name);
         }
         else
         {
@@ -92,37 +92,39 @@ public class ItemCharacterManager : MonoBehaviour
             return;
         }
 
-        // TELEPORTER LOGIC
+        // TELEPORTER LOGIC (3 presses: pick up → throw → teleport)
+        // TELEPORTER LOGIC (3 presses: pick up → throw → teleport)
+        // TELEPORTER LOGIC (working 3 presses: pick up → throw → teleport)
         if (item.ItemData.itemName == "Teleporter")
         {
             Teleporter teleporterScript = equippedItem.GetComponent<Teleporter>();
             if (teleporterScript == null) return;
 
-            if (!hasTeleporter)
+            // --- Press 1: Pick up ---
+            if (!hasTeleporter && !teleporterScript.isPickedUp && !teleporterScript.isPlaced)
             {
-                // First press → pick up
-                teleporterScript.PickUp(gameObject);
+                teleporterScript.PickUp(gameObject);      // sets ownerPlayer & isPickedUp = true
+                equippedItem = teleporterScript.gameObject; // immediately assign to prevent double pickup
                 hasTeleporter = true;
-                equippedItem = teleporterScript.gameObject;
                 Debug.Log("Teleporter picked up!");
             }
-            else if (!teleporterScript.isPlaced)
+            // --- Press 2: Throw forward ---
+            else if (hasTeleporter && teleporterScript.isPickedUp && !teleporterScript.isPlaced)
             {
-                // Second press → throw forward (no arguments, uses player position internally)
-                teleporterScript.Throw();
+                teleporterScript.Throw();                  // throws naturally from player's current position
                 Debug.Log("Teleporter thrown!");
             }
-            else
+            // --- Press 3: Teleport to thrown teleporter ---
+            else if (teleporterScript.isPlaced)
             {
-                // Third press → teleport
-                teleporterScript.TeleportOwner();
+                teleporterScript.TeleportOwner();          // teleport player
                 equippedItem = null;
                 hasItem = false;
                 hasTeleporter = false;
                 Debug.Log("Teleported to teleporter!");
             }
 
-            return; // exit UseItem
+            return; // exit UseItem for Teleporter
         }
 
         // THROWABLE PLACEABLES 

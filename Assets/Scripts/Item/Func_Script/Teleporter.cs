@@ -8,7 +8,7 @@ public class Teleporter : MonoBehaviour, IItem
 
     private GameObject ownerPlayer;
     public bool isPlaced = false; // has it been thrown
-    private bool isPickedUp = false;
+    public bool isPickedUp = false;
 
     [Header("Teleport Settings")]
     public float throwForce = 5f;   // how far it gets thrown
