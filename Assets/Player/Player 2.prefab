@@ -488,7 +488,6 @@ GameObject:
   - component: {fileID: 5320225805477005749}
   - component: {fileID: -6824614158965492339}
   - component: {fileID: 3117477123375002533}
-  - component: {fileID: 9074071316512259546}
   - component: {fileID: 2060427125632623360}
   - component: {fileID: 5259708376484231573}
   m_Layer: 6
@@ -894,19 +893,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerUsing
   playerController: {fileID: 6060794302396040575}
-  itemManager: {fileID: 2060427125632623360}
---- !u!114 &9074071316512259546
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6185984871937994606}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4b340c2bc8fe3604d8c42a5e49f9b37a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlayerItemInput
   itemManager: {fileID: 2060427125632623360}
 --- !u!114 &2060427125632623360
 MonoBehaviour:

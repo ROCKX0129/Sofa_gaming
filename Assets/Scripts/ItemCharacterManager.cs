@@ -25,8 +25,6 @@ public class ItemCharacterManager : MonoBehaviour
     public GameObject equippedItem;
     private bool hasItem = false;
 
-    private bool itemStored = false;
-
     public static event Action OnPickupEvent;
 
 
@@ -45,17 +43,17 @@ public class ItemCharacterManager : MonoBehaviour
             return;
         }
 
-     
-        if (!itemStored)
+        var item = equippedItem?.GetComponent<IItem>();
+        if (item == null) return;
+
+        //  Projectile: 2 presses only
+        if (item.ItemData.itemType == ItemType.Projectile)
         {
-            itemStored = true;
-            Debug.Log("Item stored. Press again to use.");
+            UseItem();
             return;
         }
 
-        
         UseItem();
-        itemStored = false;
     }
 
     private void TryPickup()
@@ -80,28 +78,6 @@ public class ItemCharacterManager : MonoBehaviour
             Debug.Log(name + " found no items in radius");
         }
     }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        Debug.Log(gameObject.name + " collided with " + collision.name + " on layer " + collision.gameObject.layer);
-
-        if (hasItem) return; // already holding an item
-
-        // Check if collided object is in the itemLayer
-        if (itemLayer == (itemLayer | (1 << collision.gameObject.layer)))
-        {
-            nearbyItem = collision.gameObject;
-            equippedItem = nearbyItem;
-            hasItem = true;
-
-            equippedItem.SetActive(false); // hide until used
-            nearbyItem = null;
-            itemStored = false;
-            Debug.Log("Picked up via trigger: " + equippedItem.name);
-        }
-    }
-
-  
 
     private void UseItem()
     {
@@ -182,7 +158,6 @@ public class ItemCharacterManager : MonoBehaviour
             // Immediately clear so no extra presses are needed
             equippedItem = null;
             hasItem = false;
-            itemStored = false;
             return;
         }
 
@@ -204,13 +179,13 @@ public class ItemCharacterManager : MonoBehaviour
 
             equippedItem = null;
             hasItem = false;
-            itemStored = false;
             return;
         }
 
         // PROJECTILE ITEMS (e.g., Ice)
         if (item.ItemData.itemType == ItemType.Projectile)
         {
+            // Second press = shoot
             if (icePrefab != null && firePoint != null)
             {
                 Vector2 direction = transform.localScale.x > 0 ? Vector2.right : Vector2.left;
@@ -219,7 +194,7 @@ public class ItemCharacterManager : MonoBehaviour
 
             equippedItem = null;
             hasItem = false;
-            itemStored = false;
+            return;
         }
     }
 

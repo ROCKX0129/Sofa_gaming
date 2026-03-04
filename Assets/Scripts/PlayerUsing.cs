@@ -13,16 +13,19 @@ public class PlayerUsing : MonoBehaviour
 
     [SerializeField] private ItemCharacterManager itemManager;
 
-
+    private void Awake()
+    {
+        Debug.Log("PlayerUsing script active on: " + gameObject.name);
+    }
     private void Start()
     {
         PlayerTarget = gameObject;
     }
     public void OnUsing(InputAction.CallbackContext ctx)
     {
-        if (ctx.performed && itemManager != null)
+        if (ctx.phase == InputActionPhase.Started && itemManager != null)
         {
-            // Call the ItemCharacterManager toggle logic
+            
             itemManager.CurrentPlayerUsing();
         }
     }
