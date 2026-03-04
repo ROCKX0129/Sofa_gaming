@@ -10,6 +10,8 @@ TagManager:
   - Player2
   - Item
   - PickupCollider
+  - Player1Avatar
+  - Player2Avatar
   layers:
   - Default
   - TransparentFX

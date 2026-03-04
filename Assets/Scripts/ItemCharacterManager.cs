@@ -25,8 +25,6 @@ public class ItemCharacterManager : MonoBehaviour
     public GameObject equippedItem;
     private bool hasItem = false;
 
-    private bool itemStored = false;
-
     public static event Action OnPickupEvent;
 
 
@@ -45,17 +43,17 @@ public class ItemCharacterManager : MonoBehaviour
             return;
         }
 
-     
-        if (!itemStored)
+        var item = equippedItem?.GetComponent<IItem>();
+        if (item == null) return;
+
+        //  Projectile: 2 presses only
+        if (item.ItemData.itemType == ItemType.Projectile)
         {
-            itemStored = true;
-            Debug.Log("Item stored. Press again to use.");
+            UseItem();
             return;
         }
 
-        
         UseItem();
-        itemStored = false;
     }
 
     private void TryPickup()
@@ -73,35 +71,13 @@ public class ItemCharacterManager : MonoBehaviour
             nearbyItem = null;
 
             OnPickupEvent?.Invoke();
-            Debug.Log("Picked up: " + equippedItem.name);
+            //Debug.Log("Picked up: " + equippedItem.name);
         }
         else
         {
             Debug.Log(name + " found no items in radius");
         }
     }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        Debug.Log(gameObject.name + " collided with " + collision.name + " on layer " + collision.gameObject.layer);
-
-        if (hasItem) return; // already holding an item
-
-        // Check if collided object is in the itemLayer
-        if (itemLayer == (itemLayer | (1 << collision.gameObject.layer)))
-        {
-            nearbyItem = collision.gameObject;
-            equippedItem = nearbyItem;
-            hasItem = true;
-
-            equippedItem.SetActive(false); // hide until used
-            nearbyItem = null;
-            itemStored = false;
-            Debug.Log("Picked up via trigger: " + equippedItem.name);
-        }
-    }
-
-  
 
     private void UseItem()
     {
@@ -116,37 +92,39 @@ public class ItemCharacterManager : MonoBehaviour
             return;
         }
 
-
-        // TELEPORTER LOGIC (ENDER-PEARL STYLE)
+        // TELEPORTER LOGIC (3 presses: pick up → throw → teleport)
+        // TELEPORTER LOGIC (3 presses: pick up → throw → teleport)
+        // TELEPORTER LOGIC (working 3 presses: pick up → throw → teleport)
         if (item.ItemData.itemName == "Teleporter")
         {
             Teleporter teleporterScript = equippedItem.GetComponent<Teleporter>();
+            if (teleporterScript == null) return;
 
-            if (!hasTeleporter)
+            // --- Press 1: Pick up ---
+            if (!hasTeleporter && !teleporterScript.isPickedUp && !teleporterScript.isPlaced)
             {
-                // Pick it up and hide
-                teleporterPosition = equippedItem.transform.position;
+                teleporterScript.PickUp(gameObject);      // sets ownerPlayer & isPickedUp = true
+                equippedItem = teleporterScript.gameObject; // immediately assign to prevent double pickup
                 hasTeleporter = true;
-                equippedItem.SetActive(false);
-
-                Debug.Log("Teleporter picked up! Position saved.");
+                Debug.Log("Teleporter picked up!");
             }
-            else
+            // --- Press 2: Throw forward ---
+            else if (hasTeleporter && teleporterScript.isPickedUp && !teleporterScript.isPlaced)
             {
-                // Teleport player back
-                transform.position = teleporterPosition;
-                Debug.Log("Teleported back to pickup point!");
-
-                // Destroy the teleporter object
-                if (teleporterScript != null)
-                    Destroy(teleporterScript.gameObject);
-
+                teleporterScript.Throw();                  // throws naturally from player's current position
+                Debug.Log("Teleporter thrown!");
+            }
+            // --- Press 3: Teleport to thrown teleporter ---
+            else if (teleporterScript.isPlaced)
+            {
+                teleporterScript.TeleportOwner();          // teleport player
                 equippedItem = null;
                 hasItem = false;
                 hasTeleporter = false;
+                Debug.Log("Teleported to teleporter!");
             }
 
-            return; // exit so no placeable throwing occurs
+            return; // exit UseItem for Teleporter
         }
 
         // THROWABLE PLACEABLES 
@@ -182,7 +160,6 @@ public class ItemCharacterManager : MonoBehaviour
             // Immediately clear so no extra presses are needed
             equippedItem = null;
             hasItem = false;
-            itemStored = false;
             return;
         }
 
@@ -204,13 +181,13 @@ public class ItemCharacterManager : MonoBehaviour
 
             equippedItem = null;
             hasItem = false;
-            itemStored = false;
             return;
         }
 
         // PROJECTILE ITEMS (e.g., Ice)
         if (item.ItemData.itemType == ItemType.Projectile)
         {
+            // Second press = shoot
             if (icePrefab != null && firePoint != null)
             {
                 Vector2 direction = transform.localScale.x > 0 ? Vector2.right : Vector2.left;
@@ -219,7 +196,7 @@ public class ItemCharacterManager : MonoBehaviour
 
             equippedItem = null;
             hasItem = false;
-            itemStored = false;
+            return;
         }
     }
 

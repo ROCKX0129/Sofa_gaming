@@ -98,9 +98,13 @@ public class ExplodingChicken : MonoBehaviour, IItem
         Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, explosionRadius, playerLayer);
         foreach (Collider2D hit in hits)
         {
-            Destroy(hit.gameObject); // Instant kill
+            Combat targetCombat = hit.GetComponent<Combat>();
+            if (targetCombat != null)
+            {
+                targetCombat.Die();
+            }
         }
-        Destroy(gameObject, 1f);
+        Destroy(gameObject);
     }
 
     // Called externally if you want to throw it
