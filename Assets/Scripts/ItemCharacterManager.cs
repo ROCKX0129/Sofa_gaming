@@ -201,12 +201,15 @@ public class ItemCharacterManager : MonoBehaviour
     }
 
 
-    private void ShootProjectile(Vector2 direction)
-    {
-        GameObject proj = Instantiate(icePrefab, firePoint.position, Quaternion.identity);
-        var projectileScript = proj.GetComponent<Freeze>();
-        if (projectileScript != null)
-            projectileScript.Shoot(direction);
+private void ShootProjectile(Vector2 direction)
+    {    
+        GameObject proj = Instantiate(icePrefab, firePoint.position, Quaternion.identity);    
+        var projectileScript = proj.GetComponent<Freeze>();    
+            if (projectileScript != null)    
+            {        // NEW: set the owner BEFORE Shoot so sound plays from this player        
+                projectileScript.SetOwner(transform);        // Fire it (Freeze.Shoot will play the use SFX)        
+                projectileScript.Shoot(direction);    
+            }
     }
 
     public void UpdateUsePosition(Vector2 position)
