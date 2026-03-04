@@ -3970,7 +3970,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1801215537}
   - component: {fileID: 1801215536}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Global light
   m_TagString: Untagged
   m_Icon: {fileID: 0}

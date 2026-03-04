@@ -451,7 +451,7 @@ GameObject:
   - component: {fileID: 3959940064716736310}
   m_Layer: 6
   m_Name: HeadAnchor
-  m_TagString: Untagged
+  m_TagString: Player2Avatar
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
