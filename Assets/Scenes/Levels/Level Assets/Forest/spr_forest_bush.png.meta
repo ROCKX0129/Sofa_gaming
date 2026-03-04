@@ -1,0 +1,507 @@
+fileFormatVersion: 2
+guid: bb2919a9920fe43428a3d4b673b682e4
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -2293715174620940008
+    second: spr_forest_bush_0
+  - first:
+      213: -7607411294018408187
+    second: spr_forest_bush_1
+  - first:
+      213: 8732030861205181658
+    second: spr_forest_bush_2
+  - first:
+      213: -5545273618639459790
+    second: spr_forest_bush_3
+  - first:
+      213: 4297344853743435487
+    second: spr_forest_bush_4
+  - first:
+      213: -6740806787082982619
+    second: spr_forest_bush_5
+  - first:
+      213: -5139545161981512679
+    second: spr_forest_bush_6
+  - first:
+      213: -8274480574440149577
+    second: spr_forest_bush_7
+  - first:
+      213: -2311226674967465889
+    second: spr_forest_bush_8
+  - first:
+      213: 9000350460177133857
+    second: spr_forest_bush_9
+  - first:
+      213: -2682742804203563831
+    second: spr_forest_bush_10
+  - first:
+      213: 7813400493238790073
+    second: spr_forest_bush_11
+  - first:
+      213: -8108182438240442926
+    second: spr_forest_bush_12
+  - first:
+      213: -7762029017799307631
+    second: spr_forest_bush_13
+  - first:
+      213: -8887484215017161662
+    second: spr_forest_bush_14
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: spr_forest_bush_0
+      rect:
+        serializedVersion: 2
+        x: 63
+        y: 328
+        width: 857
+        height: 499
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 819bbc883361b20e0800000000000000
+      internalID: -2293715174620940008
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_forest_bush_1
+      rect:
+        serializedVersion: 2
+        x: 301
+        y: 332
+        width: 14
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 501fcbfdbbb0d6690800000000000000
+      internalID: -7607411294018408187
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_forest_bush_2
+      rect:
+        serializedVersion: 2
+        x: 314
+        y: 331
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ad412e1ddc76e2970800000000000000
+      internalID: 8732030861205181658
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_forest_bush_3
+      rect:
+        serializedVersion: 2
+        x: 824
+        y: 222
+        width: 141
+        height: 55
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 23a66a2260b3b03b0800000000000000
+      internalID: -5545273618639459790
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_forest_bush_4
+      rect:
+        serializedVersion: 2
+        x: 958
+        y: 271
+        width: 16
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fdefabc406c33ab30800000000000000
+      internalID: 4297344853743435487
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_forest_bush_5
+      rect:
+        serializedVersion: 2
+        x: 964
+        y: 264
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 52b606401f7d372a0800000000000000
+      internalID: -6740806787082982619
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_forest_bush_6
+      rect:
+        serializedVersion: 2
+        x: 599
+        y: 73
+        width: 363
+        height: 197
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 914b309d7eaaca8b0800000000000000
+      internalID: -5139545161981512679
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_forest_bush_7
+      rect:
+        serializedVersion: 2
+        x: 637
+        y: 262
+        width: 12
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7bdef93f1c32b2d80800000000000000
+      internalID: -8274480574440149577
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_forest_bush_8
+      rect:
+        serializedVersion: 2
+        x: 956
+        y: 245
+        width: 27
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f503823a59fdcefd0800000000000000
+      internalID: -2311226674967465889
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_forest_bush_9
+      rect:
+        serializedVersion: 2
+        x: 267
+        y: 0
+        width: 220
+        height: 252
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 121b1e0ce0ba7ec70800000000000000
+      internalID: 9000350460177133857
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_forest_bush_10
+      rect:
+        serializedVersion: 2
+        x: 959
+        y: 232
+        width: 24
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9c416b322abf4cad0800000000000000
+      internalID: -2682742804203563831
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_forest_bush_11
+      rect:
+        serializedVersion: 2
+        x: 434
+        y: 116
+        width: 89
+        height: 99
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9b72c57f956ce6c60800000000000000
+      internalID: 7813400493238790073
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_forest_bush_12
+      rect:
+        serializedVersion: 2
+        x: 577
+        y: 167
+        width: 14
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2d52e9a0803f97f80800000000000000
+      internalID: -8108182438240442926
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_forest_bush_13
+      rect:
+        serializedVersion: 2
+        x: 454
+        y: 64
+        width: 10
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 19e4cc9bbbbb74490800000000000000
+      internalID: -7762029017799307631
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_forest_bush_14
+      rect:
+        serializedVersion: 2
+        x: 478
+        y: 31
+        width: 16
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 24cb201c13059a480800000000000000
+      internalID: -8887484215017161662
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      spr_forest_bush_0: -2293715174620940008
+      spr_forest_bush_1: -7607411294018408187
+      spr_forest_bush_10: -2682742804203563831
+      spr_forest_bush_11: 7813400493238790073
+      spr_forest_bush_12: -8108182438240442926
+      spr_forest_bush_13: -7762029017799307631
+      spr_forest_bush_14: -8887484215017161662
+      spr_forest_bush_2: 8732030861205181658
+      spr_forest_bush_3: -5545273618639459790
+      spr_forest_bush_4: 4297344853743435487
+      spr_forest_bush_5: -6740806787082982619
+      spr_forest_bush_6: -5139545161981512679
+      spr_forest_bush_7: -8274480574440149577
+      spr_forest_bush_8: -2311226674967465889
+      spr_forest_bush_9: 9000350460177133857
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
