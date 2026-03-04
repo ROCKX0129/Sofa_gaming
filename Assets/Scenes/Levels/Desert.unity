@@ -572,7 +572,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Pause
+  m_text: Quit
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 6f7fe8c4a1d6cd541bc323f1a88ca7a1, type: 2}
   m_sharedMaterial: {fileID: -8677826108860044367, guid: 6f7fe8c4a1d6cd541bc323f1a88ca7a1, type: 2}
@@ -581,8 +581,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4281479730
-  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -2584,7 +2584,7 @@ GameObject:
   - component: {fileID: 1003778739}
   - component: {fileID: 1003778738}
   m_Layer: 5
-  m_Name: PauseButton
+  m_Name: QuitButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2607,8 +2607,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 413, y: 244}
-  m_SizeDelta: {x: 160, y: 30}
+  m_AnchoredPosition: {x: 409.6, y: 239.24}
+  m_SizeDelta: {x: 166.81, y: 39.53}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1003778738
 MonoBehaviour:
@@ -2686,7 +2686,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 2070246909607252100, guid: 49bfa72438dd4bd4b90354298c8e18e3, type: 3}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
