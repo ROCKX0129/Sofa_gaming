@@ -25,7 +25,7 @@ public class ItemCharacterManager : MonoBehaviour
     public GameObject equippedItem;
     private bool hasItem = false;
 
-    public static event Action OnPickupEvent;
+    public static event Action<GameObject> OnPickupEvent;
 
 
     private void Awake()
@@ -70,7 +70,7 @@ public class ItemCharacterManager : MonoBehaviour
             equippedItem.SetActive(false); // hide until used
             nearbyItem = null;
 
-            OnPickupEvent?.Invoke();
+            OnPickupEvent?.Invoke(currentPlayer);
             //Debug.Log("Picked up: " + equippedItem.name);
         }
         else

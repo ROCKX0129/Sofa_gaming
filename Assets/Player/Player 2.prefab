@@ -491,6 +491,7 @@ GameObject:
   - component: {fileID: 2060427125632623360}
   - component: {fileID: 638112633465598573}
   - component: {fileID: 4731458355933176653}
+  - component: {fileID: 3591287949162464590}
   m_Layer: 6
   m_Name: Player 2
   m_TagString: Player2
@@ -1035,6 +1036,20 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &3591287949162464590
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6185984871937994606}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9ce295ce84ca5b4e90db11744d50f2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LocalPlayerNameTag
+  textMesh: {fileID: 3067795099405907066}
+  isPlayerOne: 0
 --- !u!1001 &3198828451871982520
 PrefabInstance:
   m_ObjectHideFlags: 0

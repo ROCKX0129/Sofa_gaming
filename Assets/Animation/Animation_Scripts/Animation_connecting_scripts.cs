@@ -28,9 +28,10 @@ public class Animation_connecting_scripts : MonoBehaviour
         ItemCharacterManager.OnPickupEvent += OnPickup;
     }
 
-    public void OnPickup()
+    public void OnPickup(GameObject CurrentPlayer)
     {
-        mAnimator.SetTrigger("OnPickup");
+        if (gameObject.name == CurrentPlayer.name)
+            mAnimator.SetTrigger("OnPickup");
     }
 
     public void OnAttack(InputAction.CallbackContext ctx)
