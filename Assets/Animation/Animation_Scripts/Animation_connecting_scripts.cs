@@ -43,6 +43,15 @@ public class Animation_connecting_scripts : MonoBehaviour
 
     }
 
+    public void OnThrow(InputAction.CallbackContext ctx)
+    {
+        if (ctx.performed)
+        {
+            mAnimator.SetTrigger("OnThrow");
+        }
+
+    }
+
     public void PlayDeath()
     {
         mAnimator.SetTrigger("OnDead");

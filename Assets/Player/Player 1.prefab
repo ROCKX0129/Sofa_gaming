@@ -732,6 +732,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1440395483784586501}
+        m_TargetAssemblyTypeName: Animation_connecting_scripts, Assembly-CSharp
+        m_MethodName: OnThrow
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 75aa98d9-2c49-4ad8-a7ae-ad81bbd78c3c
     m_ActionName: 'Player 1/Shoot[/Keyboard/l]'
   - m_PersistentCalls:
@@ -1411,11 +1423,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3966681697894849903, guid: d59ae2647b2e20f4b9b4e22dccb5afb8, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.2904129
+      value: 0.29041213
       objectReference: {fileID: 0}
     - target: {fileID: 3966681697894849903, guid: d59ae2647b2e20f4b9b4e22dccb5afb8, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.9569015
+      value: -0.95690167
       objectReference: {fileID: 0}
     - target: {fileID: 4211494438817101734, guid: d59ae2647b2e20f4b9b4e22dccb5afb8, type: 3}
       propertyPath: m_Layer
@@ -1503,11 +1515,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8232150202329849510, guid: d59ae2647b2e20f4b9b4e22dccb5afb8, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.99926037
+      value: 0.9992604
       objectReference: {fileID: 0}
     - target: {fileID: 8232150202329849510, guid: d59ae2647b2e20f4b9b4e22dccb5afb8, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.03845509
+      value: -0.038454276
       objectReference: {fileID: 0}
     - target: {fileID: 8238805985909229026, guid: d59ae2647b2e20f4b9b4e22dccb5afb8, type: 3}
       propertyPath: m_Layer
